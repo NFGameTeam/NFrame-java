@@ -63,7 +63,7 @@ public class NFIdent {
 		return head + "-" + data;
 	}
 	
-	public boolean parse(String strData, NFIdent outId) {
+	public static boolean parse(String strData, NFIdent outId) {
 		String[] strList = strData.split("-", 0);
 		if (strList.length != 2){
 			return false;
