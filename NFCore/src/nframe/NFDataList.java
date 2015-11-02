@@ -15,25 +15,21 @@ public class NFDataList extends NFIDataList {
 	private List<Object> values;
 	
 	public NFDataList(){
-		this(0);
+		this.values = new ArrayList<Object>();
 	}
 	
-	public NFDataList(int reserve){
-		this.values = new ArrayList<Object>(reserve);
+	public NFDataList(NFIDataList other){
+		this.values = new ArrayList<Object>(other.size());
+		this.set(other);
 	}
 	
 	public NFDataList(Object... vars){
-		this(vars.length);
+		this.values = new ArrayList<Object>(vars.length);
 		this.add(vars);
 	}
 
 	@Override
 	public int add(long value) {
-		return addValue(value);
-	}
-
-	@Override
-	public int add(float value) {
 		return addValue(value);
 	}
 
@@ -60,35 +56,52 @@ public class NFDataList extends NFIDataList {
 	}
 
 	@Override
-	public long set(int index, long value) {
-		return Long.class.cast(setValue(index, value));
+	public void set(int index, long value) {
+		setValue(index, value);
 	}
 
 	@Override
-	public float set(int index, float value) {
-		return Float.class.cast(setValue(index, value));
+	public void set(int index, double value) {
+		setValue(index, value);
 	}
 
 	@Override
-	public double set(int index, double value) {
-		return Double.class.cast(setValue(index, value));
+	public void set(int index, String value) {
+		assert null != value;
+		setValue(index, value);
 	}
 
 	@Override
-	public String set(int index, String value) {
-		return String.class.cast(setValue(index, value));
+	public void set(int index, NFIdent value) {
+		assert null != value;
+		setValue(index, value);
 	}
 
 	@Override
-	public NFIdent set(int index, NFIdent value) {
-		return NFIdent.class.cast(setValue(index, value));
-	}
-
-	@Override
-	public void set(Object... vars){
-		int size = vars.length >= this.size() ? this.size() : vars.length;
-		for (int i=0; i<size; ++i){
-			values.set(i, vars[i]);
+	public void set(NFIDataList other){
+		if (this == other){
+			return;
+		}
+		
+		this.clear();
+		for (int i=0, size=other.size(); i<size; ++i){
+			NFIDataList.ValueType type = other.getType(i);
+			switch (type){
+			case INT:{
+				this.add(other.getInt(i));
+				break;
+			}case FLOAT:{
+				this.add(other.getFloat(i));
+				break;
+			}case STRING:{
+				this.add(other.getString(i));
+				break;
+			}case OBJECT:{
+				this.add(other.getObject(i));
+				break;
+			}default:
+				assert false;
+			}
 		}
 	}
 
@@ -107,13 +120,7 @@ public class NFDataList extends NFIDataList {
 	}
 
 	@Override
-	public float getFloat(int index) {
-		Object o = getValue(index);
-		return Float.class.cast(o);
-	}
-
-	@Override
-	public double getDouble(int index) {
+	public double getFloat(int index) {
 		Object o = getValue(index);
 		if (o instanceof Float){
 			return Float.class.cast(o);
@@ -152,16 +159,11 @@ public class NFDataList extends NFIDataList {
 	@Override
 	public ValueType getType(int index) {
 		Object o = getValue(index);
-		if (null == o){
-			return ValueType.UNKNOWN;
-		}
 		
-		if (o instanceof Long){
+		if (o instanceof Byte || o instanceof Short || o instanceof Integer || o instanceof Long){
 			return ValueType.INT;
-		}else if (o instanceof Float){
+		}else if (o instanceof Float || o instanceof Double){
 			return ValueType.FLOAT;
-		}else if (o instanceof Double){
-			return ValueType.DOUBLE;
 		}else if (o instanceof String){
 			return ValueType.STRING;
 		}else if (o instanceof NFIdent){
@@ -177,8 +179,8 @@ public class NFDataList extends NFIDataList {
 		return index;
 	}
 	
-	private Object setValue(int index, Object o){
-		return values.set(index, o);
+	private void setValue(int index, Object o){
+		values.set(index, o);
 	}
 
 	private Object getValue(int index) {

@@ -11,11 +11,10 @@ public abstract class NFIDataList {
 	/** 数据类型 */
 	public enum ValueType {
 		UNKNOWN,
-		INT, // int64
-		FLOAT,
-		DOUBLE,
+		INT, // byte,short,int,long
+		FLOAT, // float,double
 		STRING,
-		OBJECT, // 对象id
+		OBJECT, // NFIdent
 	}
 	
 	/**
@@ -24,7 +23,6 @@ public abstract class NFIDataList {
 	 * @return 返回新值得索引
 	 */
 	public abstract int add(long value);
-	public abstract int add(float value);
 	public abstract int add(double value);
 	public abstract int add(String value);
 	public abstract int add(NFIdent value);
@@ -39,19 +37,17 @@ public abstract class NFIDataList {
 	 * 设置数据
 	 * @param index
 	 * @param value
-	 * @return 先前的值
 	 */
-	public abstract long set(int index, long value);
-	public abstract float set(int index, float value);
-	public abstract double set(int index, double value);
-	public abstract String set(int index, String value);
-	public abstract NFIdent set(int index, NFIdent value);
+	public abstract void set(int index, long value);
+	public abstract void set(int index, double value);
+	public abstract void set(int index, String value);
+	public abstract void set(int index, NFIdent value);
 	
 	/**
-	 * 设置一组数据，从0开始，如果vars的长度超过本身长度，剩余参数忽略
-	 * @param vars
+	 * 从其他对象拷贝数据
+	 * @param other
 	 */
-	public abstract void set(Object... vars);
+	public abstract void set(NFIDataList other);
 	
 	/**
 	 * 获取数据
@@ -59,8 +55,7 @@ public abstract class NFIDataList {
 	 * @return
 	 */
 	public abstract long getInt(int index);
-	public abstract float getFloat(int index);
-	public abstract double getDouble(int index);
+	public abstract double getFloat(int index);
 	public abstract String getString(int index);
 	public abstract NFIdent getObject(int index);
 	
