@@ -9,14 +9,14 @@ package nframe;
  */
 public abstract class NFIProperty {
 	public abstract String getName();
-	public abstract NFIDataList.ValueType getType();
+	public abstract NFIData.Type getType();
 
 	/**
 	 * 直接设置数据，不会触发回调
 	 * @param value
 	 */
-	public abstract void set(NFIDataList value);
-	public abstract NFIDataList get();
+	public abstract void set(NFIData value);
+	public abstract NFIData get();
 	
 	public abstract long getInt();
 	public abstract double getFloat();

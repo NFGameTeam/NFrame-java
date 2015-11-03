@@ -8,15 +8,6 @@ package nframe;
  * 数据列表
  */
 public abstract class NFIDataList {
-	/** 数据类型 */
-	public enum ValueType {
-		UNKNOWN,
-		INT, // byte,short,int,long
-		FLOAT, // float,double
-		STRING,
-		OBJECT, // NFIdent
-	}
-	
 	/**
 	 * 添加新数据
 	 * @param value
@@ -31,7 +22,7 @@ public abstract class NFIDataList {
 	 * 添加一组新数据
 	 * @param vars
 	 */
-	public abstract void add(Object... vars);
+	public abstract void append(Object... vars);
 	
 	/**
 	 * 设置数据
@@ -62,5 +53,5 @@ public abstract class NFIDataList {
 	public abstract int size();
 	public abstract boolean isEmpty();
 	public abstract void clear();
-	public abstract ValueType getType(int index);
+	public abstract NFIData.Type getType(int index);
 }

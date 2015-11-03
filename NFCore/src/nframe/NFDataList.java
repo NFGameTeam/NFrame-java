@@ -23,9 +23,29 @@ public class NFDataList extends NFIDataList {
 		this.set(other);
 	}
 	
+	public NFDataList(long value){
+		this.values = new ArrayList<Object>(1);
+		this.add(value);
+	}
+	
+	public NFDataList(double value){
+		this.values = new ArrayList<Object>(1);
+		this.add(value);
+	}
+	
+	public NFDataList(String value){
+		this.values = new ArrayList<Object>(1);
+		this.add(value);
+	}
+	
+	public NFDataList(NFIdent value){
+		this.values = new ArrayList<Object>(1);
+		this.add(value);
+	}
+	
 	public NFDataList(Object... vars){
 		this.values = new ArrayList<Object>(vars.length);
-		this.add(vars);
+		this.append(vars);
 	}
 
 	@Override
@@ -49,7 +69,7 @@ public class NFDataList extends NFIDataList {
 	}
 	
 	@Override
-	public void add(Object... vars){
+	public void append(Object... vars){
 		for (Object o : vars){
 			this.values.add(o);
 		}
@@ -85,7 +105,7 @@ public class NFDataList extends NFIDataList {
 		
 		this.clear();
 		for (int i=0, size=other.size(); i<size; ++i){
-			NFIDataList.ValueType type = other.getType(i);
+			NFIData.Type type = other.getType(i);
 			switch (type){
 			case INT:{
 				this.add(other.getInt(i));
@@ -157,19 +177,19 @@ public class NFDataList extends NFIDataList {
 	}
 
 	@Override
-	public ValueType getType(int index) {
+	public NFIData.Type getType(int index) {
 		Object o = getValue(index);
 		
 		if (o instanceof Byte || o instanceof Short || o instanceof Integer || o instanceof Long){
-			return ValueType.INT;
+			return NFIData.Type.INT;
 		}else if (o instanceof Float || o instanceof Double){
-			return ValueType.FLOAT;
+			return NFIData.Type.FLOAT;
 		}else if (o instanceof String){
-			return ValueType.STRING;
+			return NFIData.Type.STRING;
 		}else if (o instanceof NFIdent){
-			return ValueType.OBJECT;
+			return NFIData.Type.OBJECT;
 		}else{
-			return ValueType.UNKNOWN;
+			return NFIData.Type.UNKNOWN;
 		}
 	}
 	

@@ -9,8 +9,8 @@ package nframe;
  */
 public abstract class NFBehaviour {
 	
-	/** 唯一标识 */
-	private NFIdent id;
+	/** 对象唯一标识 */
+	private NFIdent oid;
 	
 	public abstract void init();
 
@@ -23,11 +23,11 @@ public abstract class NFBehaviour {
 	public abstract void execute();
 	
 	/**
-	 * 设置id
-	 * @param id
+	 * 设置oid
+	 * @param oid
 	 */
-	public void setSelf(NFIdent id) {
-		this.id = id;
+	public void setSelf(NFIdent oid) {
+		this.oid = oid;
 	}
 	
 	/**
@@ -35,9 +35,9 @@ public abstract class NFBehaviour {
 	 * @return
 	 */
 	public NFIdent self() {
-		if (null == id){
-			id = new NFIdent();
+		if (null == oid){
+			oid = new NFIdent();
 		}
-		return id;
+		return oid;
 	}
 }

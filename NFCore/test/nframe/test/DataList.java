@@ -43,6 +43,10 @@ public class DataList {
 		varList.clear();
 		assertTrue(varList.size() == 0);
 		assertTrue(varList.isEmpty());
+		
+		double d = 32.32353d;
+		long l = Double.doubleToLongBits(d);
+		assertTrue(Double.compare(d, Double.longBitsToDouble(l)) == 0);
 	}
 
 }
