@@ -14,15 +14,23 @@ public class NFProperty extends NFIProperty {
 	
 	private NFIdent oid;
 	private String name;
-	private NFIData value;
+	private NFIData var;
 	private NFIData oldVar;
 	private NFIData newVar;
 	private List<NFIPropertyHandler> callbacks;
 	
+	public NFProperty(NFIdent oid, String name){
+		this.oid = oid;
+		this.name = name;
+		this.var = new NFData();
+		this.oldVar = new NFData();
+		this.newVar = new NFData();
+	}
+	
 	public NFProperty(NFIdent oid, String name, long var){
 		this.oid = oid;
 		this.name = name;
-		this.value = new NFData(var);
+		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
@@ -30,7 +38,7 @@ public class NFProperty extends NFIProperty {
 	public NFProperty(NFIdent oid, String name, double var){
 		this.oid = oid;
 		this.name = name;
-		this.value = new NFData(var);
+		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
@@ -38,7 +46,7 @@ public class NFProperty extends NFIProperty {
 	public NFProperty(NFIdent oid, String name, String var){
 		this.oid = oid;
 		this.name = name;
-		this.value = new NFData(var);
+		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
@@ -46,7 +54,7 @@ public class NFProperty extends NFIProperty {
 	public NFProperty(NFIdent oid, String name, NFIdent var){
 		this.oid = oid;
 		this.name = name;
-		this.value = new NFData(var);
+		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
@@ -54,7 +62,7 @@ public class NFProperty extends NFIProperty {
 	public NFProperty(NFIdent oid, String name, NFIData var){
 		this.oid = oid;
 		this.name = name;
-		this.value = new NFData(var);
+		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
@@ -66,47 +74,47 @@ public class NFProperty extends NFIProperty {
 
 	@Override
 	public NFIData.Type getType() {
-		return value.getType();
+		return var.getType();
 	}
 
 	@Override
-	public void set(NFIData value) {
-		this.value = new NFData(value);
+	public void set(NFIData other) {
+		this.var = new NFData(other);
 	}
 
 	@Override
 	public NFIData get() {
-		return value;
+		return var;
 	}
 
 	@Override
 	public long getInt() {
-		return value.getInt();
+		return var.getInt();
 	}
 
 	@Override
 	public double getFloat() {
-		return value.getFloat();
+		return var.getFloat();
 	}
 
 	@Override
 	public String getString() {
-		return value.getString();
+		return var.getString();
 	}
 
 	@Override
 	public NFIdent getObject() {
-		return value.getObject();
+		return var.getObject();
 	}
 
 	@Override
-	public void set(long value) {
-		if (getType() != NFIData.Type.INT || getInt() != value){
-			this.oldVar.set(this.value);
-			this.value.set(value);
-			this.newVar.set(value);
+	public void set(long var) {
+		if (getType() != NFIData.Type.INT || getInt() != var){
+			this.oldVar.set(this.var);
+			this.var.set(var);
+			this.newVar.set(var);
 			
-			if (null != callbacks){
+			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
 					cb.handle(oid, name, this.oldVar, this.newVar);
 				}
@@ -115,13 +123,13 @@ public class NFProperty extends NFIProperty {
 	}
 
 	@Override
-	public void set(double value) {
-		if (getType() != NFIData.Type.FLOAT || Double.compare(getFloat(), value) != 0){
-			this.oldVar.set(this.value);
-			this.value.set(value);
-			this.newVar.set(value);
+	public void set(double var) {
+		if (getType() != NFIData.Type.FLOAT || Double.compare(getFloat(), var) != 0){
+			this.oldVar.set(this.var);
+			this.var.set(var);
+			this.newVar.set(var);
 			
-			if (null != callbacks){
+			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
 					cb.handle(oid, name, this.oldVar, this.newVar);
 				}
@@ -130,13 +138,14 @@ public class NFProperty extends NFIProperty {
 	}
 
 	@Override
-	public void set(String value) {
-		if (getType() != NFIData.Type.STRING || !getString().equals(value)){
-			this.oldVar.set(this.value);
-			this.value.set(value);
-			this.newVar.set(value);
+	public void set(String var) {
+		assert var != null;
+		if (getType() != NFIData.Type.STRING || !getString().equals(var)){
+			this.oldVar.set(this.var);
+			this.var.set(var);
+			this.newVar.set(var);
 			
-			if (null != callbacks){
+			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
 					cb.handle(oid, name, this.oldVar, this.newVar);
 				}
@@ -145,23 +154,44 @@ public class NFProperty extends NFIProperty {
 	}
 
 	@Override
-	public void set(NFIdent value) {
-		if (getType() != NFIData.Type.OBJECT || !getObject().equals(value)){
-			this.oldVar.set(this.value);
-			this.value.set(value);
-			this.newVar.set(value);
+	public void set(NFIdent var) {
+		assert var != null;
+		if (getType() != NFIData.Type.OBJECT || !getObject().equals(var)){
+			this.oldVar.set(this.var);
+			this.var.set(var);
+			this.newVar.set(var);
 			
-			if (null != callbacks){
+			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
 					cb.handle(oid, name, this.oldVar, this.newVar);
 				}
 			}
 		}
+	}
+
+	@Override
+	public void set() {
+		if (getType() != NFIData.Type.NULL){
+			this.oldVar.set(this.var);
+			this.var.dispose();
+			this.newVar.dispose();
+			
+			if (callbacks != null){
+				for (NFIPropertyHandler cb : callbacks){
+					cb.handle(oid, name, this.oldVar, this.newVar);
+				}
+			}
+		}
+	}
+	
+	@Override
+	public boolean isEmpty(){
+		return var.isNull();
 	}
 
 	@Override
 	public void addCallback(NFIPropertyHandler cb) {
-		if (null == callbacks){
+		if (callbacks == null){
 			callbacks = new ArrayList<NFIPropertyHandler>();
 		}
 		callbacks.add(cb);

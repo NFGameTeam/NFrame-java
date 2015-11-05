@@ -25,7 +25,7 @@ public class NFIdent {
 			return true;
 		}
 		
-		if (null == o || getClass() != o.getClass()){
+		if (o == null || getClass() != o.getClass()){
 			return false;
 		}
 		

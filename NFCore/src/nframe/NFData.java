@@ -9,9 +9,13 @@ package nframe;
  */
 public class NFData extends NFIData {
 	
-	private Type type = Type.UNKNOWN;
+	private Type type;
 	private long value;
 	private Object obj;
+	
+	public NFData(){
+		this.type = Type.NULL;
+	}
 	
 	public NFData(long var){
 		set(var);
@@ -49,6 +53,7 @@ public class NFData extends NFIData {
 
 	@Override
 	public void set(String var){
+		assert var != null;
 		this.type = Type.STRING;
 		this.value = 0;
 		this.obj = var;
@@ -56,6 +61,7 @@ public class NFData extends NFIData {
 
 	@Override
 	public void set(NFIdent var){
+		assert var != null;
 		this.type = Type.OBJECT;
 		this.value = 0;
 		this.obj = var;
@@ -63,6 +69,7 @@ public class NFData extends NFIData {
 
 	@Override
 	public void set(NFIData other){
+		assert other != null;
 		this.type = other.getType();
 		switch (this.type){
 		case INT:{
@@ -111,13 +118,13 @@ public class NFData extends NFIData {
 	}
 
 	@Override
-	public boolean isEmpty(){
-		return type == Type.UNKNOWN;
+	public boolean isNull(){
+		return type == Type.NULL;
 	}
 
 	@Override
-	public void clear(){
-		type = Type.UNKNOWN;
+	public void dispose(){
+		type = Type.NULL;
 		value = 0;
 		obj = null;
 	}

@@ -7,9 +7,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import nframe.NFDataList;
 import nframe.NFIData;
-import nframe.NFIDataList;
 import nframe.NFIProperty;
 import nframe.NFIPropertyHandler;
 import nframe.NFIdent;
@@ -20,13 +18,13 @@ import nframe.NFProperty;
  * 测试属性
  */
 public class Property {
-	public static final NFIdent objId1 = new NFIdent(0,1);
-	public static final NFIdent objId2 = new NFIdent(0,2);
+	public static final NFIdent oid1 = new NFIdent(0,1);
+	public static final NFIdent oid2 = new NFIdent(0,2);
 	
 	public class Handler1 implements NFIPropertyHandler {
 		@Override
-		public void handle(NFIdent id, String propName, NFIData oldVar, NFIData newVar) {
-			assertTrue(id.equals(objId1));
+		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar) {
+			assertTrue(oid.equals(oid1));
 			assertTrue(propName.equals("test prop1"));
 			assertTrue(oldVar.getInt() == 5);
 			assertTrue(newVar.getInt() == 10);
@@ -35,8 +33,8 @@ public class Property {
 	
 	public class Handler2 implements NFIPropertyHandler {
 		@Override
-		public void handle(NFIdent id, String propName, NFIData oldVar, NFIData newVar) {
-			assertTrue(id.equals(objId1));
+		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar) {
+			assertTrue(oid.equals(oid1));
 			assertTrue(propName.equals("test prop1"));
 			assertTrue(oldVar.getInt() == 5);
 			assertTrue(newVar.getInt() == 10);
@@ -45,8 +43,8 @@ public class Property {
 	
 	public class Handler3 implements NFIPropertyHandler {
 		@Override
-		public void handle(NFIdent id, String propName, NFIData oldVar, NFIData newVar) {
-			assertTrue(id.equals(objId2));
+		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar) {
+			assertTrue(oid.equals(oid2));
 			assertTrue(propName.equals("test prop2"));
 			assertTrue(Double.compare(oldVar.getFloat(), 2.5f) == 0);
 			assertTrue(newVar.getString().equals("my new val"));

@@ -26,7 +26,7 @@ public abstract class NFBehaviour {
 	 * 设置oid
 	 * @param oid
 	 */
-	public void setSelf(NFIdent oid) {
+	public void setId(NFIdent oid) {
 		this.oid = oid;
 	}
 	
@@ -34,8 +34,8 @@ public abstract class NFBehaviour {
 	 * 获取id，如果id是null，自动构建一个空的id
 	 * @return
 	 */
-	public NFIdent self() {
-		if (null == oid){
+	public NFIdent getId() {
+		if (oid == null){
 			oid = new NFIdent();
 		}
 		return oid;

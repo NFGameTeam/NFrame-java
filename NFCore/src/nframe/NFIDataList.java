@@ -13,10 +13,10 @@ public abstract class NFIDataList {
 	 * @param value
 	 * @return 返回新值得索引
 	 */
-	public abstract int add(long value);
-	public abstract int add(double value);
-	public abstract int add(String value);
-	public abstract int add(NFIdent value);
+	public abstract int add(long var);
+	public abstract int add(double var);
+	public abstract int add(String var);
+	public abstract int add(NFIdent var);
 	
 	/**
 	 * 添加一组新数据
@@ -29,10 +29,10 @@ public abstract class NFIDataList {
 	 * @param index
 	 * @param value
 	 */
-	public abstract void set(int index, long value);
-	public abstract void set(int index, double value);
-	public abstract void set(int index, String value);
-	public abstract void set(int index, NFIdent value);
+	public abstract void set(int index, long var);
+	public abstract void set(int index, double var);
+	public abstract void set(int index, String var);
+	public abstract void set(int index, NFIdent var);
 	
 	/**
 	 * 从其他对象拷贝数据

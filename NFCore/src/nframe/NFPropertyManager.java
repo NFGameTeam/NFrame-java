@@ -3,7 +3,7 @@
  */
 package nframe;
 
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -11,8 +11,9 @@ import java.util.Map;
  * 属性管理器
  */
 public class NFPropertyManager implements NFIPropertyManager {
-	
-	private Map<String, NFIProperty> propertyList = new HashMap<String, NFIProperty>();
+	/** 属性表 */
+	private Map<String, NFIProperty> properties = new Hashtable<String, NFIProperty>();
+	/** 对象id */
 	private NFIdent oid;
 	
 	public NFPropertyManager(NFIdent oid){
@@ -22,9 +23,9 @@ public class NFPropertyManager implements NFIPropertyManager {
 	@Override
 	public NFIProperty addProperty(String name, long var) {
 		NFIProperty rt = null;
-		if (!propertyList.containsKey(name)){
+		if (!properties.containsKey(name)){
 			rt = new NFProperty(oid, name, var);
-			propertyList.put(name, rt);
+			properties.put(name, rt);
 		}
 		return rt;
 	}
@@ -32,9 +33,9 @@ public class NFPropertyManager implements NFIPropertyManager {
 	@Override
 	public NFIProperty addProperty(String name, double var) {
 		NFIProperty rt = null;
-		if (!propertyList.containsKey(name)){
+		if (!properties.containsKey(name)){
 			rt = new NFProperty(oid, name, var);
-			propertyList.put(name, rt);
+			properties.put(name, rt);
 		}
 		return rt;
 	}
@@ -42,9 +43,9 @@ public class NFPropertyManager implements NFIPropertyManager {
 	@Override
 	public NFIProperty addProperty(String name, String var) {
 		NFIProperty rt = null;
-		if (!propertyList.containsKey(name)){
+		if (!properties.containsKey(name)){
 			rt = new NFProperty(oid, name, var);
-			propertyList.put(name, rt);
+			properties.put(name, rt);
 		}
 		return rt;
 	}
@@ -52,9 +53,9 @@ public class NFPropertyManager implements NFIPropertyManager {
 	@Override
 	public NFIProperty addProperty(String name, NFIdent var) {
 		NFIProperty rt = null;
-		if (!propertyList.containsKey(name)){
+		if (!properties.containsKey(name)){
 			rt = new NFProperty(oid, name, var);
-			propertyList.put(name, rt);
+			properties.put(name, rt);
 		}
 		return rt;
 	}
@@ -62,82 +63,42 @@ public class NFPropertyManager implements NFIPropertyManager {
 	@Override
 	public NFIProperty addProperty(String name, NFIData var) {
 		NFIProperty rt = null;
-		if (!propertyList.containsKey(name)){
+		if (!properties.containsKey(name)){
 			rt = new NFProperty(oid, name, var);
-			propertyList.put(name, rt);
+			properties.put(name, rt);
 		}
 		return rt;
 	}
 
 	@Override
-	public boolean setProperty(String name, long var) {
-		boolean rt = false;
-		NFIProperty prop = propertyList.get(name);
-		if (null != prop){
-			rt = true;
-			prop.set(var);
-		}
-		return rt;
-	}
-
-	@Override
-	public boolean setProperty(String name, double var) {
-		boolean rt = false;
-		NFIProperty prop = propertyList.get(name);
-		if (null != prop){
-			rt = true;
-			prop.set(var);
-		}
-		return rt;
-	}
-
-	@Override
-	public boolean setProperty(String name, String var) {
-		boolean rt = false;
-		NFIProperty prop = propertyList.get(name);
-		if (null != prop){
-			rt = true;
-			prop.set(var);
-		}
-		return rt;
-	}
-
-	@Override
-	public boolean setProperty(String name, NFIdent var) {
-		boolean rt = false;
-		NFIProperty prop = propertyList.get(name);
-		if (null != prop){
-			rt = true;
-			prop.set(var);
-		}
-		return rt;
-	}
-
-	@Override
-	public boolean setProperty(String name, NFIData var) {
-		boolean rt = false;
-		NFIProperty prop = propertyList.get(name);
-		if (null != prop){
-			rt = true;
-			prop.set(var);
+	public NFIProperty addProperty(String name) {
+		NFIProperty rt = null;
+		if (!properties.containsKey(name)){
+			rt = new NFProperty(oid, name);
+			properties.put(name, rt);
 		}
 		return rt;
 	}
 
 	@Override
 	public NFIProperty getProperty(String name) {
-		return propertyList.get(name);
+		return properties.get(name);
+	}
+	
+	@Override
+	public boolean hasProperty(String name){
+		return properties.containsKey(name);
 	}
 
 	@Override
 	public NFIProperty[] getPropertyList() {
-		if (propertyList.isEmpty()){
+		if (properties.isEmpty()){
 			return null;
 		}
 		
-		NFIProperty[] rt = new NFIProperty[propertyList.size()];
+		NFIProperty[] rt = new NFIProperty[properties.size()];
 		int i = 0;
-		for (NFIProperty prop : propertyList.values()){
+		for (NFIProperty prop : properties.values()){
 			rt[i] = prop;
 			++i;
 		}
@@ -147,7 +108,7 @@ public class NFPropertyManager implements NFIPropertyManager {
 	@Override
 	public boolean addCallback(String name, NFIPropertyHandler cb) {
 		NFIProperty prop = getProperty(name);
-		if (null != prop){
+		if (prop != null){
 			prop.addCallback(cb);
 			return true;
 		}

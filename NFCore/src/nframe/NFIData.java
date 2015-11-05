@@ -10,7 +10,7 @@ package nframe;
 public abstract class NFIData {
 	/** 数据类型 */
 	public enum Type {
-		UNKNOWN,
+		NULL,
 		INT, // byte,short,int,long
 		FLOAT, // float,double
 		STRING,
@@ -33,7 +33,7 @@ public abstract class NFIData {
 	public abstract String getString();
 	public abstract NFIdent getObject();
 	
-	public abstract boolean isEmpty();
-	public abstract void clear();
+	public abstract boolean isNull();
+	public abstract void dispose();
 	public abstract Type getType();
 }
