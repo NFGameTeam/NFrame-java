@@ -335,12 +335,14 @@ public class Base {
 		int threadNum = Runtime.getRuntime().availableProcessors();
 		List<Thread> thrs = new ArrayList<Thread>(threadNum);
 		for (int i=0; i<threadNum; ++i){
+			final int index = i;
 			thrs.add(new Thread(){
 				@Override
 				public void run(){
-					base.handleTest();
+					base.handleTest(index);
 				}
 			});
+			thrs.get(i).start();
 		}
 		
 		for (Thread thr : thrs){
@@ -355,7 +357,7 @@ public class Base {
 	}
 	
 	@SuppressWarnings("unused")
-	public void handleTest(){
+	public void handleTest(int index){
 		/**
 		 * 模拟处理几个客户端的请求
 		 */
@@ -363,8 +365,11 @@ public class Base {
 		// 模拟服务器启动时，每个处理线程进行的初始化
 		init();
 		
+		String user1 = "user1" + index;
+		String user2 = "user2" + index;
+		
 		// 用户1登录
-		NetDownLogin downLogin1 = login("user1", "pwd");
+		NetDownLogin downLogin1 = login(user1, "pwd");
 		assertTrue(downLogin1.getErrc() == ErrorCode.OK);
 		DBPlayer dbPly1 = downLogin1.getDbPly();
 		long exp1 = dbPly1.exp;
@@ -380,7 +385,7 @@ public class Base {
 		assertTrue(dbEquips1.size() == initEquipTypes.size());
 		
 		// 用户2登录
-		NetDownLogin downLogin2 = login("user2", "pwd");
+		NetDownLogin downLogin2 = login(user2, "pwd");
 		assertTrue(downLogin2.getErrc() == ErrorCode.OK);
 		DBPlayer dbPly2 = downLogin2.getDbPly();
 		long exp2 = dbPly2.exp;
@@ -400,15 +405,15 @@ public class Base {
 		for (int i=0; i<3; ++i){
 			// 改3次，不会失败
 			String newPwd = tmpPwd1 + "1";
-			NetDownChangePwd down = changePassword("user1", tmpPwd1, newPwd);
+			NetDownChangePwd down = changePassword(user1, tmpPwd1, newPwd);
 			assertTrue(down.getErrc() == ErrorCode.OK);
 			tmpPwd1 = newPwd;
 		}
 		// 第4次修改失败，超过修改限制
-		assertTrue(changePassword("user1", tmpPwd1, tmpPwd1+"1").getErrc() == ErrorCode.OUT_OF_LIMIT);
+		assertTrue(changePassword(user1, tmpPwd1, tmpPwd1+"1").getErrc() == ErrorCode.OUT_OF_LIMIT);
 		
 		// 用户1用新密码登录
-		downLogin1 = login("user1", "pwd111");
+		downLogin1 = login(user1, "pwd111");
 		assertTrue(downLogin1.getErrc() == ErrorCode.OK);
 		
 		// 用户2完成2个任务
