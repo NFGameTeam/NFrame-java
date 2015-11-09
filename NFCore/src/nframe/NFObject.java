@@ -11,7 +11,7 @@ public class NFObject extends NFIObject {
 	
 	private NFIPropertyManager propMgr;
 	
-	public NFObject(NFIdent oid){
+	public NFObject(NFGUID oid){
 		super.setId(oid);
 		this.propMgr = new NFPropertyManager(oid);
 	}
@@ -19,6 +19,26 @@ public class NFObject extends NFIObject {
 	@Override
 	public boolean hasProperty(String name){
 		return propMgr.hasProperty(name);
+	}
+
+	@Override
+	public long getPropertyInt(String name){
+		return propMgr.getPropertyInt(name);
+	}
+
+	@Override
+	public double getPropertyFloat(String name){
+		return propMgr.getPropertyFloat(name);
+	}
+
+	@Override
+	public String getPropertyString(String name){
+		return propMgr.getPropertyString(name);
+	}
+
+	@Override
+	public NFGUID getPropertyObject(String name){
+		return propMgr.getPropertyObject(name);
 	}
 
 	@Override
@@ -55,7 +75,7 @@ public class NFObject extends NFIObject {
 	}
 
 	@Override
-	public boolean setProperty(String name, NFIdent var){
+	public boolean setProperty(String name, NFGUID var){
 		NFIProperty prop = propMgr.getProperty(name);
 		if (prop != null){
 			prop.set(var);

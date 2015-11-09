@@ -16,7 +16,7 @@ public abstract class NFIDataList {
 	public abstract int add(long var);
 	public abstract int add(double var);
 	public abstract int add(String var);
-	public abstract int add(NFIdent var);
+	public abstract int add(NFGUID var);
 	
 	/**
 	 * 添加一组新数据
@@ -29,10 +29,10 @@ public abstract class NFIDataList {
 	 * @param index
 	 * @param value
 	 */
-	public abstract void set(int index, long var);
-	public abstract void set(int index, double var);
-	public abstract void set(int index, String var);
-	public abstract void set(int index, NFIdent var);
+	public abstract boolean set(int index, long var);
+	public abstract boolean set(int index, double var);
+	public abstract boolean set(int index, String var);
+	public abstract boolean set(int index, NFGUID var);
 	
 	/**
 	 * 从其他对象拷贝数据
@@ -48,7 +48,7 @@ public abstract class NFIDataList {
 	public abstract long getInt(int index);
 	public abstract double getFloat(int index);
 	public abstract String getString(int index);
-	public abstract NFIdent getObject(int index);
+	public abstract NFGUID getObject(int index);
 	
 	public abstract int size();
 	public abstract boolean isEmpty();

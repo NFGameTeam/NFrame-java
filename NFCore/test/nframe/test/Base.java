@@ -17,33 +17,33 @@ import nframe.NFIObject;
 import nframe.NFIProperty;
 import nframe.NFIPropertyHandler;
 import nframe.NFIPropertyManager;
-import nframe.NFIdent;
+import nframe.NFGUID;
 import nframe.NFObject;
 
 public class Base {
-	public static final NFIdent usrOid = new NFIdent(0,1);
-	public static final NFIdent plyOid = new NFIdent(0,2);
-	public static final NFIdent equOid = new NFIdent(0,3);
+	public static final NFGUID usrOid = new NFGUID(0,1);
+	public static final NFGUID plyOid = new NFGUID(0,2);
+	public static final NFGUID equOid = new NFGUID(0,3);
 	
-	private static final ThreadLocal<Map<NFIdent, NFIObject>> objectContext;
+	private static final ThreadLocal<Map<NFGUID, NFIObject>> objectContext;
 	static{
-		objectContext = new ThreadLocal<Map<NFIdent, NFIObject>>();
+		objectContext = new ThreadLocal<Map<NFGUID, NFIObject>>();
 	}
 	
-	private static Map<NFIdent, NFIObject> getThreadLocalParam(){
-		Map<NFIdent, NFIObject> paramInThreadLocal = objectContext.get();
+	private static Map<NFGUID, NFIObject> getThreadLocalParam(){
+		Map<NFGUID, NFIObject> paramInThreadLocal = objectContext.get();
 		if (paramInThreadLocal == null){
-			paramInThreadLocal = new HashMap<NFIdent, NFIObject>();
+			paramInThreadLocal = new HashMap<NFGUID, NFIObject>();
 			objectContext.set(paramInThreadLocal);
 		}
 		return paramInThreadLocal;
 	}
 	
-	private static void put(NFIdent oid, NFIObject obj){
+	private static void put(NFGUID oid, NFIObject obj){
 		getThreadLocalParam().put(oid, obj);
 	}
 	
-	private static NFIObject get(NFIdent oid){
+	private static NFIObject get(NFGUID oid){
 		return getThreadLocalParam().get(oid);
 	}
 	
@@ -263,7 +263,7 @@ public class Base {
 			this.cb = cb;
 		}
 		@Override
-		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 			cb.handleLimit(oid, propName, oldVar, newVar);
 		}
 	}
@@ -274,7 +274,7 @@ public class Base {
 			this.cb = cb;
 		}
 		@Override
-		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 			cb.handleLevelUp(oid, propName, oldVar, newVar);
 		}
 	}
@@ -285,7 +285,7 @@ public class Base {
 			this.cb = cb;
 		}
 		@Override
-		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 			cb.handleVipLevelUp(oid, propName, oldVar, newVar);
 		}
 	}
@@ -296,7 +296,7 @@ public class Base {
 			this.cb = cb;
 		}
 		@Override
-		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 			cb.handleEquipLevelUp(oid, propName, oldVar, newVar);
 		}
 	}
@@ -311,7 +311,7 @@ public class Base {
 			this.cb = cb;
 		}
 		@Override
-		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 			cb.handlePrivilege(oid, propName, oldVar, newVar);
 		}
 	}
@@ -322,7 +322,7 @@ public class Base {
 			this.cb = cb;
 		}
 		@Override
-		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 			cb.handleQuestReward(oid, propName, oldVar, newVar);
 		}
 	}
@@ -743,7 +743,7 @@ public class Base {
 		equip.setProperty("star", dbEquip.star);
 	}
 	
-	public void handleLimit(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){		
+	public void handleLimit(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){		
 		assertTrue(propName.equals("password"));
 		DBUser dbUser = getCacheUser();
 		assertTrue(dbUser != null);
@@ -755,7 +755,7 @@ public class Base {
 		updateUser(dbUser);
 	}
 	
-	public void handleLevelUp(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+	public void handleLevelUp(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 		assertTrue(propName.equals("exp"));
 		DBPlayer dbPly = getCachePlayer();
 		assertTrue(dbPly != null);
@@ -773,7 +773,7 @@ public class Base {
 		updatePlayer(dbPly);
 	}
 	
-	public void handleVipLevelUp(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+	public void handleVipLevelUp(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 		assertTrue(propName.equals("charge"));
 		DBPlayer dbPly = getCachePlayer();
 		assertTrue(dbPly != null);
@@ -791,7 +791,7 @@ public class Base {
 		updatePlayer(dbPly);
 	}
 	
-	public void handleEquipLevelUp(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+	public void handleEquipLevelUp(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 		assertTrue(propName.equals("exp"));
 		List<DBEquip> dbEquips = getCacheAllEquips();
 		assertTrue(dbEquips != null);
@@ -814,7 +814,7 @@ public class Base {
 		updateEquip(dbEquips, dbEquip);
 	}
 	
-	public void handlePrivilege(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+	public void handlePrivilege(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 		assertTrue(propName.equals("vip"));
 		DBPlayer dbPly = getCachePlayer();
 		assertTrue(dbPly != null);
@@ -844,7 +844,7 @@ public class Base {
 		updatePlayer(dbPly);
 	}
 	
-	public void handleQuestReward(NFIdent oid, String propName, NFIData oldVar, NFIData newVar){
+	public void handleQuestReward(NFGUID oid, String propName, NFIData oldVar, NFIData newVar){
 		assertTrue(propName.equals("quest"));
 		DBPlayer dbPly = getCachePlayer();
 		assertTrue(dbPly != null);

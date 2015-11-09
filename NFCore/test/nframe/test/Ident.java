@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import nframe.NFIdent;
+import nframe.NFGUID;
 
 /**
  * @author Xiong
@@ -17,16 +17,16 @@ public class Ident {
 
 	@Test
 	public void test() {
-		NFIdent objId1 = new NFIdent();
-		NFIdent objId2 = new NFIdent(0, 10);
-		final NFIdent objIdNull = new NFIdent();
+		NFGUID objId1 = new NFGUID();
+		NFGUID objId2 = new NFGUID(0, 10);
+		final NFGUID objIdNull = new NFGUID();
 		
 		assertTrue(objId1.equals(objIdNull));
 		assertTrue(objId1.isNull());
 		assertTrue(!objId2.equals(objIdNull));
 		assertTrue(!objId2.isNull());
 		
-		assertTrue(NFIdent.parse(objId1.toString(), objId2));
+		assertTrue(NFGUID.parse(objId1.toString(), objId2));
 		assertTrue(objId2.equals(objIdNull));
 		assertTrue(objId2.isNull());
 	}

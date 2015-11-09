@@ -14,9 +14,9 @@ public class NFPropertyManager implements NFIPropertyManager {
 	/** 属性表 */
 	private Map<String, NFIProperty> properties = new Hashtable<String, NFIProperty>();
 	/** 对象id */
-	private NFIdent oid;
+	private NFGUID oid;
 	
-	public NFPropertyManager(NFIdent oid){
+	public NFPropertyManager(NFGUID oid){
 		this.oid = oid;
 	}
 
@@ -51,7 +51,7 @@ public class NFPropertyManager implements NFIPropertyManager {
 	}
 
 	@Override
-	public NFIProperty addProperty(String name, NFIdent var) {
+	public NFIProperty addProperty(String name, NFGUID var) {
 		NFIProperty rt = null;
 		if (!properties.containsKey(name)){
 			rt = new NFProperty(oid, name, var);
@@ -78,6 +78,92 @@ public class NFPropertyManager implements NFIPropertyManager {
 			properties.put(name, rt);
 		}
 		return rt;
+	}
+
+	@Override
+	public long getPropertyInt(String name){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			return prop.getInt();
+		}
+		return NFIData.INT_NIL;
+	}
+
+	@Override
+	public double getPropertyFloat(String name){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			return prop.getFloat();
+		}
+		return NFIData.FLOAT_NIL;
+	}
+
+	@Override
+	public String getPropertyString(String name){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			return prop.getString();
+		}
+		return NFIData.STRING_NIL;
+	}
+
+	@Override
+	public NFGUID getPropertyObject(String name){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			return prop.getObject();
+		}
+		return NFIData.OBJECT_NIL;
+	}
+
+	@Override
+	public boolean setProperty(String name, long var){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			prop.set(var);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean setProperty(String name, double var){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			prop.set(var);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean setProperty(String name, String var){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			prop.set(var);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean setProperty(String name, NFGUID var){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			prop.set(var);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean setProperty(String name, NFIData var){
+		NFIProperty prop = properties.get(name);
+		if (prop != null){
+			prop.set(var);
+			return true;
+		}
+		return false;
 	}
 
 	@Override

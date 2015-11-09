@@ -29,7 +29,7 @@ public class NFData extends NFIData {
 		set(var);
 	}
 	
-	public NFData(NFIdent var){
+	public NFData(NFGUID var){
 		set(var);
 	}
 	
@@ -60,7 +60,7 @@ public class NFData extends NFIData {
 	}
 
 	@Override
-	public void set(NFIdent var){
+	public void set(NFGUID var){
 		assert var != null;
 		this.type = Type.OBJECT;
 		this.value = 0;
@@ -112,9 +112,9 @@ public class NFData extends NFIData {
 	}
 
 	@Override
-	public NFIdent getObject(){
+	public NFGUID getObject(){
 		assert type == Type.OBJECT;
-		return (NFIdent) obj;
+		return (NFGUID) obj;
 	}
 
 	@Override

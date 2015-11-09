@@ -10,7 +10,7 @@ package nframe;
 public abstract class NFBehaviour {
 	
 	/** 对象唯一标识 */
-	private NFIdent oid;
+	private NFGUID oid;
 	
 	public abstract void init();
 
@@ -26,7 +26,7 @@ public abstract class NFBehaviour {
 	 * 设置oid
 	 * @param oid
 	 */
-	public void setId(NFIdent oid) {
+	public void setId(NFGUID oid) {
 		this.oid = oid;
 	}
 	
@@ -34,9 +34,9 @@ public abstract class NFBehaviour {
 	 * 获取id，如果id是null，自动构建一个空的id
 	 * @return
 	 */
-	public NFIdent getId() {
+	public NFGUID getId() {
 		if (oid == null){
-			oid = new NFIdent();
+			oid = new NFGUID();
 		}
 		return oid;
 	}

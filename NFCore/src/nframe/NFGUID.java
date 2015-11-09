@@ -7,14 +7,14 @@ package nframe;
  * @author Xiong
  *
  */
-public class NFIdent {
+public class NFGUID {
 	private long head;
 	private long data;
 	
-	public NFIdent() {
+	public NFGUID() {
 	}
 	
-	public NFIdent(long head, long data) {
+	public NFGUID(long head, long data) {
 		this.setHead(head);
 		this.setData(data);
 	}
@@ -29,7 +29,7 @@ public class NFIdent {
 			return false;
 		}
 		
-		NFIdent rhs = (NFIdent)o;
+		NFGUID rhs = (NFGUID)o;
 		return this.getHead() == rhs.getHead() && this.getData() == rhs.getData();
 	}
 	
@@ -63,7 +63,7 @@ public class NFIdent {
 		return head + "-" + data;
 	}
 	
-	public static boolean parse(String strData, NFIdent outId) {
+	public static boolean parse(String strData, NFGUID outId) {
 		String[] strList = strData.split("-", 0);
 		if (strList.length != 2){
 			return false;

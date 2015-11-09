@@ -11,7 +11,7 @@ import nframe.NFIData;
 import nframe.NFIProperty;
 import nframe.NFIPropertyHandler;
 import nframe.NFIPropertyManager;
-import nframe.NFIdent;
+import nframe.NFGUID;
 import nframe.NFPropertyManager;
 
 /**
@@ -19,11 +19,11 @@ import nframe.NFPropertyManager;
  * 测试属性管理器
  */
 public class PropertyManager {
-	public static final NFIdent oid1 = new NFIdent(0,1);
+	public static final NFGUID oid1 = new NFGUID(0,1);
 	
 	public class Handler1 implements NFIPropertyHandler {
 		@Override
-		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar) {
+		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar) {
 			assertTrue(oid.equals(oid1));
 			assertTrue(propName.equals("prop1"));
 			assertTrue(oldVar.getInt() == 5);
@@ -33,7 +33,7 @@ public class PropertyManager {
 	
 	public class Handler2 implements NFIPropertyHandler {
 		@Override
-		public void handle(NFIdent oid, String propName, NFIData oldVar, NFIData newVar) {
+		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar) {
 			assertTrue(oid.equals(oid1));
 			assertTrue(propName.equals("prop2"));
 			assertTrue(Double.compare(oldVar.getFloat(), 2.5f) == 0);
@@ -59,7 +59,7 @@ public class PropertyManager {
 		propMgr.addCallback("prop2", new Handler2());
 		propMgr.addCallback("prop2", new NFIPropertyHandler() {
 			@Override
-			public void handle(NFIdent id, String propName, NFIData oldVar, NFIData newVar){
+			public void handle(NFGUID id, String propName, NFIData oldVar, NFIData newVar){
 				assertTrue(id.equals(oid1));
 				assertTrue(propName.equals("prop2"));
 				assertTrue(Double.compare(oldVar.getFloat(), 2.5f) == 0);

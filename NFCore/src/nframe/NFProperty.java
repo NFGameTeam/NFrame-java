@@ -12,14 +12,14 @@ import java.util.List;
  */
 public class NFProperty extends NFIProperty {
 	
-	private NFIdent oid;
+	private NFGUID oid;
 	private String name;
 	private NFIData var;
 	private NFIData oldVar;
 	private NFIData newVar;
 	private List<NFIPropertyHandler> callbacks;
 	
-	public NFProperty(NFIdent oid, String name){
+	public NFProperty(NFGUID oid, String name){
 		this.oid = oid;
 		this.name = name;
 		this.var = new NFData();
@@ -27,7 +27,7 @@ public class NFProperty extends NFIProperty {
 		this.newVar = new NFData();
 	}
 	
-	public NFProperty(NFIdent oid, String name, long var){
+	public NFProperty(NFGUID oid, String name, long var){
 		this.oid = oid;
 		this.name = name;
 		this.var = new NFData(var);
@@ -35,7 +35,7 @@ public class NFProperty extends NFIProperty {
 		this.newVar = new NFData(var);
 	}
 	
-	public NFProperty(NFIdent oid, String name, double var){
+	public NFProperty(NFGUID oid, String name, double var){
 		this.oid = oid;
 		this.name = name;
 		this.var = new NFData(var);
@@ -43,7 +43,7 @@ public class NFProperty extends NFIProperty {
 		this.newVar = new NFData(var);
 	}
 	
-	public NFProperty(NFIdent oid, String name, String var){
+	public NFProperty(NFGUID oid, String name, String var){
 		this.oid = oid;
 		this.name = name;
 		this.var = new NFData(var);
@@ -51,7 +51,7 @@ public class NFProperty extends NFIProperty {
 		this.newVar = new NFData(var);
 	}
 	
-	public NFProperty(NFIdent oid, String name, NFIdent var){
+	public NFProperty(NFGUID oid, String name, NFGUID var){
 		this.oid = oid;
 		this.name = name;
 		this.var = new NFData(var);
@@ -59,7 +59,7 @@ public class NFProperty extends NFIProperty {
 		this.newVar = new NFData(var);
 	}
 	
-	public NFProperty(NFIdent oid, String name, NFIData var){
+	public NFProperty(NFGUID oid, String name, NFIData var){
 		this.oid = oid;
 		this.name = name;
 		this.var = new NFData(var);
@@ -103,7 +103,7 @@ public class NFProperty extends NFIProperty {
 	}
 
 	@Override
-	public NFIdent getObject() {
+	public NFGUID getObject() {
 		return var.getObject();
 	}
 
@@ -154,7 +154,7 @@ public class NFProperty extends NFIProperty {
 	}
 
 	@Override
-	public void set(NFIdent var) {
+	public void set(NFGUID var) {
 		assert var != null;
 		if (getType() != NFIData.Type.OBJECT || !getObject().equals(var)){
 			this.oldVar.set(this.var);

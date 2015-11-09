@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import nframe.NFDataList;
 import nframe.NFIDataList;
-import nframe.NFIdent;
+import nframe.NFGUID;
 
 public class DataList {
 
@@ -20,7 +20,7 @@ public class DataList {
 		assertTrue(varList.add(4500) == 4);
 		assertTrue(varList.size() == 5);
 		
-		NFIdent objId = new NFIdent(1, 10);
+		NFGUID objId = new NFGUID(1, 10);
 		assertTrue(varList.add(objId) == 5);
 		assertTrue(varList.size() == 6);
 		assertTrue(varList.getObject(5) == objId);

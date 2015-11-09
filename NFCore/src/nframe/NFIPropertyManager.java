@@ -17,8 +17,37 @@ public interface NFIPropertyManager {
 	public NFIProperty addProperty(String name, long var);
 	public NFIProperty addProperty(String name, double var);
 	public NFIProperty addProperty(String name, String var);
-	public NFIProperty addProperty(String name, NFIdent var);
+	public NFIProperty addProperty(String name, NFGUID var);
 	public NFIProperty addProperty(String name, NFIData var);
+	
+	/**
+	 * 返回属性值
+	 * @param name
+	 * @return 如果不存在，则返回默认值
+	 */
+	public long getPropertyInt(String name);
+	public double getPropertyFloat(String name);
+	public String getPropertyString(String name);
+	public NFGUID getPropertyObject(String name);
+	
+	/**
+	 * 设置属性
+	 * @param name
+	 * @param var
+	 * @return 如果属性不存在，则返回false
+	 */
+	public boolean setProperty(String name, long var);
+	public boolean setProperty(String name, double var);
+	public boolean setProperty(String name, String var);
+	public boolean setProperty(String name, NFGUID var);
+	
+	/**
+	 * 直接设置，不会触发属性回调
+	 * @param name
+	 * @param var
+	 * @return
+	 */
+	public boolean setProperty(String name, NFIData var);
 	
 	/**
 	 * 添加一个空的属性

@@ -6,6 +6,8 @@ package nframe;
 import java.util.ArrayList;
 import java.util.List;
 
+import nframe.NFIData.Type;
+
 /**
  * @author Xiong
  * 数据列表实现类
@@ -38,7 +40,7 @@ public class NFDataList extends NFIDataList {
 		this.add(var);
 	}
 	
-	public NFDataList(NFIdent var){
+	public NFDataList(NFGUID var){
 		this.vars = new ArrayList<Object>(1);
 		this.add(var);
 	}
@@ -65,7 +67,7 @@ public class NFDataList extends NFIDataList {
 	}
 
 	@Override
-	public int add(NFIdent var) {
+	public int add(NFGUID var) {
 		assert var != null;
 		return addVar(var);
 	}
@@ -79,25 +81,25 @@ public class NFDataList extends NFIDataList {
 	}
 
 	@Override
-	public void set(int index, long var) {
-		setVar(index, var);
+	public boolean set(int index, long var) {
+		return setVar(index, var);
 	}
 
 	@Override
-	public void set(int index, double var) {
-		setVar(index, var);
+	public boolean set(int index, double var) {
+		return setVar(index, var);
 	}
 
 	@Override
-	public void set(int index, String var) {
+	public boolean set(int index, String var) {
 		assert var != null;
-		setVar(index, var);
+		return setVar(index, var);
 	}
 
 	@Override
-	public void set(int index, NFIdent var) {
+	public boolean set(int index, NFGUID var) {
 		assert null != var;
-		setVar(index, var);
+		return setVar(index, var);
 	}
 
 	@Override
@@ -132,6 +134,9 @@ public class NFDataList extends NFIDataList {
 	@Override
 	public long getInt(int index) {
 		Object o = getVar(index);
+		if (o == null){
+			return NFIData.INT_NIL;
+		}
 		if (o instanceof Byte){
 			return Byte.class.cast(o);
 		}else if (o instanceof Short){
@@ -146,6 +151,9 @@ public class NFDataList extends NFIDataList {
 	@Override
 	public double getFloat(int index) {
 		Object o = getVar(index);
+		if (o == null){
+			return NFIData.FLOAT_NIL;
+		}
 		if (o instanceof Float){
 			return Float.class.cast(o);
 		}else{
@@ -156,13 +164,19 @@ public class NFDataList extends NFIDataList {
 	@Override
 	public String getString(int index) {
 		Object o = getVar(index);
+		if (o == null){
+			return NFIData.STRING_NIL;
+		}
 		return String.class.cast(o);
 	}
 
 	@Override
-	public NFIdent getObject(int index) {
+	public NFGUID getObject(int index) {
 		Object o = getVar(index);
-		return NFIdent.class.cast(o);
+		if (o == null){
+			return NFIData.OBJECT_NIL;
+		}
+		return NFGUID.class.cast(o);
 	}
 
 	@Override
@@ -183,17 +197,20 @@ public class NFDataList extends NFIDataList {
 	@Override
 	public NFIData.Type getType(int index) {
 		Object o = getVar(index);
+		if (o == null){
+			return Type.NULL;
+		}
 		
 		if (o instanceof Byte || o instanceof Short || o instanceof Integer || o instanceof Long){
-			return NFIData.Type.INT;
+			return Type.INT;
 		}else if (o instanceof Float || o instanceof Double){
-			return NFIData.Type.FLOAT;
+			return Type.FLOAT;
 		}else if (o instanceof String){
-			return NFIData.Type.STRING;
-		}else if (o instanceof NFIdent){
-			return NFIData.Type.OBJECT;
+			return Type.STRING;
+		}else if (o instanceof NFGUID){
+			return Type.OBJECT;
 		}else{
-			return NFIData.Type.NULL;
+			return Type.NULL;
 		}
 	}
 	
@@ -203,11 +220,18 @@ public class NFDataList extends NFIDataList {
 		return index;
 	}
 	
-	private void setVar(int index, Object o){
+	private boolean setVar(int index, Object o){
+		if (index < 0 || index >= vars.size()){
+			return false;
+		}
 		vars.set(index, o);
+		return true;
 	}
 
 	private Object getVar(int index) {
-		return vars.get(index);
+		if (index >= 0 && index < vars.size()){
+			return vars.get(index);
+		}
+		return null;
 	}
 }

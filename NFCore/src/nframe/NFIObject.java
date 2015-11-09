@@ -16,6 +16,16 @@ public abstract class NFIObject extends NFBehaviour {
 	public abstract boolean hasProperty(String name);
 	
 	/**
+	 * 返回属性值
+	 * @param name
+	 * @return 如果不存在，则返回默认值
+	 */
+	public abstract long getPropertyInt(String name);
+	public abstract double getPropertyFloat(String name);
+	public abstract String getPropertyString(String name);
+	public abstract NFGUID getPropertyObject(String name);
+	
+	/**
 	 * 设置指定name的属性值，如果旧的值和新值不同，则触发属性回调
 	 * @param name
 	 * @param var
@@ -24,7 +34,7 @@ public abstract class NFIObject extends NFBehaviour {
 	public abstract boolean setProperty(String name, long var);
 	public abstract boolean setProperty(String name, double var);
 	public abstract boolean setProperty(String name, String var);
-	public abstract boolean setProperty(String name, NFIdent var);
+	public abstract boolean setProperty(String name, NFGUID var);
 	
 	/**
 	 * 置空指定的属性，如果旧的值非空，则触发属性回调

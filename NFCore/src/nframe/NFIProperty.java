@@ -21,7 +21,7 @@ public abstract class NFIProperty {
 	public abstract long getInt();
 	public abstract double getFloat();
 	public abstract String getString();
-	public abstract NFIdent getObject();
+	public abstract NFGUID getObject();
 
 	/**
 	 * 设置数据，如果旧的值和新值不同，则触发属性回调
@@ -30,7 +30,7 @@ public abstract class NFIProperty {
 	public abstract void set(long var);
 	public abstract void set(double var);
 	public abstract void set(String var);
-	public abstract void set(NFIdent var);
+	public abstract void set(NFGUID var);
 	
 	/**
 	 * 设置为空，如果旧的值非空，则触发属性回调
