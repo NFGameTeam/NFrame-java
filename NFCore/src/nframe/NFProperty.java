@@ -10,7 +10,7 @@ import java.util.List;
  * @author Xiong
  * 属性类
  */
-public class NFProperty extends NFIProperty {
+public class NFProperty implements NFIProperty {
 	
 	private NFGUID oid;
 	private String name;
