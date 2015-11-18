@@ -12,12 +12,13 @@ import java.util.List;
 
 public class NFElementInfoModule extends NFIElementInfoModule{
 	
+	private NFILogicModule mxLogicClassModule;
+	
 	@Override
 	public void init()
 	{
-		   //m_pLogicClassModule = dynamic_cast<NFCLogicClassModule*>(pPluginManager->FindModule("NFCLogicClassModule"));
+		mxLogicClassModule = (NFILogicModule)(this.getMng().getModule("NFCLogicClassModule"));
 
-		   //assert(NULL != m_pLogicClassModule);
 	}
 	@Override
 	public void afterInit()
