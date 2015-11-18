@@ -11,7 +11,7 @@ import nframe.NFGUID;
 
 /**
  * @author Xiong
- * 测试NFIdent
+ * 测试NFGUID
  */
 public class Ident {
 

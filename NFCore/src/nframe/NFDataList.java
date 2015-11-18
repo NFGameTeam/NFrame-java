@@ -12,7 +12,7 @@ import nframe.NFIData.Type;
  * @author Xiong
  * 数据列表实现类
  */
-public class NFDataList extends NFIDataList {
+public class NFDataList implements NFIDataList {
 	
 	private List<Object> vars;
 	

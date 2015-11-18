@@ -7,7 +7,7 @@ package nframe;
  * @author Xiong
  * 数据类
  */
-public class NFData extends NFIData {
+public class NFData implements NFIData {
 	
 	private Type type;
 	private long value;
