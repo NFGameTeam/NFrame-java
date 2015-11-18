@@ -88,11 +88,15 @@ public abstract class NFIKernelModule extends NFBehaviour {
 	 */
 	public abstract NFIObject GetObject(NFGUID self);
 	public abstract NFIObject CreateObject(NFGUID self, int nContainerID, int nGroupID, String strClassName, String strConfigIndex, NFIDataList arg);
-	public abstract  boolean DestroyObject(NFGUID self);
-	public abstract  boolean DestroyAll();
+	public abstract boolean DestroyObject(NFGUID self);
+	public abstract boolean DestroyAll();
 	
 	
-	
-	
+	/**
+	 * 添加属性回掉，当属性值改变的时候，自动调用回掉，可以添加多个（按顺序调用）
+	 * @param cb
+	 */
+	public abstract void addCallback(NFIPropertyHandler cb);
+	//public abstract void addCallback(NFIPropertyHandler cb);
     
 }

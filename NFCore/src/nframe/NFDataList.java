@@ -198,7 +198,7 @@ public class NFDataList implements NFIDataList {
 	public NFIData.Type getType(int index) {
 		Object o = getVar(index);
 		if (o == null){
-			return Type.NULL;
+			return Type.UNKNOW;
 		}
 		
 		if (o instanceof Byte || o instanceof Short || o instanceof Integer || o instanceof Long){
@@ -210,7 +210,7 @@ public class NFDataList implements NFIDataList {
 		}else if (o instanceof NFGUID){
 			return Type.OBJECT;
 		}else{
-			return Type.NULL;
+			return Type.UNKNOW;
 		}
 	}
 	

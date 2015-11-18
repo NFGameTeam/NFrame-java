@@ -14,7 +14,7 @@ public class NFData implements NFIData {
 	private Object obj;
 	
 	public NFData(){
-		this.type = Type.NULL;
+		this.type = Type.UNKNOW;
 	}
 	
 	public NFData(long var){
@@ -119,12 +119,12 @@ public class NFData implements NFIData {
 
 	@Override
 	public boolean isNull(){
-		return type == Type.NULL;
+		return type == Type.UNKNOW;
 	}
 
 	@Override
 	public void dispose(){
-		type = Type.NULL;
+		type = Type.UNKNOW;
 		value = 0;
 		obj = null;
 	}

@@ -3,6 +3,8 @@
  */
 package nframe;
 
+import nframe.NFIData.Type;
+
 /**
  * @author Xiong
  * 数据抽象类
@@ -10,7 +12,7 @@ package nframe;
 public interface NFIData {
 	/** 数据类型 */
 	public enum Type {
-		NULL,
+		UNKNOW,
 		INT, // byte,short,int,long
 		FLOAT, // float,double
 		STRING,
@@ -22,6 +24,7 @@ public interface NFIData {
 	public static final double FLOAT_NIL = 0.0d;
 	public static final String STRING_NIL = "";
 	public static final NFGUID OBJECT_NIL = new NFGUID();
+	public static final Type INT = null;
 	
 	/** 设置值 */
 	public void set(long var);

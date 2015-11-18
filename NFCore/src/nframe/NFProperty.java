@@ -171,7 +171,7 @@ public class NFProperty implements NFIProperty {
 
 	@Override
 	public void set() {
-		if (getType() != NFIData.Type.NULL){
+		if (getType() != NFIData.Type.UNKNOW){
 			this.oldVar.set(this.var);
 			this.var.dispose();
 			this.newVar.dispose();
