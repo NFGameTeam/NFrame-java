@@ -70,15 +70,6 @@ public class NFPropertyManager implements NFIPropertyManager {
 		return rt;
 	}
 
-	@Override
-	public NFIProperty addProperty(String name) {
-		NFIProperty rt = null;
-		if (!properties.containsKey(name)){
-			rt = new NFProperty(oid, name);
-			properties.put(name, rt);
-		}
-		return rt;
-	}
 
 	@Override
 	public long getPropertyInt(String name){

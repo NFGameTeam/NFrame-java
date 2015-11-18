@@ -152,7 +152,7 @@ public class Base {
 	 * 下行消息父类
 	 */
 	class NetDown {
-		/** 操作结果状态码， 0成功，非0失败，代表错误代码*/
+		/** 操作结果状态码, 0成功，非0失败，代表错误代码*/
 		private ErrorCode errc = ErrorCode.OK;
 		/** 通用字段 */
 		private long uid = -1;
@@ -524,40 +524,40 @@ public class Base {
 		// 每个线程初始化一次
 		NFIObject user = new NFObject(usrOid);
 		NFIPropertyManager userPropMgr = user.getPropertyManager();
-		userPropMgr.addProperty("uid");
-		userPropMgr.addProperty("username");
-		NFIProperty propPwd = userPropMgr.addProperty("password");
+		userPropMgr.addProperty("uid", 0);
+		userPropMgr.addProperty("username", 0);
+		NFIProperty propPwd = userPropMgr.addProperty("password", 0);
 		propPwd.addCallback(new LimitHandler(this));
-		userPropMgr.addProperty("limit");
+		userPropMgr.addProperty("limit", 0);
 		put(usrOid, user);
 		
 		NFIObject player = new NFObject(plyOid);
 		NFIPropertyManager playerPropMgr = player.getPropertyManager();
-		playerPropMgr.addProperty("uid");
-		playerPropMgr.addProperty("nickname");
-		NFIProperty propExp = playerPropMgr.addProperty("exp");
+		playerPropMgr.addProperty("uid", 0);
+		playerPropMgr.addProperty("nickname", 0);
+		NFIProperty propExp = playerPropMgr.addProperty("exp", 0);
 		propExp.addCallback(new LevelUpHandler(this));
-		playerPropMgr.addProperty("coin");
-		playerPropMgr.addProperty("money");
-		NFIProperty propCharge = playerPropMgr.addProperty("charge");
+		playerPropMgr.addProperty("coin", 0);
+		playerPropMgr.addProperty("money", 0);
+		NFIProperty propCharge = playerPropMgr.addProperty("charge", 0);
 		propCharge.addCallback(new VipLevelUpHandler(this));
-		playerPropMgr.addProperty("level");
-		NFIProperty propVip = playerPropMgr.addProperty("vip");
+		playerPropMgr.addProperty("level", 0);
+		NFIProperty propVip = playerPropMgr.addProperty("vip", 0);
 		propVip.addCallback(new PrivilegeHandler(this));
-		NFIProperty propQuest = playerPropMgr.addProperty("quest");
+		NFIProperty propQuest = playerPropMgr.addProperty("quest", 0);
 		propQuest.addCallback(new QuestRewardHandler(this));
-		playerPropMgr.addProperty("title");
+		playerPropMgr.addProperty("title", 0);
 		put(plyOid, player);
 		
 		NFIObject equip = new NFObject(equOid);
 		NFIPropertyManager equipPropMgr = equip.getPropertyManager();
-		equipPropMgr.addProperty("id");
-		equipPropMgr.addProperty("uid");
-		equipPropMgr.addProperty("type");
-		equipPropMgr.addProperty("level");
-		NFIProperty propEquipExp = equipPropMgr.addProperty("exp");
+		equipPropMgr.addProperty("id", 0);
+		equipPropMgr.addProperty("uid", 0);
+		equipPropMgr.addProperty("type", 0);
+		equipPropMgr.addProperty("level", 0);
+		NFIProperty propEquipExp = equipPropMgr.addProperty("exp", 0);
 		propEquipExp.addCallback(new EquipLevelUpHandler(this));
-		equipPropMgr.addProperty("star");
+		equipPropMgr.addProperty("star", 0);
 		put(equOid, equip);
 	}
 	

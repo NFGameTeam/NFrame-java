@@ -15,8 +15,8 @@ public class NFProperty extends NFIProperty {
 	private NFGUID oid;
 	private String name;
 	private NFIData var;
-	private NFIData oldVar;
-	private NFIData newVar;
+	private NFIData oldVar;//待优化，看实际项目是在乎内存还是在乎CPU
+	private NFIData newVar;//待优化，看实际项目是在乎内存还是在乎CPU
 	private List<NFIPropertyHandler> callbacks;
 	
 	public NFProperty(NFGUID oid, String name){
