@@ -9,15 +9,14 @@ package nframe;
  */
 
 public abstract class NFILogicModule extends NFBehaviour {
+
+	private NFIPluginManager pluginManager;
 	
-    public NFIPluginManager getMng()
-    {
-        return mxMng;
-    }
-    
-    public void setMng(NFIPluginManager xMng)
-    {
-        mxMng = xMng;
-    }
-    private NFIPluginManager mxMng;
+	public NFIPluginManager getPluginManager(){
+		return pluginManager;
+	}
+	
+	public void setPluginManager(NFIPluginManager pluginManager){
+		this.pluginManager = pluginManager;
+	}
 }

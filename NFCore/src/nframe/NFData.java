@@ -18,18 +18,22 @@ public class NFData implements NFIData {
 	}
 	
 	public NFData(long var){
+		this.type = Type.INT;
 		set(var);
 	}
 	
 	public NFData(double var){
+		this.type = Type.FLOAT;
 		set(var);
 	}
 	
 	public NFData(String var){
+		this.type = Type.STRING;
 		set(var);
 	}
 	
 	public NFData(NFGUID var){
+		this.type = Type.OBJECT;
 		set(var);
 	}
 	
@@ -39,6 +43,7 @@ public class NFData implements NFIData {
 
 	@Override
 	public void set(long var){
+		assert this.type == Type.INT;
 		this.type = Type.INT;
 		this.value = var;
 		this.obj = null;
@@ -46,6 +51,7 @@ public class NFData implements NFIData {
 
 	@Override
 	public void set(double var){
+		assert this.type == Type.FLOAT;
 		this.type = Type.FLOAT;
 		this.value = Double.doubleToLongBits(var);
 		this.obj = null;
@@ -53,6 +59,7 @@ public class NFData implements NFIData {
 
 	@Override
 	public void set(String var){
+		assert this.type == Type.STRING;
 		assert var != null;
 		this.type = Type.STRING;
 		this.value = 0;
@@ -62,6 +69,7 @@ public class NFData implements NFIData {
 	@Override
 	public void set(NFGUID var){
 		assert var != null;
+		assert this.type == Type.OBJECT;
 		this.type = Type.OBJECT;
 		this.value = 0;
 		this.obj = var;

@@ -13,73 +13,71 @@ import java.util.ArrayList;
 
 public class NFLogicClass extends NFILogicClass{
 	
-	private NFIPropertyManager mxPropertyManager;
-	//private NFIRecordManager mXRecordManager;
+	private NFIPropertyManager propertyManager;
+	//private NFIRecordManager recordManager;
 
-	private NFILogicClass mxParentClass;
-	private String mstrType;
-	private String mstrClassName;
-	private String mstrClassInstancePath;
+	private NFILogicClass parentClass;
+	private String typeName;
+	private String className;
+	private String instancePath;
 
-	private List<String> mlConfigList = new ArrayList<String>();
-    
+	private List<String> configNameList = new ArrayList<String>();
+
 	@Override
-	public NFIPropertyManager GetPropertyManager()
-	{
-		return mxPropertyManager;
+	public NFIPropertyManager getPropertyManager(){
+		return propertyManager;
 	}
+	
 	//public NFIRecordManager GetRecordManager();
 	@Override
-	public void SetParent(NFILogicClass pClass)
-	{
-		this.mxParentClass = pClass;
+	public void setParentClass(NFILogicClass parentClass){
+		this.parentClass = parentClass;
 	}
+	
 	@Override
-	public NFILogicClass GetParent()
-	{
-		return this.mxParentClass;
+	public NFILogicClass getParentClass(){
+		return this.parentClass;
 	}
+	
 	@Override
-	public void SetTypeName(String strType)
-	{
-		this.mstrType = strType;
+	public void setTypeName(String type){
+		this.typeName = type;
 	}
+	
 	@Override
-	public String GetTypeName()
-	{
-		return this.mstrType;
+	public String getTypeName(){
+		return this.typeName;
 	}
+	
 	@Override
-	public String GetClassName()
-	{
-		return this.mstrClassName;
+	public String getClassName(){
+		return this.className;
 	}
+	
 	@Override
-	public boolean AddConfigName(String strConfigName)
-	{
-		this.mlConfigList.add(strConfigName);
-		
+	public boolean addConfigName(String configName){
+		this.configNameList.add(configName);
 		return true;
 	}
+	
 	@Override
-	public List<String> GetConfigNameList()
-	{
-		return this.mlConfigList;
+	public List<String> getConfigNameList(){
+		return this.configNameList;
 	}
+	
 	@Override
-	public void ClearConfigNameList()
-	{
-		this.mlConfigList.clear();
+	public void clearConfigNameList(){
+		this.configNameList.clear();
 	}
+	
 	@Override
-	public void SetInstancePath(String strPath)
-	{
-		this.mstrClassInstancePath = strPath;
+	public void setInstancePath(String instancePath){
+		this.instancePath = instancePath;
 	}
+	
 	@Override
-	public String GetInstancePath()
-	{
-		return this.mstrClassInstancePath;
+	public String getInstancePath(){
+		return this.instancePath;
 	}
 	
 	@Override

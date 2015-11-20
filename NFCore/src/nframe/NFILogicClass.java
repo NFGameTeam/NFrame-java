@@ -11,18 +11,18 @@ import java.util.List;
  */
 public abstract class NFILogicClass extends NFBehaviour {
 	
-	public abstract NFIPropertyManager GetPropertyManager();
+	public abstract NFIPropertyManager getPropertyManager();
 	//public NFIRecordManager GetRecordManager();
 
-	public abstract void SetParent(NFILogicClass pClass);
-	public abstract NFILogicClass GetParent();
-	public abstract void SetTypeName(String strType);
-	public abstract String GetTypeName();
-	public abstract String GetClassName();
-	public abstract boolean AddConfigName(String strConfigName);
-	public abstract List<String> GetConfigNameList();
-	public abstract void ClearConfigNameList();
-	public abstract void SetInstancePath(String strPath);
-	public abstract String GetInstancePath();
+	public abstract void setParentClass(NFILogicClass parentClass);
+	public abstract NFILogicClass getParentClass();
+	public abstract void setTypeName(String typeName);
+	public abstract String getTypeName();
+	public abstract String getClassName();
+	public abstract boolean addConfigName(String configName);
+	public abstract List<String> getConfigNameList();
+	public abstract void clearConfigNameList();
+	public abstract void setInstancePath(String instancePath);
+	public abstract String getInstancePath();
 
 }

@@ -525,8 +525,8 @@ public class Base {
 		NFIObject user = new NFObject(usrOid);
 		NFIPropertyManager userPropMgr = user.getPropertyManager();
 		userPropMgr.addProperty("uid", 0);
-		userPropMgr.addProperty("username", 0);
-		NFIProperty propPwd = userPropMgr.addProperty("password", 0);
+		userPropMgr.addProperty("username", "");
+		NFIProperty propPwd = userPropMgr.addProperty("password", "");
 		propPwd.addCallback(new LimitHandler(this));
 		userPropMgr.addProperty("limit", 0);
 		put(usrOid, user);
@@ -534,7 +534,7 @@ public class Base {
 		NFIObject player = new NFObject(plyOid);
 		NFIPropertyManager playerPropMgr = player.getPropertyManager();
 		playerPropMgr.addProperty("uid", 0);
-		playerPropMgr.addProperty("nickname", 0);
+		playerPropMgr.addProperty("nickname", "");
 		NFIProperty propExp = playerPropMgr.addProperty("exp", 0);
 		propExp.addCallback(new LevelUpHandler(this));
 		playerPropMgr.addProperty("coin", 0);
@@ -546,7 +546,7 @@ public class Base {
 		propVip.addCallback(new PrivilegeHandler(this));
 		NFIProperty propQuest = playerPropMgr.addProperty("quest", 0);
 		propQuest.addCallback(new QuestRewardHandler(this));
-		playerPropMgr.addProperty("title", 0);
+		playerPropMgr.addProperty("title", "");
 		put(plyOid, player);
 		
 		NFIObject equip = new NFObject(equOid);

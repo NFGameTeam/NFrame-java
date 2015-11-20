@@ -37,13 +37,6 @@ public abstract class NFIObject extends NFBehaviour {
 	public abstract boolean setProperty(String name, NFGUID var);
 	
 	/**
-	 * 置空指定的属性，如果旧的值非空，则触发属性回调
-	 * @param name
-	 * @return 如果name的属性存在，返回true；反之返回false
-	 */
-	public abstract boolean setProperty(String name);
-	
-	/**
 	 * 设置指定name的属性值，不会触发属性回调
 	 * @param name
 	 * @param var

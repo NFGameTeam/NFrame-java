@@ -9,112 +9,71 @@ package nframe;
  */
 public class NFObject extends NFIObject {
 	
-	private NFIPropertyManager propMgr;
+	private NFIPropertyManager propertyManager;
 	
 	public NFObject(NFGUID oid){
 		super.setId(oid);
-		this.propMgr = new NFPropertyManager(oid);
+		this.propertyManager = new NFPropertyManager(oid);
 	}
 
 	@Override
 	public boolean hasProperty(String name){
-		return propMgr.hasProperty(name);
+		return propertyManager.hasProperty(name);
 	}
 
 	@Override
 	public long getPropertyInt(String name){
-		return propMgr.getPropertyInt(name);
+		return propertyManager.getPropertyInt(name);
 	}
 
 	@Override
 	public double getPropertyFloat(String name){
-		return propMgr.getPropertyFloat(name);
+		return propertyManager.getPropertyFloat(name);
 	}
 
 	@Override
 	public String getPropertyString(String name){
-		return propMgr.getPropertyString(name);
+		return propertyManager.getPropertyString(name);
 	}
 
 	@Override
 	public NFGUID getPropertyObject(String name){
-		return propMgr.getPropertyObject(name);
+		return propertyManager.getPropertyObject(name);
 	}
 
 	@Override
 	public boolean setProperty(String name, long var){
-		NFIProperty prop = propMgr.getProperty(name);
-		if (prop != null){
-			prop.set(var);
-			return true;
-		}else{
-			return false;
-		}
+		return propertyManager.setProperty(name, var);
 	}
 
 	@Override
 	public boolean setProperty(String name, double var){
-		NFIProperty prop = propMgr.getProperty(name);
-		if (prop != null){
-			prop.set(var);
-			return true;
-		}else{
-			return false;
-		}
+		return propertyManager.setProperty(name, var);
 	}
 
 	@Override
 	public boolean setProperty(String name, String var){
-		NFIProperty prop = propMgr.getProperty(name);
-		if (prop != null){
-			prop.set(var);
-			return true;
-		}else{
-			return false;
-		}
+		return propertyManager.setProperty(name, var);
 	}
 
 	@Override
 	public boolean setProperty(String name, NFGUID var){
-		NFIProperty prop = propMgr.getProperty(name);
-		if (prop != null){
-			prop.set(var);
-			return true;
-		}else{
-			return false;
-		}
-	}
-
-	@Override
-	public boolean setProperty(String name){
-		NFIProperty prop = propMgr.getProperty(name);
-		if (prop != null){
-			prop.set();
-			return true;
-		}else{
-			return false;
-		}
+		return propertyManager.setProperty(name, var);
 	}
 
 	@Override
 	public boolean setProperty(String name, NFIData var){
-		NFIProperty prop = propMgr.getProperty(name);
-		if (prop != null){
-			prop.set(var);
-			return true;
-		}else{
-			return false;
-		}
+		return propertyManager.setProperty(name, var);
 	}
 
 	@Override
 	public NFIProperty getProperty(String name){
-		return propMgr.getProperty(name);
+		return propertyManager.getProperty(name);
 	}
 
 	@Override
 	public NFIPropertyManager getPropertyManager(){
-		return propMgr;
+		return propertyManager;
 	}
 
 	@Override

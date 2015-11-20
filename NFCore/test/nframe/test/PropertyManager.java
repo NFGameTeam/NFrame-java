@@ -11,6 +11,7 @@ import nframe.NFIData;
 import nframe.NFIProperty;
 import nframe.NFIPropertyHandler;
 import nframe.NFIPropertyManager;
+import nframe.NFData;
 import nframe.NFGUID;
 import nframe.NFPropertyManager;
 
@@ -66,7 +67,7 @@ public class PropertyManager {
 				assertTrue(newVar.getString().equals("my new val"));
 			}
 		});
-		prop2.set("my new val");
+		prop2.set(new NFData("my new val"));
 		
 		NFIProperty[] propList = propMgr.getPropertyList();
 		assertTrue(propList.length == 2);

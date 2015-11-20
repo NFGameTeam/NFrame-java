@@ -10,12 +10,12 @@ package nframe;
 
 public abstract class NFILogicClassModule extends NFBehaviour {
 	
-	public abstract  boolean Load();
-	public abstract  boolean Clear();
+	public abstract  boolean load();
+	public abstract  boolean clear();
 
-	public abstract  boolean ReLoad(String strClassName);
+	public abstract  boolean reload(String className);
 
-	public abstract  NFIPropertyManager GetClassPropertyManager(String strClassName);
+	public abstract  NFIPropertyManager getPropertyManager(String className);
 
-	//public abstract  NFIRecordManager GetClassRecordManager(String strClassName);
+	//public abstract  NFIRecordManager GetRecordManager(String className);
 }

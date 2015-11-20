@@ -10,6 +10,7 @@ import org.junit.Test;
 import nframe.NFIData;
 import nframe.NFIProperty;
 import nframe.NFIPropertyHandler;
+import nframe.NFData;
 import nframe.NFGUID;
 import nframe.NFProperty;
 
@@ -69,6 +70,6 @@ public class Property {
 		
 		prop2.addCallback(new Handler3());
 		
-		prop2.set("my new val");
+		prop2.set(new NFData("my new val"));
 	}
 }

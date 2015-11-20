@@ -79,17 +79,17 @@ public abstract class NFIKernelModule extends NFBehaviour {
 	/**
 	 * 创建场景
 	 */
-	public abstract boolean CreateContainer(int nContainerIndex, String strSceneConfigID);
-	public abstract boolean DestroyContainer(int nContainerIndex);
-	public abstract boolean SwitchScene(NFGUID self, int nTargetSceneID, int nTargetGroupID, float fX, float fY, float fZ, float fOrient);
+	public abstract boolean createContainer(int containerIndex, String sceneConfigID);
+	public abstract boolean destroyContainer(int containerIndex);
+	public abstract boolean switchScene(NFGUID self, int targetSceneID, int targetGroupID, float x, float y, float z, float orient);
 
 	/**
 	 * 对象控制
 	 */
-	public abstract NFIObject GetObject(NFGUID self);
-	public abstract NFIObject CreateObject(NFGUID self, int nContainerID, int nGroupID, String strClassName, String strConfigIndex, NFIDataList arg);
-	public abstract boolean DestroyObject(NFGUID self);
-	public abstract boolean DestroyAll();
+	public abstract NFIObject getObject(NFGUID self);
+	public abstract NFIObject createObject(NFGUID self, int containerID, int groupID, String className, String configIndex, NFIDataList arg);
+	public abstract boolean destroyObject(NFGUID self);
+	public abstract boolean destroyAll();
 	
 	
 	/**

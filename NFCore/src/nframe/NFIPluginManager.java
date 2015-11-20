@@ -11,14 +11,12 @@ package nframe;
 public abstract class NFIPluginManager extends NFBehaviour {
 	
 	public abstract void install();
-    public abstract void unInstall();
-
-    public abstract String getClassPath();
-    public abstract int getAPPID();
-    public abstract int getAPPType();
-
-    public abstract NFILogicModule getModule(String strClassName);
-    public abstract boolean addModule(String strClassName, NFILogicModule xModule);
-
-    //////////////////////////////////////////////////////////////////////
+	public abstract void uninstall();
+	
+	public abstract String getClassPath();
+	public abstract int getAPPID();
+	public abstract int getAPPType();
+	
+	public abstract NFILogicModule getModule(String className);
+	public abstract boolean addModule(String className, NFILogicModule module);
 }

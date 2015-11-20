@@ -3,8 +3,6 @@
  */
 package nframe;
 
-import java.util.List;
-
 /**
  * @author lvsheng.huang
  * 框架核心,数据类
@@ -12,37 +10,32 @@ import java.util.List;
 
 public class NFElementInfoModule extends NFIElementInfoModule{
 	
-	private NFILogicModule mxLogicClassModule;
+	private NFILogicModule logicClassModule;
 	
 	@Override
-	public void init()
-	{
-		mxLogicClassModule = (NFILogicModule)(this.getMng().getModule("NFCLogicClassModule"));
-
+	public void init(){
+		logicClassModule = (NFILogicModule)(this.getPluginManager().getModule("NFCLogicClassModule"));
 	}
+	
 	@Override
-	public void afterInit()
-	{
-		
+	public void afterInit(){
 	}
+	
 	@Override
-	public void beforeShut()
-	{
-		Clear();
+	public void beforeShut(){
+		clear();
 	}
+	
 	@Override
-	public void shut()
-	{
-		
+	public void shut(){
 	}
+	
 	@Override
-	public void execute()
-	{
-		
+	public void execute(){
 	}
+	
 	@Override
-	public boolean Load()
-	{
+	public boolean load(){
 /*		NF_SHARED_PTR<NFILogicClass> pLogicClass = m_pLogicClassModule->First();
 	    while (pLogicClass.get())
 	    {
@@ -55,46 +48,45 @@ public class NFElementInfoModule extends NFIElementInfoModule{
 	    
 		return true;
 	}
+	
 	@Override
-	public boolean Clear()
-	{
+	public boolean clear(){
 		return false;
 	}
 
 	@Override
-	public boolean LoadSceneInfo(String strFileName, String strClassName)
-	{
+	public boolean loadSceneInfo(String strFileName, String strClassName){
 		return false;
 	}
+	
 	@Override
-	public boolean Load(String strClassName)
-	{
+	public boolean load(String strClassName){
 		return false;
 	}
+	
 	@Override
-	public boolean ExistElement(String strConfigName)
-	{
+	public boolean existElement(String strConfigName){
 		return false;
 	}
+	
 	@Override
-	public NFIPropertyManager GetPropertyManager(String strConfigName)
-	{
+	public NFIPropertyManager getPropertyManager(String strConfigName){
 		return null;
 	}
+	
 	// public abstract NFIRecordManager GetRecordManager(String strConfigName);
 	@Override
-	public long GetPropertyInt(String strConfigName, String strPropertyName)
-	{
+	public long getPropertyInt(String strConfigName, String strPropertyName){
 		return NFIData.INT_NIL;
 	}
+	
 	@Override
-	public double GetPropertyFloat(String strConfigName, String strPropertyName)
-	{
+	public double getPropertyFloat(String strConfigName, String strPropertyName){
 		return NFIData.FLOAT_NIL;
 	}
+	
 	@Override
-	public String GetPropertyString(String strConfigName, String strPropertyName)
-	{
+	public String getPropertyString(String strConfigName, String strPropertyName){
 		return NFIData.STRING_NIL;
 	}
 }
