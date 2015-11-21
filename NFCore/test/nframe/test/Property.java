@@ -24,8 +24,8 @@ public class Property {
 	
 	public class Handler1 implements NFIPropertyHandler {
 		@Override
-		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar) {
-			assertTrue(oid.equals(oid1));
+		public void handle(NFGUID guid, String propName, NFIData oldVar, NFIData newVar) {
+			assertTrue(guid.equals(oid1));
 			assertTrue(propName.equals("test prop1"));
 			assertTrue(oldVar.getInt() == 5);
 			assertTrue(newVar.getInt() == 10);
@@ -34,8 +34,8 @@ public class Property {
 	
 	public class Handler2 implements NFIPropertyHandler {
 		@Override
-		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar) {
-			assertTrue(oid.equals(oid1));
+		public void handle(NFGUID guid, String propName, NFIData oldVar, NFIData newVar) {
+			assertTrue(guid.equals(oid1));
 			assertTrue(propName.equals("test prop1"));
 			assertTrue(oldVar.getInt() == 5);
 			assertTrue(newVar.getInt() == 10);
@@ -44,8 +44,8 @@ public class Property {
 	
 	public class Handler3 implements NFIPropertyHandler {
 		@Override
-		public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar) {
-			assertTrue(oid.equals(oid2));
+		public void handle(NFGUID guid, String propName, NFIData oldVar, NFIData newVar) {
+			assertTrue(guid.equals(oid2));
 			assertTrue(propName.equals("test prop2"));
 			assertTrue(Double.compare(oldVar.getFloat(), 2.5f) == 0);
 			assertTrue(newVar.getString().equals("my new val"));

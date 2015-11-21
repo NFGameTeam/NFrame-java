@@ -8,5 +8,5 @@ package nframe;
  * 属性回掉接口
  */
 public interface NFIPropertyHandler {
-	public void handle(NFGUID oid, String propName, NFIData oldVar, NFIData newVar);
+	public void handle(NFGUID guid, String propName, NFIData oldVar, NFIData newVar);
 }

@@ -12,55 +12,55 @@ import java.util.List;
  */
 public class NFProperty implements NFIProperty {
 	
-	private NFGUID oid;
+	private NFGUID guid;
 	private String name;
 	private NFIData var;
 	private NFIData oldVar;//待优化，看实际项目是在乎内存还是在乎CPU
 	private NFIData newVar;//待优化，看实际项目是在乎内存还是在乎CPU
 	private List<NFIPropertyHandler> callbacks;
 	
-	public NFProperty(NFGUID oid, String name){
-		this.oid = oid;
+	public NFProperty(NFGUID guid, String name){
+		this.guid = guid;
 		this.name = name;
 		this.var = new NFData();
 		this.oldVar = new NFData();
 		this.newVar = new NFData();
 	}
 	
-	public NFProperty(NFGUID oid, String name, long var){
-		this.oid = oid;
+	public NFProperty(NFGUID guid, String name, long var){
+		this.guid = guid;
 		this.name = name;
 		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
 	
-	public NFProperty(NFGUID oid, String name, double var){
-		this.oid = oid;
+	public NFProperty(NFGUID guid, String name, double var){
+		this.guid = guid;
 		this.name = name;
 		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
 	
-	public NFProperty(NFGUID oid, String name, String var){
-		this.oid = oid;
+	public NFProperty(NFGUID guid, String name, String var){
+		this.guid = guid;
 		this.name = name;
 		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
 	
-	public NFProperty(NFGUID oid, String name, NFGUID var){
-		this.oid = oid;
+	public NFProperty(NFGUID guid, String name, NFGUID var){
+		this.guid = guid;
 		this.name = name;
 		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
 		this.newVar = new NFData(var);
 	}
 	
-	public NFProperty(NFGUID oid, String name, NFIData var){
-		this.oid = oid;
+	public NFProperty(NFGUID guid, String name, NFIData var){
+		this.guid = guid;
 		this.name = name;
 		this.var = new NFData(var);
 		this.oldVar = new NFData(var);
@@ -116,7 +116,7 @@ public class NFProperty implements NFIProperty {
 			
 			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
-					cb.handle(oid, name, this.oldVar, this.newVar);
+					cb.handle(guid, name, this.oldVar, this.newVar);
 				}
 			}
 		}
@@ -131,7 +131,7 @@ public class NFProperty implements NFIProperty {
 			
 			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
-					cb.handle(oid, name, this.oldVar, this.newVar);
+					cb.handle(guid, name, this.oldVar, this.newVar);
 				}
 			}
 		}
@@ -147,7 +147,7 @@ public class NFProperty implements NFIProperty {
 			
 			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
-					cb.handle(oid, name, this.oldVar, this.newVar);
+					cb.handle(guid, name, this.oldVar, this.newVar);
 				}
 			}
 		}
@@ -163,7 +163,7 @@ public class NFProperty implements NFIProperty {
 			
 			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
-					cb.handle(oid, name, this.oldVar, this.newVar);
+					cb.handle(guid, name, this.oldVar, this.newVar);
 				}
 			}
 		}
@@ -178,7 +178,7 @@ public class NFProperty implements NFIProperty {
 			
 			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){
-					cb.handle(oid, name, this.oldVar, this.newVar);
+					cb.handle(guid, name, this.oldVar, this.newVar);
 				}
 			}
 		}

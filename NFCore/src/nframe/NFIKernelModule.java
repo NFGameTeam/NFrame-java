@@ -40,7 +40,7 @@ public abstract class NFIKernelModule extends NFBehaviour {
 	public abstract long getRecordInt(NFGUID self, String recordName, int row, String colTag);
 	public abstract double getRecordFloat(NFGUID self, String recordName, int row, String colTag);
 	public abstract String getRecordString(NFGUID self, String recordName, int row, String colTag);
-	public abstract NFGUID getPropertyObject(NFGUID self, String recordName, int row, String colTag);
+	public abstract NFGUID getRecordObject(NFGUID self, String recordName, int row, String colTag);
 	
 	/**
 	 * 设置表内容
@@ -60,10 +60,10 @@ public abstract class NFIKernelModule extends NFBehaviour {
 	 * @param name
 	 * @return 如果不存在，则返回默认值
 	 */
-	public abstract long getRecordInt(NFGUID self, String recordName, int row, int col);
-	public abstract double getRecordFloat(NFGUID self, String recordName, int row, int col);
-	public abstract String getRecordString(NFGUID self, String recordName, int row, int col);
-	public abstract NFGUID getPropertyObject(NFGUID self, String recordName, int row, int col);
+	public abstract long getRecordInt(NFGUID self, String recordName, int row, int column);
+	public abstract double getRecordFloat(NFGUID self, String recordName, int row, int column);
+	public abstract String getRecordString(NFGUID self, String recordName, int row, int column);
+	public abstract NFGUID getRecordObject(NFGUID self, String recordName, int row, int column);
 	
 	/**
 	 * 设置表内容
@@ -71,10 +71,10 @@ public abstract class NFIKernelModule extends NFBehaviour {
 	 * @param var
 	 * @return 如果属性不存在，则返回false
 	 */
-	public abstract boolean setRecord(NFGUID self, String recordName, int row, int col, long var);
-	public abstract boolean setRecord(NFGUID self, String recordName, int row, int col, double var);
-	public abstract boolean setRecord(NFGUID self, String recordName, int row, int col, String var);
-	public abstract boolean setRecord(NFGUID self, String recordName, int row, int col, NFGUID var);
+	public abstract boolean setRecord(NFGUID self, String recordName, int row, int column, long var);
+	public abstract boolean setRecord(NFGUID self, String recordName, int row, int column, double var);
+	public abstract boolean setRecord(NFGUID self, String recordName, int row, int column, String var);
+	public abstract boolean setRecord(NFGUID self, String recordName, int row, int column, NFGUID var);
 	
 	/**
 	 * 创建场景
