@@ -22,6 +22,7 @@ public class NFLogicClass extends NFILogicClass{
 	private String instancePath;
 
 	private List<String> configNameList = new ArrayList<String>();
+	private List<String> fileList = new ArrayList<String>();
 
 	@Override
 	public NFIPropertyManager getPropertyManager(){
@@ -78,6 +79,14 @@ public class NFLogicClass extends NFILogicClass{
 	@Override
 	public String getInstancePath(){
 		return this.instancePath;
+	}
+	@Override
+	public boolean addFile(String file){
+		return this.fileList.add(file);
+	}
+	@Override
+	public List<String> getFileList(){
+		return this.fileList;
 	}
 	
 	@Override
