@@ -10,7 +10,7 @@ package nframe;
 public abstract class NFBehaviour {
 	
 	/** 对象唯一标识 */
-	private NFGUID oid;
+	private NFGUID guid;
 	
 	public abstract void init();
 
@@ -24,10 +24,10 @@ public abstract class NFBehaviour {
 	
 	/**
 	 * 设置oid
-	 * @param oid
+	 * @param guid
 	 */
-	public void setId(NFGUID oid) {
-		this.oid = oid;
+	public void setId(NFGUID guid) {
+		this.guid = guid;
 	}
 	
 	/**
@@ -35,9 +35,9 @@ public abstract class NFBehaviour {
 	 * @return
 	 */
 	public NFGUID getId() {
-		if (oid == null){
-			oid = new NFGUID();
+		if (guid == null){
+			guid = new NFGUID();
 		}
-		return oid;
+		return guid;
 	}
 }

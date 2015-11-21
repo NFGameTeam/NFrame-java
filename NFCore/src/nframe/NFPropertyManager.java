@@ -14,17 +14,17 @@ public class NFPropertyManager implements NFIPropertyManager {
 	/** 属性表 */
 	private Map<String, NFIProperty> properties = new Hashtable<String, NFIProperty>();
 	/** 对象id */
-	private NFGUID oid;
+	private NFGUID guid;
 	
-	public NFPropertyManager(NFGUID oid){
-		this.oid = oid;
+	public NFPropertyManager(NFGUID guid){
+		this.guid = guid;
 	}
 
 	@Override
 	public NFIProperty addProperty(String name, long var) {
 		NFIProperty rt = null;
 		if (!properties.containsKey(name)){
-			rt = new NFProperty(oid, name, var);
+			rt = new NFProperty(guid, name, var);
 			properties.put(name, rt);
 		}
 		return rt;
@@ -34,7 +34,7 @@ public class NFPropertyManager implements NFIPropertyManager {
 	public NFIProperty addProperty(String name, double var) {
 		NFIProperty rt = null;
 		if (!properties.containsKey(name)){
-			rt = new NFProperty(oid, name, var);
+			rt = new NFProperty(guid, name, var);
 			properties.put(name, rt);
 		}
 		return rt;
@@ -44,7 +44,7 @@ public class NFPropertyManager implements NFIPropertyManager {
 	public NFIProperty addProperty(String name, String var) {
 		NFIProperty rt = null;
 		if (!properties.containsKey(name)){
-			rt = new NFProperty(oid, name, var);
+			rt = new NFProperty(guid, name, var);
 			properties.put(name, rt);
 		}
 		return rt;
@@ -54,7 +54,7 @@ public class NFPropertyManager implements NFIPropertyManager {
 	public NFIProperty addProperty(String name, NFGUID var) {
 		NFIProperty rt = null;
 		if (!properties.containsKey(name)){
-			rt = new NFProperty(oid, name, var);
+			rt = new NFProperty(guid, name, var);
 			properties.put(name, rt);
 		}
 		return rt;
@@ -64,7 +64,7 @@ public class NFPropertyManager implements NFIPropertyManager {
 	public NFIProperty addProperty(String name, NFIData var) {
 		NFIProperty rt = null;
 		if (!properties.containsKey(name)){
-			rt = new NFProperty(oid, name, var);
+			rt = new NFProperty(guid, name, var);
 			properties.put(name, rt);
 		}
 		return rt;

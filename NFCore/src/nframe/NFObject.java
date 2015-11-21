@@ -11,9 +11,9 @@ public class NFObject extends NFIObject {
 	
 	private NFIPropertyManager propertyManager;
 	
-	public NFObject(NFGUID oid){
-		super.setId(oid);
-		this.propertyManager = new NFPropertyManager(oid);
+	public NFObject(NFGUID guid){
+		super.setId(guid);
+		this.propertyManager = new NFPropertyManager(guid);
 	}
 
 	@Override
