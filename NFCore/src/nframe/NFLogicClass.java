@@ -85,6 +85,10 @@ public class NFLogicClass extends NFILogicClass{
 		return this.fileList.add(file);
 	}
 	@Override
+	public boolean existFile(String file){
+		return this.fileList.contains(file);
+	}
+	@Override
 	public List<String> getFileList(){
 		return this.fileList;
 	}

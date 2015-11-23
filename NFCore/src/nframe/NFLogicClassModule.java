@@ -236,7 +236,15 @@ public class NFLogicClassModule extends NFILogicClassModule{
 	
 	private boolean addClassInclude(String classFilePath, NFILogicClass logicClass)
 	{
-		return false;
+		if(logicClass.existFile(classFilePath)){
+			return false;
+		}
+		
+		
+		
+		
+		
+		return true;
 	}
 	
 }
