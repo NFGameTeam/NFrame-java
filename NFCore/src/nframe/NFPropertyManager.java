@@ -19,7 +19,12 @@ public class NFPropertyManager implements NFIPropertyManager {
 	public NFPropertyManager(NFGUID guid){
 		this.guid = guid;
 	}
-
+	
+	@Override
+	public NFIProperty addProperty(NFGUID self, String strPropertyName, NFIData.Type varType, boolean bPublic,  boolean bPrivate,  boolean bSave, boolean bView, int nIndex){
+		return null;
+	}
+	
 	@Override
 	public NFIProperty addProperty(String name, long var) {
 		NFIProperty rt = null;

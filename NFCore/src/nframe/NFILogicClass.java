@@ -26,6 +26,7 @@ public abstract class NFILogicClass extends NFBehaviour {
 	public abstract String getInstancePath();
 	
 	public abstract boolean addFile(String file);
+	public abstract boolean existFile(String file);
 	public abstract List<String> getFileList();
 
 }

@@ -180,11 +180,16 @@ public class NFLogicClassModule extends NFILogicClassModule{
         	NFIData data = new NFData();
         	if (NFIData.Type.UNKNOW == computerType(typeProperty, data))
             {
-        		//assert();
+        		assert true;
             }
         	
-        	//int a=Integer.parseInt(s);
-        	
+        	boolean bPublic = Boolean.parseBoolean(publicProperty);
+        	boolean bPrivate = Boolean.parseBoolean(privateProperty);
+        	boolean bSave = Boolean.parseBoolean(saveProperty);
+            boolean bView = Boolean.parseBoolean(viewProperty);
+            int nIndex = Integer.parseInt(indexProperty);
+            
+            logicClass.getPropertyManager().addProperty(new NFGUID(), name, data.getType(), bPublic, bPrivate, bSave, bView, nIndex);
         }	
 		
     	return true;
@@ -231,7 +236,15 @@ public class NFLogicClassModule extends NFILogicClassModule{
 	
 	private boolean addClassInclude(String classFilePath, NFILogicClass logicClass)
 	{
-		return false;
+		if(logicClass.existFile(classFilePath)){
+			return false;
+		}
+		
+		
+		
+		
+		
+		return true;
 	}
 	
 }

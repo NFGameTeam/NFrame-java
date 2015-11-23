@@ -8,6 +8,9 @@ package nframe;
  * 属性管理器抽象类
  */
 public interface NFIPropertyManager {
+	
+	public NFIProperty addProperty(NFGUID self, String strPropertyName, NFIData.Type varType, boolean bPublic,  boolean bPrivate,  boolean bSave, boolean bView, int nIndex);
+	
 	/**
 	 * 添加属性
 	 * @param name
