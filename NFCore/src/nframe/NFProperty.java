@@ -79,7 +79,9 @@ public class NFProperty implements NFIProperty {
 
 	@Override
 	public void set(NFIData other) {
+		this.oldVar = new NFData(other);
 		this.var = new NFData(other);
+		this.newVar = new NFData(other);
 	}
 
 	@Override
@@ -109,7 +111,8 @@ public class NFProperty implements NFIProperty {
 
 	@Override
 	public void set(long var) {
-		if (getType() != NFIData.Type.INT || getInt() != var){
+		assert getType() == NFIData.Type.INT;
+		if (getInt() != var){
 			this.oldVar.set(this.var);
 			this.var.set(var);
 			this.newVar.set(var);
@@ -124,7 +127,8 @@ public class NFProperty implements NFIProperty {
 
 	@Override
 	public void set(double var) {
-		if (getType() != NFIData.Type.FLOAT || Double.compare(getFloat(), var) != 0){
+		assert getType() == NFIData.Type.FLOAT;
+		if (Double.compare(getFloat(), var) != 0){
 			this.oldVar.set(this.var);
 			this.var.set(var);
 			this.newVar.set(var);
@@ -139,8 +143,9 @@ public class NFProperty implements NFIProperty {
 
 	@Override
 	public void set(String var) {
+		assert getType() == NFIData.Type.STRING;
 		assert var != null;
-		if (getType() != NFIData.Type.STRING || !getString().equals(var)){
+		if (!getString().equals(var)){
 			this.oldVar.set(this.var);
 			this.var.set(var);
 			this.newVar.set(var);
@@ -155,26 +160,12 @@ public class NFProperty implements NFIProperty {
 
 	@Override
 	public void set(NFGUID var) {
+		assert getType() == NFIData.Type.OBJECT;
 		assert var != null;
-		if (getType() != NFIData.Type.OBJECT || !getObject().equals(var)){
+		if (!getObject().equals(var)){
 			this.oldVar.set(this.var);
 			this.var.set(var);
 			this.newVar.set(var);
-			
-			if (callbacks != null){
-				for (NFIPropertyHandler cb : callbacks){
-					cb.handle(guid, name, this.oldVar, this.newVar);
-				}
-			}
-		}
-	}
-
-	@Override
-	public void set() {
-		if (getType() != NFIData.Type.UNKNOW){
-			this.oldVar.set(this.var);
-			this.var.dispose();
-			this.newVar.dispose();
 			
 			if (callbacks != null){
 				for (NFIPropertyHandler cb : callbacks){

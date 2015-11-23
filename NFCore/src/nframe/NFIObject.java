@@ -56,4 +56,67 @@ public abstract class NFIObject extends NFBehaviour {
 	 * @return
 	 */
 	public abstract NFIPropertyManager getPropertyManager();
+	
+	/**
+	 * 是否存在指定名字的记录
+	 * @param recordName
+	 * @return
+	 */
+	public abstract boolean hasRecord(String recordName);
+	
+	/**
+	 * 返回记录字段值
+	 * @param recordName
+	 * @param row
+	 * @param column
+	 * @return 如果不存在，则返回默认值
+	 */
+	public abstract long getRecordInt(String recordName, int row, int column);
+	public abstract double getRecordFloat(String recordName, int row, int column);
+	public abstract String getRecordString(String recordName, int row, int column);
+	public abstract NFGUID getRecordObject(String recordName, int row, int column);
+	
+	/**
+	 * 返回记录字段值
+	 * @param recordName
+	 * @param row
+	 * @param colTag
+	 * @return 如果不存在，则返回默认值
+	 */
+	public abstract long getRecordInt(String recordName, int row, String colTag);
+	public abstract double getRecordFloat(String recordName, int row, String colTag);
+	public abstract String getRecordString(String recordName, int row, String colTag);
+	public abstract NFGUID getRecordObject(String recordName, int row, String colTag);
+	
+	/**
+	 * 设置记录字段值
+	 * @param recordName
+	 * @param row
+	 * @param column
+	 * @param var
+	 * @return 如果不存在，返回false
+	 */
+	public abstract boolean setRecord(String recordName, int row, int column, long var);
+	public abstract boolean setRecord(String recordName, int row, int column, double var);
+	public abstract boolean setRecord(String recordName, int row, int column, String var);
+	public abstract boolean setRecord(String recordName, int row, int column, NFGUID var);
+
+	/**
+	 * 设置记录字段值
+	 * @param recordName
+	 * @param row
+	 * @param colTag
+	 * @param var
+	 * @return 如果不存在，返回false
+	 */
+	public abstract boolean setRecord(String recordName, int row, String colTag, long var);
+	public abstract boolean setRecord(String recordName, int row, String colTag, double var);
+	public abstract boolean setRecord(String recordName, int row, String colTag, String var);
+	public abstract boolean setRecord(String recordName, int row, String colTag, NFGUID var);
+	
+	/**
+	 * 返回记录管理器
+	 * @return
+	 */
+	public abstract NFIRecordManager getRecordManager();
 }

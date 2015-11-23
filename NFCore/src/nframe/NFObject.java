@@ -106,4 +106,112 @@ public class NFObject extends NFIObject {
 		
 	}
 
+	@Override
+	public boolean hasRecord(String recordName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public long getRecordInt(String recordName, int row, int column) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getRecordFloat(String recordName, int row, int column) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getRecordString(String recordName, int row, int column) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NFGUID getRecordObject(String recordName, int row, int column) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getRecordInt(String recordName, int row, String colTag) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getRecordFloat(String recordName, int row, String colTag) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getRecordString(String recordName, int row, String colTag) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NFGUID getRecordObject(String recordName, int row, String colTag) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean setRecord(String recordName, int row, int column, long var) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setRecord(String recordName, int row, int column, double var) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setRecord(String recordName, int row, int column, String var) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setRecord(String recordName, int row, int column, NFGUID var) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setRecord(String recordName, int row, String colTag, long var) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setRecord(String recordName, int row, String colTag, double var) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setRecord(String recordName, int row, String colTag, String var) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setRecord(String recordName, int row, String colTag, NFGUID var) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public NFIRecordManager getRecordManager() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

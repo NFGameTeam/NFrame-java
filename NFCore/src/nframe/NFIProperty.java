@@ -33,11 +33,6 @@ public interface NFIProperty {
 	public void set(NFGUID var);
 	
 	/**
-	 * 设置为空，如果旧的值非空，则触发属性回调
-	 */
-	public void set();
-	
-	/**
 	 * 是否为空
 	 * @return 返回true如果是空；反之false
 	 */
