@@ -16,6 +16,5 @@ public abstract class NFILogicClassModule extends NFBehaviour {
 	public abstract  boolean reload(String className);
 
 	public abstract  NFIPropertyManager getPropertyManager(String className);
-
-	//public abstract  NFIRecordManager GetRecordManager(String className);
+	public abstract  NFIRecordManager getRecordManager(String className);
 }

@@ -94,12 +94,24 @@ public class NFLogicClassModule extends NFILogicClassModule{
 	
 	@Override
 	public NFIPropertyManager getPropertyManager(String className){
-/*		NF_SHARED_PTR<NFILogicClass> pClass = GetElement(strClassName);
-		if (pClass.get())
+		
+		NFILogicClass logicClass = logicClasses.get(className);
+		if(null != logicClass)
 		{
-			return pClass->GetPropertyManager();
-		}*/
-
+			return logicClass.getPropertyManager();
+		}
+		
+		return null;
+	}
+	
+	public NFIRecordManager getRecordManager(String className)
+	{
+		NFILogicClass logicClass = logicClasses.get(className);
+		if(null != logicClass)
+		{
+			return logicClass.getRecordManager();
+		}
+		
 		return null;
 	}
 
