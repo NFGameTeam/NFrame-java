@@ -15,7 +15,7 @@ public interface NFIRecordManager {
 	 * @param types 列类型
 	 * @return 返回新的记录，如果名字已经存在，则返回null
 	 */
-	public NFIRecord addRecord(String recordName, int maxRow, NFIDataList types);
+	public NFIRecord addRecord(String recordName, int maxRow, boolean bPublic, boolean bPrivate, boolean bSave, boolean bView, NFIDataList types);
 
 	/**
 	 * 获取指定名字的记录

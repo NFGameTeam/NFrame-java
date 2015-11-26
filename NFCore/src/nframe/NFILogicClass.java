@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class NFILogicClass extends NFBehaviour {
 	
 	public abstract NFIPropertyManager getPropertyManager();
-	//public NFIRecordManager GetRecordManager();
+	public abstract NFIRecordManager getRecordManager();
 
 	public abstract void setParentClass(NFILogicClass parentClass);
 	public abstract NFILogicClass getParentClass();

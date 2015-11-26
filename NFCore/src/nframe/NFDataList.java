@@ -73,6 +73,27 @@ public class NFDataList implements NFIDataList {
 	}
 	
 	@Override
+	public int add(NFIData var) {
+		assert var != null;
+		switch(var.getType())
+		{
+		case INT:
+			return add(var.getInt());
+		case FLOAT:
+			return add(var.getFloat());
+		case OBJECT:
+			return add(var.getObject());
+		case STRING:
+			return add(var.getString());
+		default:
+				break;
+				
+		}
+		
+		return -1;
+	}
+	
+	@Override
 	public void append(Object... vars){
 		for (Object o : vars){
 			assert o != null;

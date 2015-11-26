@@ -195,10 +195,62 @@ public class NFLogicClassModule extends NFILogicClassModule{
     	return true;
     }
     
-    private boolean addRecords(Element childElement, NFILogicClass logicClass)
+    private boolean addRecords(Element element, NFILogicClass logicClass)
     {
-    	
-    	
+    	List<Element> nodeIterator = element.elements();
+		Iterator<Element> it = nodeIterator.iterator();
+		while (it.hasNext()) {
+        	
+        	Element childElement = it.next();
+        	
+        	String name = childElement.attribute("Id").getName();
+        	if(null != logicClass.getRecordManager().getRecord(name))
+        	{
+        		continue;
+        	}
+        	
+
+        	String rowProperty = childElement.attribute("Row").getName();
+        	String colProperty = childElement.attribute("Col").getName();
+        	String publicProperty = childElement.attribute("Public").getName();
+        	String privateProperty = childElement.attribute("Private").getName();
+        	String saveProperty = childElement.attribute("Save").getName();
+        	String viewProperty = childElement.attribute("View").getName();
+        	String indexProperty = childElement.attribute("Index").getName();
+        	
+        	boolean bPublic = Boolean.parseBoolean(publicProperty);
+        	boolean bPrivate = Boolean.parseBoolean(privateProperty);
+        	boolean bSave = Boolean.parseBoolean(saveProperty);
+            boolean bView = Boolean.parseBoolean(viewProperty);
+            int nRow = Integer.parseInt(rowProperty);
+            int cCol = Integer.parseInt(colProperty);
+            int nIndex = Integer.parseInt(indexProperty);
+            
+            NFIDataList varList = new NFDataList();
+            
+            List<Element> nodeChildIterator = childElement.elements();
+    		Iterator<Element> itChild = nodeChildIterator.iterator();
+    		while (itChild.hasNext()) {
+
+    			Element childNodeElement = it.next();
+    			
+    			NFIData data  = new NFData();
+    			String typeProperty = childNodeElement.attribute("Type").getName();
+    			
+                
+    			NFIData dataRecordType = new NFData();
+            	if (NFIData.Type.UNKNOW == computerType(typeProperty, dataRecordType))
+                {
+            		assert true;
+                }
+            	
+            	varList.append(data);
+            	
+    		}
+
+            logicClass.getRecordManager().addRecord(name, nRow, bPublic, bPrivate, bSave, bView, varList);
+        }	
+		
     	return true;
     }
     
@@ -240,9 +292,37 @@ public class NFLogicClassModule extends NFILogicClassModule{
 			return false;
 		}
 		
+		SAXReader saxReader = new SAXReader();
+
+        Document document = null;
+		try {
+			document = saxReader.read(new File(classFilePath));
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+        Element root = document.getRootElement();
+        
+        Element propertysElement = root.element("Propertys");
+		addPropertys(propertysElement, logicClass);
 		
+		Element recordsElement = root.element("Records");
+		addPropertys(recordsElement, logicClass);
 		
+		Element includesElement = root.element("Includes");
+		List<Element> includeList = includesElement.elements();
+		Iterator<Element> it = includeList.iterator();
+		while (it.hasNext()) {
+			
+			Element childNodeElement = it.next();
+			String file = childNodeElement.getStringValue();
+			
+			if(addClassInclude(file, logicClass))
+			{
+				logicClass.addFile(file);
+			}
+		}
 		
 		return true;
 	}
