@@ -10,6 +10,7 @@ package nframe;
 public class NFObject extends NFIObject {
 	
 	private NFIPropertyManager propertyManager;
+	private NFIRecordManager recordManager;
 	
 	public NFObject(NFGUID guid){
 		super.setId(guid);
@@ -210,8 +211,7 @@ public class NFObject extends NFIObject {
 
 	@Override
 	public NFIRecordManager getRecordManager() {
-		// TODO Auto-generated method stub
-		return null;
+		return recordManager;
 	}
 
 }

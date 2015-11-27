@@ -12,10 +12,11 @@ public interface NFIRecordManager {
 	 * 添加一个新记录
 	 * @param name 
 	 * @param maxRow 最大行索引
-	 * @param types 列类型
+	 * @param varTypes 列类型
+	 * @param varTags 列tag
 	 * @return 返回新的记录，如果名字已经存在，则返回null
 	 */
-	public NFIRecord addRecord(String recordName, int maxRow, NFIDataList types);
+	public NFIRecord addRecord(String recordName, int maxRow, NFIDataList varTypes, NFIDataList varTags);
 
 	/**
 	 * 获取指定名字的记录

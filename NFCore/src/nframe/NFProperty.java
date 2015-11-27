@@ -183,7 +183,7 @@ public class NFProperty implements NFIProperty {
 	@Override
 	public void addCallback(NFIPropertyHandler cb) {
 		if (callbacks == null){
-			callbacks = new ArrayList<NFIPropertyHandler>();
+			callbacks = new ArrayList<NFIPropertyHandler>(1);
 		}
 		callbacks.add(cb);
 	}

@@ -30,6 +30,12 @@ public interface NFIRecord {
 	public int getColumnNum();
 	
 	/**
+	 * 取得最大行数
+	 * @return
+	 */
+	public int getMaxRowNum();
+	
+	/**
 	 * 返回指定索引的列的类型
 	 * @param column
 	 * @return
@@ -42,14 +48,6 @@ public interface NFIRecord {
 	 * @return 如果不存在返回NFIData.STRING_NIL
 	 */
 	public String getColumnTag(int column);
-	
-	/**
-	 * 设置索引（类似sql）
-	 * @param uniqueIndexColumn 唯一索引的列
-	 * @param indexColumn 不唯一索引的列
-	 * @return
-	 */
-	public boolean setIndex(int uniqueIndexColumn, int indexColumn);
 	
 	/**
 	 * 添加新的一行，如果add成功会触发ADD回调
@@ -67,7 +65,7 @@ public interface NFIRecord {
 	public int addRow(int row, NFIDataList var);
 	
 	/**
-	 * 设置行数据，如果不是add则不会触发回调
+	 * 设置行数据，不会触发回调
 	 * @param row 如果不存在，则会add新一行
 	 * @param var 行数据
 	 * @return 如果失败返回-1，成功则返回row索引
@@ -120,7 +118,7 @@ public interface NFIRecord {
 	 * @return 如不存在，返回NFIData.XXX_NIL
 	 */
 	public long getInt(int row, int column);
-	public float getFloat(int row, int column);
+	public double getFloat(int row, int column);
 	public String getString(int row, int column);
 	public NFGUID getObject(int row, int column);
 	
@@ -131,7 +129,7 @@ public interface NFIRecord {
 	 * @return 如不存在，返回NFIData.XXX_NIL
 	 */
 	public long getInt(int row, String colTag);
-	public float getFloat(int row, String colTag);
+	public double getFloat(int row, String colTag);
 	public String getString(int row, String colTag);
 	public NFGUID getObject(int row, String colTag);
 	
@@ -139,11 +137,11 @@ public interface NFIRecord {
 	 * 查找指定的值
 	 * @param column 指定的列索引
 	 * @param value 要查找的值
-	 * @param result 不能为null；存放查找到的行索引的列表；如果发生错误，不会有任何改动
+	 * @param result 可以为null；存放查找到的行索引的列表；如果发生错误，不会有任何改动
 	 * @return 如果指定的列索引不存在返回-1；如果正常，返回找到的行的数量
 	 */
 	public int find(int column, long value, NFIDataList result);
-	public int find(int column, float value, NFIDataList result);
+	public int find(int column, double value, NFIDataList result);
 	public int find(int column, String value, NFIDataList result);
 	public int find(int column, NFGUID value, NFIDataList result);
 
@@ -151,11 +149,11 @@ public interface NFIRecord {
 	 * 查找指定的值
 	 * @param colTag 指定的列tag
 	 * @param value 要查找的值
-	 * @param result 不能为null；存放查找到的行索引的列表；如果发生错误，不会有任何改动
+	 * @param result 可以为null；存放查找到的行索引的列表；如果发生错误，不会有任何改动
 	 * @return 如果指定的列tag不存在返回-1；如果正常，返回找到的行的数量
 	 */
 	public int find(String colTag, long value, NFIDataList result);
-	public int find(String colTag, float value, NFIDataList result);
+	public int find(String colTag, double value, NFIDataList result);
 	public int find(String colTag, String value, NFIDataList result);
 	public int find(String colTag, NFGUID value, NFIDataList result);
 	
@@ -168,6 +166,11 @@ public interface NFIRecord {
 	
 	/**
 	 * 清除所有的行，会触发DEL回调
+	 */
+	public void delAllRows();
+	
+	/**
+	 * 清除所有的行，不会触发回调
 	 */
 	public void clear();
 	
