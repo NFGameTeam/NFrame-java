@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class NFLogicClass extends NFILogicClass{
 	
 	private NFIPropertyManager propertyManager;
-	//private NFIRecordManager recordManager;
+	private NFIRecordManager recordManager;
 
 	private NFILogicClass parentClass;
 	private String typeName;
@@ -28,8 +28,11 @@ public class NFLogicClass extends NFILogicClass{
 	public NFIPropertyManager getPropertyManager(){
 		return propertyManager;
 	}
+	@Override
+	public NFIRecordManager getRecordManager(){
+		return recordManager;
+	}
 	
-	//public NFIRecordManager GetRecordManager();
 	@Override
 	public void setParentClass(NFILogicClass parentClass){
 		this.parentClass = parentClass;

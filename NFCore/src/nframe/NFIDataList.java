@@ -17,6 +17,7 @@ public interface NFIDataList {
 	public int add(double var);
 	public int add(String var);
 	public int add(NFGUID var);
+	public int add(NFIData var);
 	
 	/**
 	 * 添加一组新数据

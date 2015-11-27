@@ -18,6 +18,9 @@ public interface NFIRecordManager {
 	 */
 	public NFIRecord addRecord(String recordName, int maxRow, NFIDataList varTypes, NFIDataList varTags);
 
+	public NFIRecord addRecord(String recordName, int maxRow, boolean bPublic, boolean bPrivate, boolean bSave, boolean bView, NFIDataList types);
+
+
 	/**
 	 * 获取指定名字的记录
 	 * @param name

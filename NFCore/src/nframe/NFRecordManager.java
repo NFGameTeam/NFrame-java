@@ -29,6 +29,11 @@ public class NFRecordManager implements NFIRecordManager {
 		}
 		return rec;
 	}
+	
+	@Override
+	public NFIRecord addRecord(String recordName, int maxRow, boolean bPublic, boolean bPrivate, boolean bSave, boolean bView, NFIDataList types){
+		return null;
+	}
 
 	@Override
 	public NFIRecord getRecord(String recordName) {
