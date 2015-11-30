@@ -15,6 +15,7 @@ public class NFObject extends NFIObject {
 	public NFObject(NFGUID guid){
 		super.setId(guid);
 		this.propertyManager = new NFPropertyManager(guid);
+		this.recordManager = new NFRecordManager(guid);
 	}
 
 	@Override
@@ -109,104 +110,87 @@ public class NFObject extends NFIObject {
 
 	@Override
 	public boolean hasRecord(String recordName) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.getRecord(recordName) != null;
 	}
 
 	@Override
 	public long getRecordInt(String recordName, int row, int column) {
-		// TODO Auto-generated method stub
-		return 0;
+		return recordManager.getRecordInt(recordName, row, column);
 	}
 
 	@Override
 	public double getRecordFloat(String recordName, int row, int column) {
-		// TODO Auto-generated method stub
-		return 0;
+		return recordManager.getRecordFloat(recordName, row, column);
 	}
 
 	@Override
 	public String getRecordString(String recordName, int row, int column) {
-		// TODO Auto-generated method stub
-		return null;
+		return recordManager.getRecordString(recordName, row, column);
 	}
 
 	@Override
 	public NFGUID getRecordObject(String recordName, int row, int column) {
-		// TODO Auto-generated method stub
-		return null;
+		return recordManager.getRecordObject(recordName, row, column);
 	}
 
 	@Override
 	public long getRecordInt(String recordName, int row, String colTag) {
-		// TODO Auto-generated method stub
-		return 0;
+		return recordManager.getRecordInt(recordName, row, colTag);
 	}
 
 	@Override
 	public double getRecordFloat(String recordName, int row, String colTag) {
-		// TODO Auto-generated method stub
-		return 0;
+		return recordManager.getRecordFloat(recordName, row, colTag);
 	}
 
 	@Override
 	public String getRecordString(String recordName, int row, String colTag) {
-		// TODO Auto-generated method stub
-		return null;
+		return recordManager.getRecordString(recordName, row, colTag);
 	}
 
 	@Override
 	public NFGUID getRecordObject(String recordName, int row, String colTag) {
-		// TODO Auto-generated method stub
-		return null;
+		return recordManager.getRecordObject(recordName, row, colTag);
 	}
 
 	@Override
 	public boolean setRecord(String recordName, int row, int column, long var) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.setRecord(recordName, row, column, var);
 	}
 
 	@Override
 	public boolean setRecord(String recordName, int row, int column, double var) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.setRecord(recordName, row, column, var);
 	}
 
 	@Override
 	public boolean setRecord(String recordName, int row, int column, String var) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.setRecord(recordName, row, column, var);
 	}
 
 	@Override
 	public boolean setRecord(String recordName, int row, int column, NFGUID var) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.setRecord(recordName, row, column, var);
 	}
 
 	@Override
 	public boolean setRecord(String recordName, int row, String colTag, long var) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.setRecord(recordName, row, colTag, var);
 	}
 
 	@Override
 	public boolean setRecord(String recordName, int row, String colTag, double var) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.setRecord(recordName, row, colTag, var);
 	}
 
 	@Override
 	public boolean setRecord(String recordName, int row, String colTag, String var) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.setRecord(recordName, row, colTag, var);
 	}
 
 	@Override
 	public boolean setRecord(String recordName, int row, String colTag, NFGUID var) {
-		// TODO Auto-generated method stub
-		return false;
+		return recordManager.setRecord(recordName, row, colTag, var);
 	}
 
 	@Override
