@@ -8,21 +8,18 @@ package nframe;
  */
 
 public class NFElement extends NFIElement {
-	
+
 	NFIPropertyManager propertyManager;
-	//NFIRecordManager recordManager;
-	
-	
+	// NFIRecordManager recordManager;
+
 	@Override
-	public NFIPropertyManager getPropertyManager()
-	{
+	public NFIPropertyManager getPropertyManager() {
 		return this.propertyManager;
 	}
-	
-/*	@Override
-	public NFIRecordManager getRecordManager()
-	{
-		return this.recordManager;
-	}*/
-	
+
+	/*
+	 * @Override public NFIRecordManager getRecordManager() { return
+	 * this.recordManager; }
+	 */
+
 }

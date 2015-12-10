@@ -14,7 +14,7 @@ public class NFElementInfoModule extends NFIElementInfoModule{
 	
 	@Override
 	public void init(){
-		logicClassModule = (NFILogicModule)(this.getPluginManager().getModule("NFCLogicClassModule"));
+		logicClassModule = this.getPluginManager().getModule("nframe.NFCLogicClassModule");
 	}
 	
 	@Override
@@ -28,6 +28,8 @@ public class NFElementInfoModule extends NFIElementInfoModule{
 	
 	@Override
 	public void shut(){
+		// Xiong 防止循环引用
+		logicClassModule = null;
 	}
 	
 	@Override

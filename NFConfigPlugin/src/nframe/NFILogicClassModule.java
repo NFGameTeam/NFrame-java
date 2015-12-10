@@ -8,7 +8,7 @@ package nframe;
  * 框架核心,逻辑类模块
  */
 
-public abstract class NFILogicClassModule extends NFBehaviour {
+public abstract class NFILogicClassModule extends NFILogicModule {
 	
 	public abstract  boolean load();
 	public abstract  boolean clear();

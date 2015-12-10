@@ -32,6 +32,7 @@ public class NFLogicClassModule extends NFILogicClassModule{
 	@Override
 	public void init(){
 		configFileName = "./DataCfg/Struct/LogicClass.xml";
+		elementInfoModule = (NFIElementInfoModule) this.getPluginManager().getModule("nframe.NFElementInfoModule");
 		
 		load();
 	}
@@ -47,6 +48,8 @@ public class NFLogicClassModule extends NFILogicClassModule{
 	
 	@Override
 	public void shut(){
+		// Xiong 防止循环引用
+		elementInfoModule = null;
 	}
 	
 	@Override
