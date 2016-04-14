@@ -88,7 +88,7 @@ public class NFDataList implements NFIDataList
 	}
 
 	@Override
-	public boolean add(NFIData var)
+	public boolean add(NFData var)
 	{
 		if (var == null)
 		{
@@ -172,7 +172,7 @@ public class NFDataList implements NFIDataList
 		this.clear();
 		for (int i = 0, size = other.size(); i < size; ++i)
 		{
-			NFIData.Type type = other.getType(i);
+			NFData.Type type = other.getType(i);
 			switch (type)
 			{
 				case LONG:
@@ -286,33 +286,33 @@ public class NFDataList implements NFIDataList
 	}
 
 	@Override
-	public NFIData.Type getType(int index)
+	public NFData.Type getType(int index)
 	{
 		Object o = getVar(index);
 		if (o == null)
 		{
-			return NFIData.Type.UNKNOW;
+			return NFData.Type.UNKNOW;
 		}
 
 		if (o instanceof Byte || o instanceof Short || o instanceof Integer || o instanceof Long)
 		{
-			return NFIData.Type.LONG;
+			return NFData.Type.LONG;
 		}
 		else if (o instanceof Float || o instanceof Double)
 		{
-			return NFIData.Type.DOUBLE;
+			return NFData.Type.DOUBLE;
 		}
 		else if (o instanceof String)
 		{
-			return NFIData.Type.STRING;
+			return NFData.Type.STRING;
 		}
 		else if (o instanceof NFGUID)
 		{
-			return NFIData.Type.OBJECT;
+			return NFData.Type.OBJECT;
 		}
 		else
 		{
-			return NFIData.Type.UNKNOW;
+			return NFData.Type.UNKNOW;
 		}
 	}
 

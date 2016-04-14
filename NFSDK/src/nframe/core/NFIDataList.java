@@ -13,7 +13,7 @@ public interface NFIDataList
 
 	public boolean add(NFGUID var);
 
-	public boolean add(NFIData var);
+	public boolean add(NFData var);
 
 	public void append(Object... vars);
 
@@ -41,5 +41,5 @@ public interface NFIDataList
 
 	public void clear();
 
-	public NFIData.Type getType(int index);
+	public NFData.Type getType(int index);
 }

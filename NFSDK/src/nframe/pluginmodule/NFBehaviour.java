@@ -1,5 +1,7 @@
 package nframe.pluginmodule;
 
+import nframe.core.NFMap;
+
 /**
  * 
  * @author zhiyu.zhao

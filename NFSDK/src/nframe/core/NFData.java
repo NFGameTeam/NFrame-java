@@ -7,10 +7,16 @@ import nframe.pluginmodule.NFGUID;
  * 
  * @author zhiyu.zhao
  * @Description:
+ * method in this Class never return null!
  *
  */
-public class NFData implements NFIData
+public class NFData
 {
+	public enum Type
+	{
+		UNKNOW, LONG, DOUBLE, STRING, OBJECT,
+	}
+
 	private Type type = Type.UNKNOW;;
 	private long value = 0;
 	private Object obj = null;
@@ -43,12 +49,11 @@ public class NFData implements NFIData
 		setObject(var);
 	}
 
-	public NFData(NFIData other)
+	public NFData(NFData other)
 	{
-		copyFrom(other);
+		clone(other);
 	}
 
-	@Override
 	public void setLong(long var)
 	{
 		if (this.type == Type.LONG || this.type == Type.UNKNOW)
@@ -59,7 +64,6 @@ public class NFData implements NFIData
 		}
 	}
 
-	@Override
 	public void setDouble(double var)
 	{
 		if (this.type == Type.DOUBLE || this.type == Type.UNKNOW)
@@ -70,7 +74,6 @@ public class NFData implements NFIData
 		}
 	}
 
-	@Override
 	public void setString(String var)
 	{
 		if (var == null)
@@ -86,7 +89,6 @@ public class NFData implements NFIData
 		}
 	}
 
-	@Override
 	public void setObject(NFGUID var)
 	{
 		if (var == null)
@@ -102,7 +104,6 @@ public class NFData implements NFIData
 		}
 	}
 
-	@Override
 	public long getLong()
 	{
 		if (type == Type.LONG)
@@ -112,7 +113,6 @@ public class NFData implements NFIData
 		return 0;
 	}
 
-	@Override
 	public double getDouble()
 	{
 		if (type == Type.DOUBLE)
@@ -122,7 +122,6 @@ public class NFData implements NFIData
 		return 0;
 	}
 
-	@Override
 	public String getString()
 	{
 		if (type == Type.STRING)
@@ -132,7 +131,6 @@ public class NFData implements NFIData
 		return "";
 	}
 
-	@Override
 	public NFGUID getObject()
 	{
 		if (type == Type.OBJECT)
@@ -142,7 +140,6 @@ public class NFData implements NFIData
 		return new NFGUID();
 	}
 
-	@Override
 	public boolean isNullValue()
 	{
 		switch (type)
@@ -160,7 +157,6 @@ public class NFData implements NFIData
 		}
 	}
 
-	@Override
 	public void reset()
 	{
 		type = Type.UNKNOW;
@@ -168,18 +164,16 @@ public class NFData implements NFIData
 		obj = null;
 	}
 
-	@Override
 	public Type getType()
 	{
 		return type;
 	}
 
-	@Override
-	public void copyFrom(NFIData other)
+	public NFData clone(NFData other)
 	{
-		if(other == null)
+		if (other == null)
 		{
-			return;
+			return this;
 		}
 		this.type = other.getType();
 		switch (this.type)
@@ -205,12 +199,13 @@ public class NFData implements NFIData
 			case OBJECT:
 			{
 				this.value = 0;
-				this.obj = other.getObject();
+				this.obj = other.getObject().clone();
 				break;
 			}
 			default:
 				break;
 		}
+		return this;
 	}
 
 }

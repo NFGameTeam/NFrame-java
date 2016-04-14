@@ -62,10 +62,15 @@ public class NFConfigPlugin extends NFIPlugin
 	}
 
 	@Override
-	public int GetPluginVersion()
+	public int getPluginVersion()
 	{
 		return 0;
 	}
 
+	@Override
+	public String getPluginName()
+	{
+		return this.getClass().getName();
+	}
 
 }
