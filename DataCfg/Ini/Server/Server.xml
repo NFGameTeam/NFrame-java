@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<XML>
+	<Object Id="TCProtocol" ServerID="10001" Name="TSPServer" MaxOnline="5000" CpuCount="1" IP="0.0.0.0" Port="16001" Type="9" Area="1"/>
+</XML>
+
