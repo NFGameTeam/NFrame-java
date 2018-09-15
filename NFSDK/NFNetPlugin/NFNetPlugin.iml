@@ -21,6 +21,7 @@
     <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.16.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-resolver:4.1.16.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty:3.10.5.Final" level="project" />
+    <orderEntry type="module" module-name="NFMessageDefine" />
     <orderEntry type="module" module-name="NFFileProcess" scope="PROVIDED" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.springframework:spring-context:4.3.2.RELEASE" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.springframework:spring-aop:4.3.2.RELEASE" level="project" />

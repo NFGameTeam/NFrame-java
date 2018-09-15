@@ -101,7 +101,7 @@ public class NFPluginManager implements NFIPluginManager {
 			entry.getValue().Execute();
 
 //			String pluginid = entry.getKey();
-//			List<ZOEIModule> modules = plugin_manager.getExtensions(pluginid);
+//			List<NFIModule> modules = plugin_manager.getExtensions(pluginid);
 //
 //			for (int i = 0; i < modules.size(); i++) {
 //				modules.get(i).Execute();

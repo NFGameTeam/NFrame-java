@@ -3,6 +3,7 @@
 		<Plugin Name="nf_log_plugin" />
 		<Plugin Name="nf_kernel_plugin" />
 		<Plugin Name="nf_config_plugin" />
+		<Plugin Name="nf_net_plugin" />
 		<ConfigPath Name="../" />
 	</NFServer>
 </XML>
