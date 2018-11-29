@@ -305,7 +305,6 @@ public class NFNetModule extends NFISocketModule {
 			for (int i = 0; i < mxEventCallBackList.size(); i++) {
 				NET_EVENT_FUNCTOR pFunc = mxEventCallBackList.get(i);
 				pFunc.operator(nSockIndex, eEvent, pNet);
-				pFunc.operator(nSockIndex, eEvent, pNet);
 			}
 		}
 	};

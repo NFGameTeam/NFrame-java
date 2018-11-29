@@ -10,6 +10,7 @@ import com.noahframe.nfcore.iface.module.NFIModule;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -29,6 +30,7 @@ public class NFPluginManager implements NFIPluginManager {
 		LoadPluginConfig();
 
 		plugin_manager.loadPlugins();
+
 		for (Entry<String, Boolean> entry : mPluginNameMap.entrySet()) {
 
 			LoadPluginLibrary(entry.getKey());
@@ -346,7 +348,13 @@ public class NFPluginManager implements NFIPluginManager {
 
 		for (int i = 0; i < pPlugins.size(); i++) {
 			String strPluginName = pPlugins.get(i).getAttributeValue("Name");
-			mPluginNameMap.put(strPluginName, true);
+			int nPluginIndex=Integer.valueOf(pPlugins.get(i).getAttributeValue("Index"));
+			if (i==nPluginIndex) {
+				mPluginNameMap.put(strPluginName, true);
+			}
+			else {
+				i=i-1;
+			}
 		}
 
 		Element pPluginConfigPathNode = rapidxml.getSingleElement("ConfigPath",
@@ -401,7 +409,7 @@ public class NFPluginManager implements NFIPluginManager {
 
 	private PluginManager plugin_manager;
 
-	private Map<String, Boolean> mPluginNameMap = new HashMap<String, Boolean>();
+	private Map<String, Boolean> mPluginNameMap = new LinkedHashMap<String, Boolean>();
 	private Map<String, NFIPlugin> mPluginInstanceMap = new HashMap<String, NFIPlugin>();
 	private Map<String, Object> mModuleInstanceMap = new HashMap<String, Object>();
 

@@ -1,5 +1,5 @@
 /**   
-* @Title: NFFrame
+* @Title: NFrame
 * @Package ${package_name} 
 * @Description: 基础XML属性设置 
 * @author zoecee yideal_formula@126.com  
@@ -9,7 +9,7 @@
 package com.noahframe.nfcore.iface;
 
 
-public class NFFrame {
+public class NFrame {
 
 	public static class IObject{
 		//Class name

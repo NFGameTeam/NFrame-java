@@ -16,6 +16,7 @@
         <module>NFKernelPlugin</module>
         <module>NFLogPlugin</module>
         <module>NFNetPlugin</module>
+        <module>NFRedisPlugin</module>
     </modules>
 
     <!-- 定义插件的属性 -->

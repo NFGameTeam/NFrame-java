@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <XML>
-<Class Id="IObject" Type="TYPE_IOBJECT" Path="DataCfg/Struct/Class/IObject.xml" InstancePath="DataCfg/Ini/NPC/IObject.xml" Public="0" Desc="IObject">
-<Class Id="Server" Type="TYPE_SERVER" Path="DataCfg/Struct/Class/Server.xml" InstancePath="DataCfg/Ini/Server/Server.xml" Public="0" Desc="Server"/>
-</Class>
+    <Class Id="IObject" Type="TYPE_IOBJECT" Path="DataCfg/Struct/Class/IObject.xml" InstancePath="DataCfg/Ini/NPC/IObject.xml" Public="0" Desc="IObject">
+        <Class Id="Server" Type="TYPE_SERVER" Path="DataCfg/Struct/Class/Server.xml" InstancePath="DataCfg/Ini/Server/Server.xml" Public="0" Desc="Server"/>
+        <Class Id="NoSqlServer"	Path="DataCfg/Struct/Class/NoSqlServer.xml"	InstancePath="DataCfg/Ini/NoSqlServer.xml" Public="0" Desc="NoSqlServer"	/>
+    </Class>
 </XML>
 

@@ -13,6 +13,11 @@
       <param-value>UTF-8</param-value>
     </init-param>
   </filter>
+
+  <listener>
+    <listener-class>org.springframework.web.util.WebAppRootListener</listener-class>
+  </listener>
+
   <filter-mapping>
     <filter-name>characterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>

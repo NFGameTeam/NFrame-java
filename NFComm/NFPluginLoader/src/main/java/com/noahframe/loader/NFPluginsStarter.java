@@ -27,7 +27,7 @@ public class NFPluginsStarter implements ServletContextListener  {
     public void contextInitialized(ServletContextEvent arg0) {
 
         String plugins_root= SysPath.getPluginsRoot();
-        System.out.print("当前插件根目录:"+plugins_root);
+        System.out.print("当前插件根目录:"+plugins_root+"\n");
         System.setProperty("plugins.Dir", plugins_root);
         m_NFPlugins= NFPluginManager.GetSingletonPtr();
         m_NFPlugins.SetAppID(6);

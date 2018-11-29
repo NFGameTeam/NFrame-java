@@ -3,7 +3,7 @@ package com.noahframe.plugins.kernel;
 
 
 import com.noahframe.loader.NFPluginManager;
-import com.noahframe.nfcore.iface.NFFrame;
+import com.noahframe.nfcore.iface.NFrame;
 import com.noahframe.nfcore.iface.NFIPluginManager;
 import com.noahframe.nfcore.iface.functor.*;
 import com.noahframe.nfcore.iface.math.NFVector3;
@@ -76,8 +76,8 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 		{
 			if (CLASS_OBJECT_EVENT.COE_DESTROY == eClassEvent)
 			{
-				 int nObjectSceneID = m_pKernelModule.GetPropertyInt(self, NFFrame.IObject.SceneID());
-				 int nObjectGroupID = m_pKernelModule.GetPropertyInt(self, NFFrame.IObject.GroupID());
+				 int nObjectSceneID = m_pKernelModule.GetPropertyInt(self, NFrame.IObject.SceneID());
+				 int nObjectGroupID = m_pKernelModule.GetPropertyInt(self, NFrame.IObject.GroupID());
 
 				if (nObjectGroupID < 0 || nObjectSceneID <= 0)
 				{
@@ -101,7 +101,7 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 			}
 			else if (CLASS_OBJECT_EVENT.COE_CREATE_HASDATA == eClassEvent)
 			{
-				if (strClassName == NFFrame.Player.ThisName())
+				if (strClassName == NFrame.Player.ThisName())
 				{
 					//tell youself<client>, u want to enter this scene or this group
 					OnObjectListEnter(new NFDataList().oper_push(self), new NFDataList().oper_push(self));
@@ -112,8 +112,8 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 				}
 				else
 				{
-					 int nObjectSceneID = m_pKernelModule.GetPropertyInt(self, NFFrame.IObject.SceneID());
-					 int nObjectGroupID = m_pKernelModule.GetPropertyInt(self, NFFrame.IObject.GroupID());
+					 int nObjectSceneID = m_pKernelModule.GetPropertyInt(self, NFrame.IObject.SceneID());
+					 int nObjectGroupID = m_pKernelModule.GetPropertyInt(self, NFrame.IObject.GroupID());
 
 					if (nObjectGroupID < 0 || nObjectSceneID <= 0)
 					{
@@ -143,17 +143,17 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 		@Override
 		public int operator(NFGUID self, String strPropertyName, NFData oldVar,
 				NFData newVar) {
-			String strClassName = m_pKernelModule.GetPropertyString(self, NFFrame.IObject.ClassName());
-			if (strClassName == NFFrame.Player.ThisName())
+			String strClassName = m_pKernelModule.GetPropertyString(self, NFrame.IObject.ClassName());
+			if (strClassName == NFrame.Player.ThisName())
 			{
 				//only player can change grupid and sceneid
-				if (NFFrame.Player.GroupID() == strPropertyName)
+				if (NFrame.Player.GroupID() == strPropertyName)
 				{
 					OnPlayerGroupEvent(self, strPropertyName, oldVar, newVar);
 					return 0;
 				}
 
-				if (NFFrame.Player.SceneID() == strPropertyName)
+				if (NFrame.Player.SceneID() == strPropertyName)
 				{
 					OnPlayerSceneEvent(self, strPropertyName, oldVar, newVar);
 					return 0;
@@ -184,8 +184,8 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 			int nRow = xEventData.nRow;
 			int nCol = xEventData.nCol;
 
-			int nObjectContainerID = m_pKernelModule.GetPropertyInt(self, NFFrame.Player.SceneID());
-			int nObjectGroupID = m_pKernelModule.GetPropertyInt(self, NFFrame.Player.GroupID());
+			int nObjectContainerID = m_pKernelModule.GetPropertyInt(self, NFrame.Player.SceneID());
+			int nObjectGroupID = m_pKernelModule.GetPropertyInt(self, NFrame.Player.GroupID());
 
 			if (nObjectGroupID < 0)
 			{
@@ -215,7 +215,7 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 		m_pKernelModule.RegisterCommonRecordEvent(OnRecordCommonEvent);
 
 		//init all scene
-		NFIClass xLogicClass = m_pClassModule.GetElement(NFFrame.Scene.ThisName());
+		NFIClass xLogicClass = m_pClassModule.GetElement(NFrame.Scene.ThisName());
 		if (xLogicClass != null)
 		{
 			List<String> strIdList = xLogicClass.GetIDList();
@@ -299,8 +299,8 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 			return false;
 		}
 
-		 int nNowSceneID = m_pKernelModule.GetPropertyInt(self, NFFrame.Player.SceneID());
-		 int nNowGroupID = m_pKernelModule.GetPropertyInt(self, NFFrame.Player.GroupID());
+		 int nNowSceneID = m_pKernelModule.GetPropertyInt(self, NFrame.Player.SceneID());
+		 int nNowGroupID = m_pKernelModule.GetPropertyInt(self, NFrame.Player.GroupID());
 		
 		if (nNowSceneID == nSceneID &&
 			 nNowGroupID == nGrupID)
@@ -393,13 +393,13 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 			int nWeight = m_pKernelModule.Random(0, 100);
 			if (nWeight <= pResource.nWeight)
 			{
-				String strClassName = m_pElementModule.GetPropertyString(pResource.strConfigID, NFFrame.IObject.ClassName());
+				String strClassName = m_pElementModule.GetPropertyString(pResource.strConfigID, NFrame.IObject.ClassName());
 
 				NFDataList arg=new NFDataList();
-				arg.oper_push(NFFrame.IObject.X()).oper_push(pResource.vSeedPos.X());
-				arg.oper_push(NFFrame.IObject.Y()).oper_push(pResource.vSeedPos.Y());
-				arg.oper_push(NFFrame.IObject.Z()).oper_push(pResource.vSeedPos.Z());
-				arg.oper_push(NFFrame.NPC.SeedID()).oper_push(pResource.strSeedID);
+				arg.oper_push(NFrame.IObject.X()).oper_push(pResource.vSeedPos.X());
+				arg.oper_push(NFrame.IObject.Y()).oper_push(pResource.vSeedPos.Y());
+				arg.oper_push(NFrame.IObject.Z()).oper_push(pResource.vSeedPos.Z());
+				arg.oper_push(NFrame.NPC.SeedID()).oper_push(pResource.strSeedID);
 
 				m_pKernelModule.CreateObject(new NFGUID(), nSceneID, nGroupID, strClassName, pResource.strConfigID, arg);
 			}
@@ -517,8 +517,8 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 		NFIObject pObject = m_pKernelModule.GetObject(self);
 		if (pObject != null)
 		{
-			int nOldSceneID = pObject.GetPropertyInt(NFFrame.Scene.SceneID());
-			int nOldGroupID = pObject.GetPropertyInt(NFFrame.Scene.GroupID());
+			int nOldSceneID = pObject.GetPropertyInt(NFrame.Scene.SceneID());
+			int nOldGroupID = pObject.GetPropertyInt(NFrame.Scene.GroupID());
 
 			NFSceneInfo pOldSceneInfo = this.GetElement(nOldSceneID);
 					NFSceneInfo pNewSceneInfo = this.GetElement(nTargetSceneID);
@@ -546,24 +546,24 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 
 			//if (nTargetSceneID != nOldSceneID)
 			{
-				pObject.SetPropertyInt(NFFrame.Scene.GroupID(), 0);
+				pObject.SetPropertyInt(NFrame.Scene.GroupID(), 0);
 				/////////
 				AfterLeaveSceneGroup(self, nOldSceneID, nOldGroupID, nType, arg);
 
-				pObject.SetPropertyInt(NFFrame.Scene.SceneID(), nTargetSceneID);
+				pObject.SetPropertyInt(NFrame.Scene.SceneID(), nTargetSceneID);
 
 				OnSwapSceneEvent(self, nTargetSceneID, nTargetGroupID, nType, arg);
 			}
 
-			pObject.SetPropertyFloat(NFFrame.IObject.X(), fX);
-			pObject.SetPropertyFloat(NFFrame.IObject.Y(), fY);
-			pObject.SetPropertyFloat(NFFrame.IObject.Z(), fZ);
+			pObject.SetPropertyFloat(NFrame.IObject.X(), fX);
+			pObject.SetPropertyFloat(NFrame.IObject.Y(), fY);
+			pObject.SetPropertyFloat(NFrame.IObject.Z(), fZ);
 
 			////////
 			BeforeEnterSceneGroup(self, nTargetSceneID, nTargetGroupID, nType, arg);
 
 			pNewSceneInfo.AddObjectToGroup(nTargetGroupID, self, true);
-			pObject.SetPropertyInt(NFFrame.Scene.GroupID(), nTargetGroupID);
+			pObject.SetPropertyInt(NFrame.Scene.GroupID(), nTargetGroupID);
 
 			/////////
 			AfterEnterSceneGroup(self, nTargetSceneID, nTargetGroupID, nType, arg);
@@ -643,7 +643,7 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 	public int OnPlayerGroupEvent( NFGUID  self,  String  strPropertyName,  NFData  oldVar,  NFData  newVar)
 	{
 		//this event only happened in the same scene
-		int nSceneID = m_pKernelModule.GetPropertyInt(self, NFFrame.IObject.SceneID());
+		int nSceneID = m_pKernelModule.GetPropertyInt(self, NFrame.IObject.SceneID());
 		int nOldGroupID = oldVar.GetInt();
 		int nNewGroupID = newVar.GetInt();
 
@@ -798,10 +798,10 @@ public class NFSceneAOIModule extends NFISceneAOIModule {
 	
 	public int GetBroadCastObject(NFGUID self,  String  strPropertyName,  boolean bTable, NFDataList  valueObject)
 	{
-		int nObjectContainerID = m_pKernelModule.GetPropertyInt(self, NFFrame.IObject.SceneID());
-		int nObjectGroupID = m_pKernelModule.GetPropertyInt(self, NFFrame.IObject.GroupID());
+		int nObjectContainerID = m_pKernelModule.GetPropertyInt(self, NFrame.IObject.SceneID());
+		int nObjectGroupID = m_pKernelModule.GetPropertyInt(self, NFrame.IObject.GroupID());
 
-		 String strClassName = m_pKernelModule.GetPropertyString(self, NFFrame.IObject.ClassName());
+		 String strClassName = m_pKernelModule.GetPropertyString(self, NFrame.IObject.ClassName());
 		NFIRecordManager pClassRecordManager = m_pClassModule.GetClassRecordManager(strClassName);
 		NFIPropertyManager pClassPropertyManager = m_pClassModule.GetClassPropertyManager(strClassName);
 

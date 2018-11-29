@@ -5,7 +5,7 @@ package com.noahframe.plugins.kernel;
 import com.noahframe.loader.NFPluginManager;
 import com.noahframe.nfcore.api.core.NFObject;
 import com.noahframe.nfcore.api.plugin.Extension;
-import com.noahframe.nfcore.iface.NFFrame;
+import com.noahframe.nfcore.iface.NFrame;
 import com.noahframe.nfcore.iface.NFIPluginManager;
 import com.noahframe.nfcore.iface.functor.*;
 import com.noahframe.nfcore.iface.math.NFVector2;
@@ -185,7 +185,7 @@ public class NFKernelModule extends NFIKernelModule {
 			
 			pObject=new NFObject(self);
 			AddElement(self, pObject);
-			 pContainerInfo.AddObjectToGroup(nGroupID, ident, (strClassName == NFFrame.Player.ThisName()? true : false));
+			 pContainerInfo.AddObjectToGroup(nGroupID, ident, (strClassName == NFrame.Player.ThisName()? true : false));
 
 		        NFIPropertyManager pPropertyManager = pObject.GetPropertyManager();
 		        NFIRecordManager pRecordManager = pObject.GetRecordManager();
@@ -232,14 +232,14 @@ public class NFKernelModule extends NFIKernelModule {
 
 		        NFVector3 vRelivePos = m_pSceneModule.GetRelivePosition(nSceneID, 0);
 
-				pObject.SetPropertyObject(NFFrame.IObject.ID(), self);
-				pObject.SetPropertyString(NFFrame.IObject.ConfigID(), strConfigIndex);
-				pObject.SetPropertyString(NFFrame.IObject.ClassName(), strClassName);
-				pObject.SetPropertyInt(NFFrame.IObject.SceneID(), nSceneID);
-				pObject.SetPropertyInt(NFFrame.IObject.GroupID(), nGroupID);
-				pObject.SetPropertyFloat(NFFrame.IObject.X(), vRelivePos.X());
-				pObject.SetPropertyFloat(NFFrame.IObject.Y(), vRelivePos.Y());
-				pObject.SetPropertyFloat(NFFrame.IObject.Z(), vRelivePos.Z());
+				pObject.SetPropertyObject(NFrame.IObject.ID(), self);
+				pObject.SetPropertyString(NFrame.IObject.ConfigID(), strConfigIndex);
+				pObject.SetPropertyString(NFrame.IObject.ClassName(), strClassName);
+				pObject.SetPropertyInt(NFrame.IObject.SceneID(), nSceneID);
+				pObject.SetPropertyInt(NFrame.IObject.GroupID(), nGroupID);
+				pObject.SetPropertyFloat(NFrame.IObject.X(), vRelivePos.X());
+				pObject.SetPropertyFloat(NFrame.IObject.Y(), vRelivePos.Y());
+				pObject.SetPropertyFloat(NFrame.IObject.Z(), vRelivePos.Z());
 
 				//no data
 				DoEvent(ident, strClassName, pObject.GetState(), arg);
@@ -266,11 +266,11 @@ public class NFKernelModule extends NFIKernelModule {
 		        for (int i = 0; i < arg.GetCount() - 1; i += 2)
 		        {
 		            String strPropertyName = arg.String(i);
-		            if (NFFrame.IObject.ConfigID() != strPropertyName
-		                && NFFrame.IObject.ClassName() != strPropertyName
-		                && NFFrame.IObject.SceneID() != strPropertyName
-						&& NFFrame.IObject.ID() != strPropertyName
-		                && NFFrame.IObject.GroupID() != strPropertyName)
+		            if (NFrame.IObject.ConfigID() != strPropertyName
+		                && NFrame.IObject.ClassName() != strPropertyName
+		                && NFrame.IObject.SceneID() != strPropertyName
+						&& NFrame.IObject.ID() != strPropertyName
+		                && NFrame.IObject.GroupID() != strPropertyName)
 		            {
 		                NFIProperty pArgProperty = pStaticClassPropertyManager.GetElement(strPropertyName);
 		                if (pArgProperty != null)
@@ -365,15 +365,15 @@ public class NFKernelModule extends NFIKernelModule {
 		    }
 
 		    
-		    int nGroupID = GetPropertyInt(self, NFFrame.IObject.GroupID());
-		    int nSceneID = GetPropertyInt(self, NFFrame.IObject.SceneID());
+		    int nGroupID = GetPropertyInt(self, NFrame.IObject.GroupID());
+		    int nSceneID = GetPropertyInt(self, NFrame.IObject.SceneID());
 
 		    NFSceneInfo pContainerInfo = m_pSceneModule.GetElement(nSceneID);
 		    if (pContainerInfo != null)
 		    {
-		        String strClassName = GetPropertyString(self, NFFrame.IObject.ClassName());
+		        String strClassName = GetPropertyString(self, NFrame.IObject.ClassName());
 
-		        pContainerInfo.RemoveObjectFromGroup(nGroupID, self, strClassName == NFFrame.Player.ThisName() ? true : false);
+		        pContainerInfo.RemoveObjectFromGroup(nGroupID, self, strClassName == NFrame.Player.ThisName() ? true : false);
 
 		        DoEvent(self, strClassName, CLASS_OBJECT_EVENT.COE_BEFOREDESTROY, new NFDataList());
 		        DoEvent(self, strClassName, CLASS_OBJECT_EVENT.COE_DESTROY, new NFDataList());
@@ -1304,7 +1304,7 @@ public class NFKernelModule extends NFIKernelModule {
 					continue;
 				}
 
-				if (this.GetPropertyString(xID, NFFrame.IObject.ClassName()) == strClassName)
+				if (this.GetPropertyString(xID, NFrame.IObject.ClassName()) == strClassName)
 				{
 					list.AddObject(xID);
 				}
@@ -1330,7 +1330,7 @@ public class NFKernelModule extends NFIKernelModule {
 					continue;
 				}
 
-				if (this.GetPropertyString(xID, NFFrame.IObject.ClassName()) == strClassName
+				if (this.GetPropertyString(xID, NFrame.IObject.ClassName()) == strClassName
 					&& xID != noSelf)
 				{
 					list.AddObject(xID);
@@ -1439,8 +1439,8 @@ public class NFKernelModule extends NFIKernelModule {
 	    NFIObject pObject = GetObject(ident);
 	    if (pObject != null)
 	    {
-			int nSceneID = GetPropertyInt(ident, NFFrame.IObject.SceneID());
-			int nGroupID = GetPropertyInt(ident, NFFrame.IObject.GroupID());
+			int nSceneID = GetPropertyInt(ident, NFrame.IObject.SceneID());
+			int nGroupID = GetPropertyInt(ident, NFrame.IObject.GroupID());
 
 	       // m_pLogModule.LogNormal(NFILogModule.NF_LOG_LEVEL.NLL_INFO_NORMAL, ident, "//----------child object list-------- SceneID = ", nSceneID);
 
