@@ -5,8 +5,9 @@ import com.noahframe.nfcore.api.plugin.Extension;
 import com.noahframe.nfcore.iface.NFIPluginManager;
 import com.noahframe.nfcore.iface.module.NFGUID;
 import com.noahframe.nfcore.iface.module.NFILogModule;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
@@ -21,7 +22,7 @@ public class NFLogModule extends NFILogModule {
 	public long mnLogCountTotal;
 	private NFIPluginManager pPluginManager;
 
-	private Logger LOG = Logger.getLogger(NFLogModule.class);
+	private Logger LOG = LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
 	
 	
 	private static NFLogModule SingletonPtr=null;
@@ -310,7 +311,6 @@ public class NFLogModule extends NFILogModule {
 	public boolean ChangeLogLevel(String strLevel) {
 		Level level = Level.toLevel(strLevel);
 
-		LOG.setLevel(level);
 		return true;
 	}
 

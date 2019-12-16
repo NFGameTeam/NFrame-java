@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         metadata-complete="true"
-         id="WebApp_ID" version="2.5">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
   <display-name>nframe</display-name>
   <filter>
     <filter-name>characterEncodingFilter</filter-name>
@@ -42,30 +42,29 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
-  <!-- 加载log4j的配置文件log4j.properties -->
-  <context-param>
-    <param-name>log4jConfigLocation</param-name>
-    <param-value>classpath:log4j2.properties</param-value>
-  </context-param>
-
-  <!-- 设定刷新日志配置文件的时间间隔，这里设置为10s -->
-  <context-param>
-    <param-name>log4jRefreshInterval</param-name>
-    <param-value>10000</param-value>
-  </context-param>
-
-  <!-- 加载Spring框架中的log4j监听器Log4jConfigListener -->
+  <!-- log4j2-begin -->
   <listener>
-    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
   </listener>
+  <filter>
+    <filter-name>log4jServletFilter</filter-name>
+    <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>log4jServletFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
+  <!-- log4j2-end -->
 
   <!-- 为避免项目间冲突，定义唯一的 webAppRootKey -->
   <context-param>
     <param-name>webAppRootKey</param-name>
     <param-value>scheduleProject</param-value>
   </context-param>
-
-
 
   <servlet-mapping>
     <servlet-name>spring</servlet-name>
@@ -84,6 +83,7 @@
 
 
 
+
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -96,7 +96,19 @@
   <listener>
     <listener-class>com.noahframe.loader.NFPluginsStarter</listener-class>
   </listener>
-
+  <!--页面拦截-->
+  <filter>
+    <filter-name>pageLoaderFilter</filter-name>
+    <filter-class>com.noahframe.server.PagesLoader</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>pageLoaderFilter</filter-name>
+    <url-pattern>/Test/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>pageLoaderFilter</filter-name>
+    <url-pattern>/module/*</url-pattern>
+  </filter-mapping>
 
 
 </web-app>

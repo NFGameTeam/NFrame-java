@@ -34,7 +34,7 @@ public class PluginClassLoader extends URLClassLoader {
 
     private static final Logger log = LoggerFactory.getLogger(PluginClassLoader.class);
 
-	private static final String PLUGIN_PACKAGE_PREFIX = "com.noahframe.plugin.";
+	private static final String PLUGIN_PACKAGE_PREFIX = "com.noahframe.plugins.";
 
 	private PluginManager pluginManager;
 	private PluginDescriptor pluginDescriptor;
@@ -61,6 +61,8 @@ public class PluginClassLoader extends URLClassLoader {
 	@Override
     public Class<?> loadClass(String className) throws ClassNotFoundException {
         synchronized (getClassLoadingLock(className)) {
+
+            log.debug("loadClass:{}",className);
             log.trace("Received request to load class '{}'", className);
             // if the class it's a part of the plugin engine use parent class loader
             if (className.startsWith(PLUGIN_PACKAGE_PREFIX)) {

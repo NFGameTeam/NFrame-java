@@ -1,6 +1,9 @@
 package com.noahframe.api.file;
 
+import org.springframework.util.ResourceUtils;
+
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SysPath {
@@ -68,6 +71,18 @@ public class SysPath {
 			e.printStackTrace();
 		}
 		return dir.getPath();
+	}
+
+	public static String getClassRootPath() throws FileNotFoundException {
+		String path = ResourceUtils.getURL("classpath:").getPath();
+		//=> file:/root/tmp/demo-springboot-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/
+
+		//创建File时会自动处理前缀和jar包路径问题  => /root/tmp
+		File rootFile = new File(path);
+		if(!rootFile.exists()) {
+			rootFile = new File("");
+		}
+		return rootFile.getAbsolutePath();
 	}
 	
 }

@@ -6,35 +6,35 @@ import java.util.List;
  * @Author:zoocee
  * @Date:${Date} ${Time}
  */
-public interface NFIRedisClient<T> {
+public abstract class NFIRedisClient<T> extends NFIRedis<T> {
 
-    public boolean Connecter( String ip,  int port,  String auth);
-    public boolean Connecter( String ip,  int port);
+    public abstract boolean Connecter( String ip,  int port,  String auth);
+    public abstract boolean Connecter( String ip,  int port);
 
-    public void SetClientCtx(T client);
-
-
-    public boolean Enable();
-    public boolean Authed();
-    public boolean Busy();
-
-    public boolean KeepLive();
-    public boolean Execute();
+    public abstract void SetClientCtx(T client);
 
 
-    public  String GetAuthKey();
+    public abstract boolean Enable();
+    public abstract boolean Authed();
+    public abstract boolean Busy();
 
-    public  String GetIP();
+    public abstract boolean KeepLive();
+    public abstract boolean Execute();
 
-    public  int GetPort();
 
-    public boolean ReConnect();
+    public abstract String GetAuthKey();
+
+    public abstract String GetIP();
+
+    public abstract int GetPort();
+
+    public abstract boolean ReConnect();
 
     /**
      * @brie if you have setted a password for Redis, you much use AUTH cmd to connect to the server than you can use other cmds
      * @param password
      * @return success: true; fail: false
      */
-    public boolean AUTH( String password);
+    public abstract boolean AUTH( String password);
 
 }

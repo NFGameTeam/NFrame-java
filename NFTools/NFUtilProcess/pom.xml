@@ -23,8 +23,13 @@
         </dependency>
         <dependency>
             <groupId>org.jdom</groupId>
-            <artifactId>jdom</artifactId>
-            <version>${jdom.version}</version>
+            <artifactId>jdom2</artifactId>
+            <version>${jdom2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.noahframe</groupId>
+            <artifactId>NFFileProcess</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

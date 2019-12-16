@@ -2,6 +2,7 @@ package com.noahframe.api.file;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.web.context.ContextLoader;
 
 public class PluginContextUtil {
@@ -11,16 +12,25 @@ public class PluginContextUtil {
     @SuppressWarnings("unchecked")
     public synchronized <T> T getBean(String beanId) {
 
-        return (T) ctx.getBean(beanId);
+        if (ctx.containsBean(beanId))
+        {
+            return  (T)ctx.getBean(beanId);
+        }
+        else {
+            return null;
+        }
     }
 
     public void initContext(String xml) {
         String[] xmls = new String[] { xml };//"classpath:applicationContext.xml"
         ctx = null;
-        ctx = ContextLoader.getCurrentWebApplicationContext();
         if (ctx == null) {
             ctx = new ClassPathXmlApplicationContext(xmls);
         }
+
+        int a= ctx.getBeanDefinitionCount();
+        String[] s=ctx.getBeanDefinitionNames();
+
     }
 	
 }

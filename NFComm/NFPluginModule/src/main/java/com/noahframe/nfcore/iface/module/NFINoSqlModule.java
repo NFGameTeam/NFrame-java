@@ -1,6 +1,7 @@
 package com.noahframe.nfcore.iface.module;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author:zoocee
@@ -8,15 +9,15 @@ import java.util.List;
  */
 public abstract class NFINoSqlModule implements NFIModule {
 
-    public abstract boolean AddConnectSql(String strID, String strIP);
-    public abstract boolean AddConnectSql(String strID, String strIP, int nPort);
-    public abstract boolean AddConnectSql(String strID, String strIP, int nPort, String strPass);
+    public abstract int AddConnectSql(String strID, String strIP, String strPort, Map mCfg);
+    public abstract int AddConnectSql(String strID, String strIP, String strPort, String strPass,Map mCfg);
 
     public abstract List<String> GetDriverIdList();
-    public abstract NFIRedisClient  GetDriver(String strID);
-    public abstract NFIRedisClient  GetDriverBySuitRandom();
-    public abstract NFIRedisClient  GetDriverBySuitConsistent();
-    public abstract NFIRedisClient  GetDriverBySuit(String strHash);
+    public abstract NFIRedis  GetDriver(String strID);
+    public abstract NFIRedis  GetDriverBySuitRandom();
+    public abstract NFIRedis  GetDriverBySuitConsistent();
+    public abstract NFIRedis  GetDriverBySuit(String strHash);
 
     public abstract boolean RemoveConnectSql(String strID);
 }
+

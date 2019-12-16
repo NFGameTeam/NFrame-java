@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 public abstract class NFIPlugin {
 
     /**
-     * Makes logging service available for descending classes.
+     * Makes logging servicer available for descending classes.
      */
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -50,13 +50,9 @@ public abstract class NFIPlugin {
     public final PluginWrapper getWrapper() {
         return wrapper;
     }
-    
-    public int GetPluginVersion()
-    {
-    	return 0;
-    }
+
     public String GetPluginName(){
-    	return null;
+    	return wrapper.getPluginId();
     }
     public void Install() throws PluginException {
     	

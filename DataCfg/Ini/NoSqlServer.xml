@@ -1,9 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <XML>
-	<Object Id="NoSqlServer_0" Auth="NoahGameFrame" IP="192.168.31.188" Port="7000" ServerID="7000" />
-	<Object Id="NoSqlServer_1" Auth="NoahGameFrame" IP="192.168.31.188" Port="7001" ServerID="7001" />
-	<Object Id="NoSqlServer_2" Auth="NoahGameFrame" IP="192.168.31.188" Port="7002" ServerID="7002" />
-	<Object Id="NoSqlServer_3" Auth="NoahGameFrame" IP="192.168.31.188" Port="7003" ServerID="7003" />
-	<Object Id="NoSqlServer_4" Auth="NoahGameFrame" IP="192.168.31.188" Port="7004" ServerID="7004" />
-	<Object Id="NoSqlServer_5" Auth="NoahGameFrame" IP="192.168.31.188" Port="7005" ServerID="7005" />
+	<Object Id="NoSqlServer_1" Auth="tianhai-redis" IP="119.29.87.198" Port="6380,7380,6381,7381,6382,7382" ServerID="6380" MaxIdle="20" MinIdle="5" MaxWaitMillis="3000" TestOnBorrow="1" />
+	<Object Id="NoSqlServer_2" Auth="" IP="127.0.0.1" Port="6379" ServerID="6379" MaxIdle="20" MinIdle="5" MaxWaitMillis="3000" TestOnBorrow="1" />
 </XML>

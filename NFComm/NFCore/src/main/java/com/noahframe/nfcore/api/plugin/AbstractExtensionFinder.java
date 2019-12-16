@@ -175,6 +175,51 @@ public abstract class AbstractExtensionFinder implements ExtensionFinder, Plugin
 
         return result;
     }
+    @Override
+    public List<ExtensionWrapper> findByType(String type)
+    {
+        log.debug("Finding extensions from plugin type '{}'", type);
+        List<ExtensionWrapper> result = new ArrayList<>();
+
+
+        List<PluginWrapper> pluginWrappers= pluginManager.getPlugins();
+
+        for (PluginWrapper pluginWrapper:pluginWrappers)
+        {
+            if (PluginState.STARTED != pluginWrapper.getPluginState()) {
+                continue;
+            }
+
+            Set<String> classNames = findClassNames(pluginWrapper.getPluginId());
+            if (pluginWrapper.getPluginType()!=null&&pluginWrapper.getPluginType().toUpperCase().equals(type)) {
+                log.trace("Checking extensions from plugin '{}' type:"+type, pluginWrapper.getPluginId());
+                ClassLoader classLoader = (pluginWrapper.getPluginId() != null) ? pluginManager.getPluginClassLoader(pluginWrapper.getPluginId()) : getClass().getClassLoader();
+
+                for (String className : classNames) {
+                    try {
+                        log.debug("Loading class '{}' using class loader '{}'", className, classLoader);
+                        Class<?> extensionClass = classLoader.loadClass(className);
+
+                        ExtensionWrapper extensionWrapper = createExtensionWrapper(extensionClass);
+                        result.add(extensionWrapper);
+                        log.debug("Added extension '{}' with ordinal {}", className, extensionWrapper.getOrdinal());
+                    } catch (ClassNotFoundException e) {
+                        log.error(e.getMessage(), e);
+                    }
+                }
+
+            }
+        }
+        if (result.isEmpty()) {
+            log.debug("No extensions found for plugin type '{}'", type);
+        } else {
+            log.debug("Found {} extensions for plugin type '{}'", result.size(), type);
+        }
+        // sort by "ordinal" property
+        Collections.sort(result);
+
+        return result;
+    }
 
     @Override
     public Set<String> findClassNames(String pluginId) {

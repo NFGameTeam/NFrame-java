@@ -68,6 +68,37 @@
                             <goal>run</goal>
                         </goals>
                     </execution>
+
+                    <execution>
+                        <id>copy to plugins</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <tasks>
+                                <copy todir="../../plugins/">
+                                    <fileset dir="target/">
+                                        <include name="*.zip" />
+                                    </fileset>
+                                </copy>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>clean to plugins</id>
+                        <phase>clean</phase>
+                        <configuration>
+                            <tasks>
+                                <delete dir="../../plugins/${project.artifactId}-${project.version}" />
+                                <delete file="../../plugins/${project.artifactId}-${project.version}.zip" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
 
@@ -126,5 +157,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

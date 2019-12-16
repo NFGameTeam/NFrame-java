@@ -16,6 +16,8 @@
         <module>NFCore</module>
         <module>NFMessageDefine</module>
         <module>NFPluginLoader</module>
+        <module>NFWeb</module>
+        <module>NFMyBatisForMySql</module>
     </modules>
 
     <dependencies>
@@ -28,6 +30,11 @@
             <groupId>com.noahframe</groupId>
             <artifactId>NFFileProcess</artifactId>
             <version>${noahframe.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
         </dependency>
     </dependencies>
 

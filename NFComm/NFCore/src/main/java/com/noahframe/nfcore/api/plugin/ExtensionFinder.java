@@ -38,6 +38,8 @@ public interface ExtensionFinder {
      */
     List<ExtensionWrapper> find(String pluginId);
 
+    List<ExtensionWrapper> findByType(String type);
+
     /**
      * Retrieves a list with all extension class names found for a plugin.
      */

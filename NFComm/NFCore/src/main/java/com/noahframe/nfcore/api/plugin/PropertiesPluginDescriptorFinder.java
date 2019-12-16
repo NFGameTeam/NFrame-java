@@ -110,6 +110,10 @@ public class PropertiesPluginDescriptorFinder implements PluginDescriptorFinder 
         String dependencies = properties.getProperty("plugin.dependencies");
         pluginDescriptor.setDependencies(dependencies);
 
+        String type=properties.getProperty("plugin.type");
+        if (StringUtils.isNotEmpty(version)) {
+            pluginDescriptor.setType(type);
+        }
         return pluginDescriptor;
     }
 

@@ -1,5 +1,6 @@
 package com.noahframe.plugins.redis;
 
+import com.noahframe.nfcore.iface.module.NFIRedis;
 import com.noahframe.nfcore.iface.module.NFIRedisClient;
 import redis.clients.jedis.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @Author:zoocee
  * @Date:2018/11/8 14:32
  */
-public class NFRedisClient extends NFRedis implements NFIRedisClient<Jedis>  {
+public class NFRedisClient implements NFIRedisClient<JedisCluster>  {
 
 
 
@@ -19,7 +20,7 @@ public class NFRedisClient extends NFRedis implements NFIRedisClient<Jedis>  {
 
     private boolean bAuthed;
     private boolean bBusy;
-    private Jedis m_pRedisClientSocket;
+    private JedisCluster m_pRedisClientSocket;
 
     public  NFRedisClient()
     {
@@ -43,16 +44,6 @@ public class NFRedisClient extends NFRedis implements NFIRedisClient<Jedis>  {
         mstrIP = ip;
         mnPort = port;
         return true;
-    }
-
-    @Override
-    public void SetClientCtx(Jedis client) {
-        if (mstrAuthKey!=null&&bAuthed==false)
-        {
-            client.auth(mstrAuthKey);
-            bAuthed=true;
-        }
-        m_pRedisClientSocket= client;
     }
 
     @Override
@@ -121,8 +112,4 @@ public class NFRedisClient extends NFRedis implements NFIRedisClient<Jedis>  {
         return false;
     }
 
-    @Override
-    public Jedis GetSingletonPtr() {
-        return null;
-    }
 }

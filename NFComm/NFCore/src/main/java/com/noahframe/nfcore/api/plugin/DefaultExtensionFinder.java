@@ -70,6 +70,15 @@ public class DefaultExtensionFinder implements ExtensionFinder, PluginStateListe
         return extensions;
     }
 
+    @Override
+    public List<ExtensionWrapper> findByType(String type) {
+        List<ExtensionWrapper> extensions = new ArrayList<>();
+        for (ExtensionFinder finder : finders) {
+            extensions.addAll(finder.findByType(type.toUpperCase()));
+        }
+        return extensions;
+    }
+
 
     @Override
     public Set<String> findClassNames(String pluginId) {

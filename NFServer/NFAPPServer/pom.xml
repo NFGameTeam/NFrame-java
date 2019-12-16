@@ -16,6 +16,20 @@
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <version>${spring.boot}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>NFAPPServer</finalName>

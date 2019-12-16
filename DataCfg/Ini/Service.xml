@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<XML>
+	<Object Id="Service_NFMall" ServiceID="10001" Name="nfMallService" ServiceXML="dubbo-mall-service.xml" ReFerenceXML="dubbo-mall-reference.xml" />
+</XML>
+

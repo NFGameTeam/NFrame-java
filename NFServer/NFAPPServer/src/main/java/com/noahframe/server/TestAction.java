@@ -4,6 +4,7 @@ import com.noahframe.loader.NFPluginManager;
 import com.noahframe.nfcore.iface.NFIPluginManager;
 import com.noahframe.nfcore.iface.module.NFGUID;
 import com.noahframe.nfcore.iface.module.NFILogModule;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @Controller
-@Scope("prototype")
 @RequestMapping(value = "/Test")
 public class TestAction {
 
@@ -31,6 +32,8 @@ public class TestAction {
         m_pLogModule.LogNormal(NFILogModule.NF_LOG_LEVEL.NLL_INFO_NORMAL, new NFGUID(), "测试LogNormal-NLL_INFO_NORMAL", m_pLogModule.CurrTrace().getMethodName(), m_pLogModule.CurrTrace().getLineNumber());
         m_pLogModule.LogNormal(NFILogModule.NF_LOG_LEVEL.NLL_WARING_NORMAL, new NFGUID(), "测试LogNormal-NLL_WARING_NORMAL", m_pLogModule.CurrTrace().getMethodName(), m_pLogModule.CurrTrace().getLineNumber());
         m_pLogModule.LogNormal(NFILogModule.NF_LOG_LEVEL.NLL_FATAL_NORMAL, new NFGUID(), "测试LogNormal-NLL_FATAL_NORMAL", m_pLogModule.CurrTrace().getMethodName(), m_pLogModule.CurrTrace().getLineNumber());
+
+
 
 
         return new ModelAndView("test/log");

@@ -38,6 +38,7 @@ public class PluginDescriptor {
     private Version version;
     private Expression requires;
     private String provider;
+    private String type;
     private List<PluginDependency> dependencies;
 
     public PluginDescriptor() {
@@ -100,7 +101,7 @@ public class PluginDescriptor {
 		return "PluginDescriptor [pluginId=" + pluginId + ", pluginClass="
 				+ pluginClass + ", version=" + version + ", provider="
 				+ provider + ", dependencies=" + dependencies
-				+ "]";
+				+ "type="+type==null?"none":type+"]";
 	}
 
 	void setPluginId(String pluginId) {
@@ -155,4 +156,11 @@ public class PluginDescriptor {
     	}
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

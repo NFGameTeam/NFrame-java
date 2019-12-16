@@ -22,7 +22,7 @@ public class NFNoSqlModule extends NFINoSqlModule {
     protected NFIElementModule m_pElementModule;
     protected NFILogModule m_pLogModule;
 
-    protected Map<String, NFIRedisClient> mxNoSqlDriver;
+    protected Map<String, NFIRedis> mxNoSqlDriver;
 
     protected NFRedisCluster mxNoSqlCluster;
 
@@ -65,28 +65,30 @@ public class NFNoSqlModule extends NFINoSqlModule {
     }
 
     @Override
-    public boolean AddConnectSql(String strID, String strIP) {
+    public int AddConnectSql(String strID, String strIP) {
         return false;
     }
 
     @Override
-    public boolean AddConnectSql(String strID, String strIP, int nPort) {
+    public int AddConnectSql(String strID, String strIP, int nPort) {
 
         if(!mxNoSqlDriver.containsKey(strID))
         {
             NFIRedisClient pNoSqlDriver = new NFRedisClient();
             pNoSqlDriver.Connecter(strIP, nPort);
+            mxNoSqlDriver.put(strID,(NFIRedis) pNoSqlDriver);
             return mxNoSqlCluster.AddNode(pNoSqlDriver);
         }
         return false;
     }
 
     @Override
-    public boolean AddConnectSql(String strID, String strIP, int nPort, String strPass) {
+    public int AddConnectSql(String strID, String strIP, int nPort, String strPass) {
 
         if(!mxNoSqlDriver.containsKey(strID)) {
             NFIRedisClient pNoSqlDriver = new NFRedisClient();
             pNoSqlDriver.Connecter(strIP, nPort, strPass);
+            mxNoSqlDriver.put(strID,(NFIRedis) pNoSqlDriver);
             return mxNoSqlCluster.AddNode(pNoSqlDriver);
         }
         return false;
@@ -98,9 +100,9 @@ public class NFNoSqlModule extends NFINoSqlModule {
     }
 
     @Override
-    public NFIRedisClient GetDriver(String strID) {
+    public NFIRedis GetDriver(String strID) {
 
-        NFIRedisClient  xDriver= mxNoSqlDriver.get(strID);
+        NFIRedis  xDriver= mxNoSqlDriver.get(strID);
         if (xDriver!=null && xDriver.Enable())
         {
             return xDriver;
@@ -110,15 +112,26 @@ public class NFNoSqlModule extends NFINoSqlModule {
     }
 
     @Override
-    public NFIRedisClient GetDriverBySuitRandom() {
+    public NFIRedis GetDriverBySuitRandom() {
 
-
+        Random r = new Random();
+        int n=r.nextInt(mxNoSqlDriver.size()-1);
+        int i=0;
+        for (Map.Entry<String, NFIRedis> xDriver:mxNoSqlDriver.entrySet())
+        {
+           if (i<n)
+           {
+               i++;
+               continue;
+           }
+            return xDriver.getValue();
+        }
 
         return null;
     }
 
     @Override
-    public NFIRedisClient GetDriverBySuitConsistent() {
+    public NFIRedis GetDriverBySuitConsistent() {
 
 //        for (Map.Entry<String, NFIRedisClient> entry : mxNoSqlDriver.entrySet()) {
 //            NFIRedisClient  xDriver= entry.getValue();
@@ -131,7 +144,7 @@ public class NFNoSqlModule extends NFINoSqlModule {
     }
 
     @Override
-    public NFIRedisClient GetDriverBySuit(String strHash) {
+    public NFIRedis GetDriverBySuit(String strHash) {
 
         return null;
     }
@@ -208,9 +221,9 @@ public class NFNoSqlModule extends NFINoSqlModule {
     @Override
     public boolean Execute() {
 
-        Iterator<Map.Entry<String, NFIRedisClient>> iterator = mxNoSqlDriver.entrySet().iterator();
+        Iterator<Map.Entry<String, NFIRedis>> iterator = mxNoSqlDriver.entrySet().iterator();
         while (iterator.hasNext()) {
-            NFIRedisClient xNosqlDriver=iterator.next().getValue();
+            NFIRedis xNosqlDriver=iterator.next().getValue();
             xNosqlDriver.Execute();
         }
         CheckConnect();

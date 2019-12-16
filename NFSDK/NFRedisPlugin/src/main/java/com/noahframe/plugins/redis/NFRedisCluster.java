@@ -56,7 +56,8 @@ public class NFRedisCluster implements NFIRedisCluster<NFIRedisClient> {
     @Override
     public boolean Connecting() {
 
-        m_pCluster = new JedisCluster(nodes, m_pRedisPoolConfig);
+        m_pCluster =         new JedisCluster(nodes,1500,1500,
+                100, "NoahGameFrame", m_pRedisPoolConfig);
 
         boolean isConnected = false;
         if (m_pCluster != null) {

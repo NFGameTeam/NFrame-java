@@ -823,6 +823,11 @@ public static class NoSqlServer{
 		public static  String IP(){ String xIP = "IP"; return xIP; } // string
 		public static  String Port(){ String xPort = "Port"; return xPort; } // int
 		public static  String Auth(){ String xAuth = "Auth"; return xAuth; } // string
+
+		public static  String MaxIdle(){ String xMaxIdle = "MaxIdle"; return xMaxIdle; } // string
+		public static  String MinIdle(){ String xMinIdle = "MinIdle"; return xMinIdle; } // string
+		public static  String MaxWaitMillis(){ String xMaxWaitMillis = "MaxWaitMillis"; return xMaxWaitMillis; } // string
+		public static  String TestOnBorrow(){ String xTestOnBorrow = "TestOnBorrow"; return xTestOnBorrow; } // string
 		// Record
 	};
 public static class NPC{
@@ -1544,6 +1549,64 @@ public static class SqlServer{
 		public static  String SqlName(){ String xSqlName = "SqlName"; return xSqlName; } // string
 		// Record
 	};
+
+
+	public static class DataBase{
+		//Class name
+		public static  String ThisName(){ String xDataBase = "DataBase"; return xDataBase; }
+		// IObject
+		public static  String ID(){ String xID = "ID"; return xID; } // string
+		public static  String ClassName(){ String xClassName = "ClassName"; return xClassName; } // string
+		public static  String SceneID(){ String xSceneID = "SceneID"; return xSceneID; } // int
+		public static  String GroupID(){ String xGroupID = "GroupID"; return xGroupID; } // int
+		public static  String ConfigID(){ String xConfigID = "ConfigID"; return xConfigID; } // string
+		public static  String X(){ String xX = "X"; return xX; } // float
+		public static  String Y(){ String xY = "Y"; return xY; } // float
+		public static  String Z(){ String xZ = "Z"; return xZ; } // float
+		// Property
+		public static  String DataBaseID(){ String xDataBaseID = "DataBaseID"; return xDataBaseID; } // int
+		public static  String Name(){ String xName = "Name"; return xName; } // string
+		public static  String XML(){ String xXML = "XML"; return xXML; } // string
+		// Record
+	};
+
+	public static class Service{
+		//Class name
+		public static  String ThisName(){ String xService = "Service"; return xService; }
+		// IObject
+		public static  String ID(){ String xID = "ID"; return xID; } // string
+		public static  String ClassName(){ String xClassName = "ClassName"; return xClassName; } // string
+		public static  String SceneID(){ String xSceneID = "SceneID"; return xSceneID; } // int
+		public static  String GroupID(){ String xGroupID = "GroupID"; return xGroupID; } // int
+		public static  String ConfigID(){ String xConfigID = "ConfigID"; return xConfigID; } // string
+		public static  String X(){ String xX = "X"; return xX; } // float
+		public static  String Y(){ String xY = "Y"; return xY; } // float
+		public static  String Z(){ String xZ = "Z"; return xZ; } // float
+		// Property
+		public static  String ServiceID(){ String xServiceID = "ServiceID"; return xServiceID; } // int
+		public static  String Name(){ String xName = "Name"; return xName; } // string
+		public static  String ServiceXML(){ String xServiceXML = "ServiceXML"; return xServiceXML; } // string
+		public static  String ReFerenceXML(){ String xReFerenceXML = "ReFerenceXML"; return xReFerenceXML; } // string
+		// Record
+	};
+	public static class Shiro{
+		//Class name
+		public static  String ThisName(){ String xShiro = "Shiro"; return xShiro; }
+		// IObject
+		public static  String ID(){ String xID = "ID"; return xID; } // string
+		public static  String ClassName(){ String xClassName = "ClassName"; return xClassName; } // string
+		public static  String SceneID(){ String xSceneID = "SceneID"; return xSceneID; } // int
+		public static  String GroupID(){ String xGroupID = "GroupID"; return xGroupID; } // int
+		public static  String ConfigID(){ String xConfigID = "ConfigID"; return xConfigID; } // string
+		public static  String X(){ String xX = "X"; return xX; } // float
+		public static  String Y(){ String xY = "Y"; return xY; } // float
+		public static  String Z(){ String xZ = "Z"; return xZ; } // float
+		// Property
+		public static  String ShiroID(){ String xShiroID = "ShiroID"; return xShiroID; } // int
+		public static  String Name(){ String xName = "Name"; return xName; } // string
+		public static  String ShiroXML(){ String xServiceXML = "ShiroXML"; return xServiceXML; } // string
+	};
+
 public static class StateFuncResources{
 	//Class name
 		public static  String ThisName(){ String xStateFuncResources = "StateFuncResources"; return xStateFuncResources; }

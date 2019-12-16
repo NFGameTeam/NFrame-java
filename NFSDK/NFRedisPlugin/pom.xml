@@ -14,7 +14,7 @@
 
     <properties>
         <plugin.id>nf_redis_plugin</plugin.id>
-        <plugin.class>com.noahframe.plugins.redis.NFRedisPlugin</plugin.class>
+        <plugin.class>com.noahframe.plugins.redis.NFRedisClusterPlugin</plugin.class>
     </properties>
 
     <dependencies>
@@ -52,6 +52,37 @@
                                 <unzip src="target/${project.artifactId}-${project.version}.${project.packaging}"
                                        dest="target/plugin-classes" />
                             </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>copy to plugins</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <tasks>
+                                <copy todir="../../plugins/">
+                                    <fileset dir="target/">
+                                        <include name="*.zip" />
+                                    </fileset>
+                                </copy>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>clean to plugins</id>
+                        <phase>clean</phase>
+                        <configuration>
+                            <tasks>
+                                <delete dir="../../plugins/${project.artifactId}-${project.version}" />
+                                <delete file="../../plugins/${project.artifactId}-${project.version}.zip" />
+                            </tasks>
                         </configuration>
                         <goals>
                             <goal>run</goal>
@@ -115,5 +146,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

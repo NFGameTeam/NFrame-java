@@ -9,6 +9,8 @@
 package com.noahframe.nfcore.iface;
 
 
+import com.noahframe.nfcore.api.plugin.PluginClassLoader;
+
 import java.util.List;
 
 
@@ -18,11 +20,13 @@ public interface NFIPluginManager {
 	void Registered(NFIPlugin plugin);
 	void UnRegistered(NFIPlugin plugin);
 	NFIPlugin FindPlugin(String strPluginName);
+	<T> NFIPlugin FindPlugin(Class<T> pModule);
 	<T> void AddModule(String strModuleName, T module);
 	void RemoveModule(String strModuleName);
 	<T> T FindModule(String strModuleName);
 	<T> List<T> FindModules(String pluginid, Class<T> clas);
 	<T> T FindModule(Class<T> clas);
+	<T> List<T> getModulesByType(String type);
 	
 	
 	 int GetAppID();
@@ -39,6 +43,12 @@ public interface NFIPluginManager {
 	 
 	 String GetLogConfigName();
 	 void SetLogConfigName(String strName);
+
+	Object getWebContext();
+
+	void setWebContext(Object WebContext);
+
+	PluginClassLoader getPluginClassLoader(String pluginId);
 	 
 	 
 	

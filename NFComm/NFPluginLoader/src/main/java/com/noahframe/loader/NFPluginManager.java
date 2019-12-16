@@ -4,6 +4,7 @@ import com.noahframe.api.file.SysPath;
 import com.noahframe.api.utils.DateUtil;
 import com.noahframe.api.utils.XPathUtil;
 import com.noahframe.nfcore.api.plugin.DefaultPluginManager;
+import com.noahframe.nfcore.api.plugin.PluginClassLoader;
 import com.noahframe.nfcore.api.plugin.PluginManager;
 import com.noahframe.nfcore.api.plugin.PluginWrapper;
 import com.noahframe.nfcore.iface.module.NFIModule;
@@ -17,8 +18,7 @@ import java.util.Map.Entry;
 
 import com.noahframe.nfcore.iface.NFIPlugin;
 import com.noahframe.nfcore.iface.NFIPluginManager;
-import org.jdom.Element;
-
+import org.jdom2.Element;
 
 
 public class NFPluginManager implements NFIPluginManager {
@@ -215,6 +215,26 @@ public class NFPluginManager implements NFIPluginManager {
 		return null;
 	}
 
+	//查找module所属插件
+	public <T> NFIPlugin FindPlugin(Class<T> pModule)
+	{
+		NFIPlugin plugin=null;
+		for (Entry<String, NFIPlugin> entry : mPluginInstanceMap.entrySet()) {
+
+			entry.getValue().BeforeShut();
+
+			String pluginid = entry.getKey();
+			List<T> modules= plugin_manager.getExtensions(pModule, pluginid);
+			if (modules!=null&&modules.size()>0)
+			{
+				plugin=entry.getValue();
+				return plugin;
+			}
+
+		}
+		return plugin;
+	}
+
 	public <T> void AddModule(String strModuleName, T pModule) {
 		// TODO Auto-generated method stub
 		if (null == FindModule(strModuleName)) {
@@ -265,8 +285,15 @@ public class NFPluginManager implements NFIPluginManager {
 		}
 		return module;
 	}
-	
-	
+
+	@Override
+	public <T> List<T> getModulesByType(String type) {
+		List<T> modules=null;
+		if (null!=type) {
+			modules = plugin_manager.getExtensionsByType(type);
+		}
+		return modules;
+	}
 
 	public int GetAppID() {
 		// TODO Auto-generated method stub
@@ -322,7 +349,13 @@ public class NFPluginManager implements NFIPluginManager {
 	protected boolean LoadPluginConfig() {
 
 		String strContent = null;
-		strContent = SysPath.root + mstrConfigName;
+
+		try {
+			strContent = SysPath.getClassRootPath()+File.separator + mstrConfigName;
+		}
+		catch (Exception e) {
+
+		}
 
 		XPathUtil rapidxml = null;
 		try {
@@ -410,8 +443,10 @@ public class NFPluginManager implements NFIPluginManager {
 	private PluginManager plugin_manager;
 
 	private Map<String, Boolean> mPluginNameMap = new LinkedHashMap<String, Boolean>();
-	private Map<String, NFIPlugin> mPluginInstanceMap = new HashMap<String, NFIPlugin>();
-	private Map<String, Object> mModuleInstanceMap = new HashMap<String, Object>();
+	private Map<String, NFIPlugin> mPluginInstanceMap = new LinkedHashMap<String, NFIPlugin>();
+	private Map<String, Object> mModuleInstanceMap = new LinkedHashMap<String, Object>();
+
+	private Object mWebContext;
 
 	/*
 	 * 锁
@@ -447,7 +482,16 @@ public class NFPluginManager implements NFIPluginManager {
 	}
 
 
+	public Object getWebContext() {
+		return mWebContext;
+	}
 
+	public void setWebContext(Object WebContext) {
+		this.mWebContext = WebContext;
+	}
 
-
+	@Override
+	public PluginClassLoader getPluginClassLoader(String pluginId) {
+		return plugin_manager.getPluginClassLoader(pluginId);
+	}
 }

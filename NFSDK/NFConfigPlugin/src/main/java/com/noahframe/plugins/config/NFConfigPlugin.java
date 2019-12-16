@@ -10,11 +10,7 @@ public class NFConfigPlugin extends NFIPlugin {
 		super(wrapper);
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-    public int GetPluginVersion()
-    {
-    	return 0;
-    }
+
 	@Override
     public String GetPluginName(){
     	return null;

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <bean id="itemService" class="com.noahframe.service.mall.service.ItemServiceImpl"/>
+    <bean id="memberService" class="com.noahframe.service.mall.service.MemberServiceImpl"/>
+    <bean id="itemCatService" class="com.noahframe.service.mall.service.ItemCatServiceImpl"/>
+    <bean id="userService" class="com.noahframe.service.mall.service.UserServiceImpl"/>
+    <bean id="orderService" class="com.noahframe.service.mall.service.OrderServiceImpl"/>
+    <bean id="thanksService" class="com.noahframe.service.mall.service.ThanksServiceImpl"/>
+    <bean id="systemService" class="com.noahframe.service.mall.service.SystemServiceImpl"/>
+    <bean id="dictService" class="com.noahframe.service.mall.service.DictServiceImpl"/>
+    <bean id="expressService" class="com.noahframe.service.mall.service.ExpressServiceImpl"/>
+    <bean id="countService" class="com.noahframe.service.mall.service.CountServiceImpl"/>
+    <bean id="searchService" class="com.noahframe.service.mall.service.SearchServiceImpl"/>
+    <bean id="searchItemService" class="com.noahframe.service.mall.service.SearchItemServiceImpl"/>
+    <bean id="panelService" class="com.noahframe.service.mall.service.PanelServiceImpl"/>
+    <bean id="contentService" class="com.noahframe.service.mall.service.ContentServiceImpl"/>
+    <bean id="loginService" class="com.noahframe.service.mall.service.LoginServiceImpl"/>
+    <!-- 提供方应用消息 -->
+    <dubbo:application name="mall-provider"/>
+
+    <!-- 使用zookeeper注册中心暴露服务 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2111" />
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.ItemService" ref="itemService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.MemberService" ref="memberService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.ItemCatService" ref="itemCatService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.UserService" ref="userService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.OrderService" ref="orderService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.ThanksService" ref="thanksService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.SystemService" ref="systemService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.DictService" ref="dictService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.ExpressService" ref="expressService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.CountService" ref="countService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.SearchService" ref="searchService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.SearchItemService" ref="searchItemService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.PanelService" ref="panelService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.ContentService" ref="contentService" timeout="10000"/>
+    <dubbo:service interface="com.noahframe.plugins.logic.mall.database.iface.LoginService" ref="loginService" timeout="10000"/>
+</beans>

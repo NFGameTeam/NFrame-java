@@ -564,6 +564,17 @@ public class DefaultPluginManager implements PluginManager {
 	}
 
     @Override
+    public <T> List<T> getExtensionsByType(String type) {
+        List<ExtensionWrapper> extensionsWrapper = extensionFinder.findByType(type);
+        List<T> extensions = new ArrayList<>(extensionsWrapper.size());
+        for (ExtensionWrapper<T> extensionWrapper : extensionsWrapper) {
+            extensions.add(extensionWrapper.getExtension());
+        }
+
+        return extensions;
+    }
+
+    @Override
     public <T> List<T> getExtensions(Class<T> type, String pluginId) {
         List<ExtensionWrapper<T>> extensionsWrapper = extensionFinder.find(type, pluginId);
         List<T> extensions = new ArrayList<>(extensionsWrapper.size());
