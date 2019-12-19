@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <XML>
-	<Object Id="NoSqlServer_1" Auth="tianhai-redis" IP="119.29.87.198" Port="6380,7380,6381,7381,6382,7382" ServerID="6380" MaxIdle="20" MinIdle="5" MaxWaitMillis="3000" TestOnBorrow="1" />
+	<Object Id="NoSqlServer_1" Auth="tianhai-redis" IP="xx.xxx.xx.xx" Port="6380,7380,6381,7381,6382,7382" ServerID="6380" MaxIdle="20" MinIdle="5" MaxWaitMillis="3000" TestOnBorrow="1" />
 	<Object Id="NoSqlServer_2" Auth="" IP="127.0.0.1" Port="6379" ServerID="6379" MaxIdle="20" MinIdle="5" MaxWaitMillis="3000" TestOnBorrow="1" />
 </XML>
