@@ -24,7 +24,7 @@
         <log4j.version>1.2.17</log4j.version>
         <json.version>20171018</json.version>
         <activemq.version>5.11.2</activemq.version>
-        <httpclient.version>4.5.3</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <hutool.version>4.0.5</hutool.version>
         <qiniu.version>[7.2.0, 7.2.99]</qiniu.version>
         <commons-fileupload.version>1.3.3</commons-fileupload.version>
