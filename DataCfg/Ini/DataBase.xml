@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='utf-8' ?>
-<XML>
-	<Object Id="DB_NFMall" DataBaseID="10001" Name="nfMall" XML="nf_db_mall_ctx.xml" />
-	<Object Id="DB_NFPay" DataBaseID="10002" Name="nfPay" XML="nf_db_pay_ctx.xml" />
-</XML>
-
