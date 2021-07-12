@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.yeegro.nframe</groupId>
+		<artifactId>NFSpringConfig</artifactId>
+		<version>1.0.0</version>
+	</parent>
+  <artifactId>log-spring-boot-starter</artifactId>
+  <description>日志支撑</description>
+  
+  
+  <properties>
+  	<log-version>1.0.0</log-version>
+  </properties>
+  <dependencies>
+  
+  		
+		<dependency>
+            <groupId>structlog4j</groupId>
+            <artifactId>structlog4j-api</artifactId>
+            <version>${log-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>structlog4j</groupId>
+            <artifactId>structlog4j-json</artifactId>
+            <version>${log-version}</version>
+        </dependency>
+        
+		<dependency>
+  			<groupId>cn.yeegro.nframe</groupId>
+  			<artifactId>common-spring-boot-starter</artifactId>
+  			<optional>true</optional>
+  		</dependency>
+  
+  		<dependency>
+  			<groupId>cn.yeegro.nframe</groupId>
+  			<artifactId>NFDataBaseIface</artifactId>
+  			<optional>true</optional>
+  		</dependency>
+
+	  <dependency>
+		  <groupId>cn.yeegro.nframe</groupId>
+		  <artifactId>NFOauthCenterLogic</artifactId>
+	  </dependency>
+  		
+  		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<optional>true</optional>
+		</dependency>
+  
+  		<!-- apo -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-sleuth-core -->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-sleuth-core</artifactId>
+		</dependency>
+		
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+  		
+  		
+  </dependencies>
+  
+</project>

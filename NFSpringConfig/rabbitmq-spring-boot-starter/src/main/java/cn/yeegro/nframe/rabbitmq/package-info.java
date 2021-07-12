@@ -1,0 +1,1 @@
+package cn.yeegro.nframe.rabbitmq;

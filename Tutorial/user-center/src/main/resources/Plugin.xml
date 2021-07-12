@@ -1,0 +1,12 @@
+<XML>
+    <NFServer>
+        <Plugin Name="nf_log_plugin"/>
+        <Plugin Name="nf_kernel_plugin"/>
+        <Plugin Name="nf_config_plugin"/>
+        <Plugin Name="nf_redis_plugin"/>
+        <Plugin Name="nf_mybatis_plugin"/>
+        <Plugin Name="nf_logic_oauthcenter"/>
+        <Plugin Name="nf_logic_usercenter"/>
+        <ConfigPath Name="../"/>
+    </NFServer>
+</XML>

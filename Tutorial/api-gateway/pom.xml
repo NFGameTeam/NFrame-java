@@ -1,0 +1,181 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.yeegro.nframe</groupId>
+        <artifactId>Tutorial</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>api-gateway</artifactId>
+
+    <dependencies>
+
+        <!-- kaptcha 验证码生成工具 -->
+        <dependency>
+            <groupId>com.github.axet</groupId>
+            <artifactId>kaptcha</artifactId>
+        </dependency>
+
+        <!-- mysql -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFDataBaseIface</artifactId>
+        </dependency>
+        <!-- Spring boot websocket -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+        <!-- 日志组件 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>log-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 公共API -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>common-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- 资源服务器 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>uaa-client-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- sentinel 网关限流 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+        </dependency>
+        <!-- 熔断限流组件 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>sentinel-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- swagger -->
+        <dependency>
+            <groupId>com.didispace</groupId>
+            <artifactId>swagger-butler-core</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除tomcat容器 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.marcosbarbero.cloud</groupId>
+            <artifactId>spring-cloud-zuul-ratelimit</artifactId>
+            <version>2.2.3.RELEASE</version>
+        </dependency>
+
+        <!-- 选用nacos时打开 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFFileProcess</artifactId>
+        </dependency>
+
+        <dependency>
+            <artifactId>NFNoSqlIface</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>utils-spring-boot</artifactId>
+        </dependency>
+
+        <dependency>
+            <artifactId>NFUserCenterLogic</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- 形成带第三方jar包的可执行jar包，jar包目录结构如下 application.properties lib META-INF mybatis
+        org -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+        <finalName>${project.artifactId}</finalName>
+    </build>
+</project>

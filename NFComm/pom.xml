@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>NFrame-java</artifactId>
+        <groupId>cn.yeegro.nframe</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <artifactId>NFComm</artifactId>
+    <modules>
+        <module>NFCore</module>
+        <module>NFConfigPlugin</module>
+        <module>NFKernelPlugin</module>
+        <module>NFActorPlugin</module>
+        <module>NFBluePrintPlugin</module>
+        <module>NFHeaderFiles</module>
+        <module>NFMessageDefine</module>
+        <module>NFNavigationPlugin</module>
+        <module>NFPluginLoader</module>
+        <module>NFPluginModule</module>
+        <module>NFLogPlugin</module>
+        <module>NF4J</module>
+    </modules>
+
+
+</project>

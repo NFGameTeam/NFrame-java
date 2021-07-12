@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.yeegro.nframe</groupId>
+    <artifactId>NFrame-java</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <modules>
+        <module>NFComm</module>
+        <module>NFTools</module>
+        <module>NFComponents</module>
+        <module>NFComponentPlugins</module>
+        <module>NFSpringConfig</module>
+        <module>NFLogics</module>
+        <module>NFLogicPlugins</module>
+        <module>Tutorial</module>
+        <module>NFFront</module>
+    </modules>
+
+    <!--    <properties>-->
+    <!--        <slf4j.version>1.7.25</slf4j.version>-->
+    <!--        <log4j.version>1.2.17</log4j.version>-->
+    <!--        <noahframe.version>1.0.0</noahframe.version>-->
+    <!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+    <!--        <java.version>11</java.version>-->
+    <!--        <spring.version>5.2.5.RELEASE</spring.version>-->
+    <!--        <spring-boot.version>2.2.9.RELEASE</spring-boot.version>-->
+    <!--        <spring-cloud-alibaba-dependencies.version>2.2.5.RELEASE</spring-cloud-alibaba-dependencies.version>-->
+    <!--        <hutool.version>5.3.4</hutool.version>-->
+    <!--        <hibernate-core.version>5.3.7.Final</hibernate-core.version>-->
+    <!--        <commons-pool2.version>2.5.0</commons-pool2.version>-->
+    <!--        <security-oauth2.version>2.3.6.RELEASE</security-oauth2.version>-->
+    <!--        <commons-lang3.version>3.7</commons-lang3.version>-->
+    <!--    </properties>-->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <jmh.version>1.23</jmh.version>
+        <noahframe.version>1.0.0</noahframe.version>
+        <log4j2.version>2.1</log4j2.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <jasypt.version>1.14</jasypt.version>
+        <hutool.version>5.1.0</hutool.version>
+        <fastjson.version>1.2.70</fastjson.version>
+        <disruptor.version>3.4.1</disruptor.version>
+        <spring.version>5.2.5.RELEASE</spring.version>
+        <spring-boot.version>2.2.9.RELEASE</spring-boot.version>
+        <spring-platform.version>Cairo-SR3</spring-platform.version>
+        <spring.social.version>1.1.6.RELEASE</spring.social.version>
+        <spring-security.version>5.1.1.RELEASE</spring-security.version>
+        <security-oauth2.version>2.3.6.RELEASE</security-oauth2.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
+        <hibernate-validator.verion>6.0.18.Final</hibernate-validator.verion>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <commons-pool2.version>2.5.0</commons-pool2.version>
+        <flowable.version>6.4.1</flowable.version>
+        <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
+        <spring-cloud-alibaba-dependencies.version>2.2.1.RELEASE</spring-cloud-alibaba-dependencies.version>
+        <kaptcha.version>0.0.9</kaptcha.version>
+        <swagger.version>2.9.2</swagger.version>
+        <configuration.version>1.9</configuration.version>
+
+    </properties>
+
+    <!--    <dependencies>-->
+    <!--        &lt;!&ndash;lombok插件&ndash;&gt;-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.projectlombok</groupId>-->
+    <!--            <artifactId>lombok</artifactId>-->
+    <!--            <version>1.18.2</version>-->
+    <!---->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.slf4j</groupId>-->
+    <!--            <artifactId>slf4j-api</artifactId>-->
+    <!--            <version>${slf4j.version}</version>-->
+    <!---->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.slf4j</groupId>-->
+    <!--            <artifactId>jul-to-slf4j</artifactId>-->
+    <!--            <version>${slf4j.version}</version>-->
+    <!---->
+    <!--        </dependency>-->
+
+    <!--        &lt;!&ndash;日志 start&ndash;&gt;-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.apache.logging.log4j</groupId>-->
+    <!--            <artifactId>log4j-api</artifactId>-->
+    <!--            <version>2.11.1</version>-->
+    <!---->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>org.apache.logging.log4j</groupId>-->
+    <!--            <artifactId>log4j-to-slf4j</artifactId>-->
+    <!--            <version>2.11.1</version>-->
+    <!---->
+    <!--        </dependency>-->
+
+    <!--        <dependency>-->
+    <!--            <groupId>ch.qos.logback</groupId>-->
+    <!--            <artifactId>logback-core</artifactId>-->
+    <!--            <version>1.2.3</version>-->
+    <!---->
+    <!--        </dependency>-->
+    <!--        <dependency>-->
+    <!--            <groupId>ch.qos.logback</groupId>-->
+    <!--            <artifactId>logback-classic</artifactId>-->
+    <!--            <version>1.2.3</version>-->
+    <!---->
+    <!--        </dependency>-->
+
+    <!--        <dependency>-->
+    <!--            <groupId>org.springframework.boot</groupId>-->
+    <!--            <artifactId>spring-boot-starter-logging</artifactId>-->
+    <!--            <version>2.1.4.RELEASE</version>-->
+    <!---->
+    <!--        </dependency>-->
+    <!--    </dependencies>-->
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- Micrometer Prometheus registry -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <!-- 测试框架 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.verion}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-bean-validators</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>1.5.21</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>1.5.21</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>1.9.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--Spring boot 核心-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${security-oauth2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-core</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
+
+            <!-- kaptcha 验证码生成工具 -->
+            <dependency>
+                <groupId>com.github.axet</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+
+            <!-- 公共实体类模块 -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>utils-spring-boot</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <!-- 公共实体类模块 -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>common-spring-boot-starter</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+            <!-- 日志配置 -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>log-spring-boot-starter</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <!-- 资源服务 -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>uaa-client-spring-boot-starter</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <!-- 资源服务 -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>uaa-server-spring-boot-starter</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+            <!-- API测试文档 -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>swagger-spring-boot-starter</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+            <!-- 自定义路由策略 -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>ribbon-spring-boot-starter</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <!-- 熔断限流组件  -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>sentinel-spring-boot-starter</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>NF4J</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>NFCore</artifactId>
+                <groupId>cn.yeegro.nframe</groupId>
+                <version>${noahframe.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>NFPluginModule</artifactId>
+                <groupId>cn.yeegro.nframe</groupId>
+                <version>${noahframe.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>NFPluginLoader</artifactId>
+                <groupId>cn.yeegro.nframe</groupId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>NFFileProcess</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <dependency>
+                <artifactId>NFNoSqlIface</artifactId>
+                <groupId>cn.yeegro.nframe</groupId>
+                <version>${noahframe.version}</version>
+            </dependency>
+            <!-- 验证逻辑插件接口  -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>NFOauthCenterLogic</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+            <!-- 关系型和非关系型数据库配置 -->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>NFDataBaseIface</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>NFUserCenterLogic</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+
+            <!--存储依赖-->
+            <dependency>
+                <groupId>cn.yeegro.nframe</groupId>
+                <artifactId>NFStorageIface</artifactId>
+                <version>${noahframe.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <target>${java.version}</target>
+                        <source>${java.version}</source>
+                        <encoding>UTF-8</encoding>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <addMavenDescriptor>false</addMavenDescriptor>
+                        </archive>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.yml</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.tld</include>
+                    <include>**/*.p12</include>
+                    <include>**/*.conf</include>
+                    <include>**/*.txt</include>
+                    <include>**/*.wsdl</include>
+                    <include>**/*.xsd</include>
+                    <include>**/*.ftl</include>
+                    <include>**/*.lua</include>
+                    <include>**/*.json</include>
+                    <include>processes/*</include>
+                    <include>**/spring.factories</include>
+                    <include>META-INF/services/*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.tld</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/view</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+
+        </resources>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>aliyun-repos</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>

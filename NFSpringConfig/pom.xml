@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>NFrame-java</artifactId>
+        <groupId>cn.yeegro.nframe</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>NFSpringConfig</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <!-- 通用操作-->
+        <module>utils-spring-boot</module>
+        <!-- 日志统一配置 -->
+        <module>log-spring-boot-starter</module>
+        <!-- 公共实体类配置 -->
+        <module>common-spring-boot-starter</module>
+        <!-- API文档配置 -->
+        <module>swagger-spring-boot-starter</module>
+        <!-- 资源服务器配置 -->
+        <module>uaa-client-spring-boot-starter</module>
+        <!-- 认证服务器配置 -->
+        <module>uaa-server-spring-boot-starter</module>
+        <!-- mq -->
+        <module>rabbitmq-spring-boot-starter</module>
+        <!-- 自定义负载均衡策略-->
+        <module>ribbon-spring-boot-starter</module>
+        <module>sentinel-spring-boot-starter</module>
+
+        <!-- 分布式任务调度-->
+        <module>elastic-job-spring-boot-starter</module>
+
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <artifactId>NFCore</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>NFPluginModule</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>NFPluginLoader</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+    </dependencies>
+
+
+</project>

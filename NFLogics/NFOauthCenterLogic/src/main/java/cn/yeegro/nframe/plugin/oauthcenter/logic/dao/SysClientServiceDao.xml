@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yeegro.nframe.plugin.oauthcenter.logic.dao.SysClientServiceDao">
+
+	<update id="delete">
+		delete from sys_client_service
+		<where>
+			<if test="clientId != null">
+				and client_id = #{clientId}
+			</if>
+			<if test="serviceId != null">
+				and service_id = #{serviceId}
+			</if>
+		</where>
+	</update>
+
+	<select id="findServicesBySlientIds" resultType="cn.yeegro.nframe.plugin.oauthcenter.logic.model.SysService">
+		select distinct t.id,t.parent_id parentId , t.name,  t.path,  t.sort, t.create_time createTime, t.update_time updateTime,t.is_service isService  from sys_service t
+		inner join sys_client_service r on r.service_id = t.id
+		where
+		r.client_id in
+		<foreach collection="clientIds" index="index" item="clientId"
+			open="(" separator="," close=")">
+			#{clientId}
+		</foreach>
+		ORDER BY sort ASC
+	</select>
+</mapper>

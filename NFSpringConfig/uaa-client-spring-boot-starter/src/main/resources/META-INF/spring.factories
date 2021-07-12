@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.yeegro.nframe.common.utils.SpringUtils,\
+cn.yeegro.nframe.uaa.client.authorize.provider.AuthAuthorizeConfigProvider,\
+cn.yeegro.nframe.uaa.client.authorize.OpenAuthorizeConfigManager,\
+cn.yeegro.nframe.common.handle.ExceptionHandlerAdvice,\
+cn.yeegro.nframe.plugin.oauthcenter.logic.feign.FeignInterceptorConfig,\
+cn.yeegro.nframe.uaa.client.UAAClientAutoConfig

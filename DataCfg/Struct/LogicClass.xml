@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<XML>
+    <Class Id="IObject" Type="TYPE_IOBJECT" Path="DataCfg/Struct/Class/IObject.xml" InstancePath="DataCfg/Ini/COMM/IObject.xml" Public="0" Desc="IObject">
+    </Class>
+</XML>
+

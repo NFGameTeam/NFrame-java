@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.yeegro.nframe</groupId>
+        <artifactId>Tutorial</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>storage-center</artifactId>
+    <description>存储中心</description>
+    <dependencies>
+
+        <!-- kaptcha 验证码生成工具 -->
+        <dependency>
+            <groupId>com.github.axet</groupId>
+            <artifactId>kaptcha</artifactId>
+        </dependency>
+        <!-- 关系型数据库配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFDataBaseIface</artifactId>
+        </dependency>
+        <!-- 日志中心 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>log-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 公共实体配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>common-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 资源服务器配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>uaa-client-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- API文档配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 熔断限流组件 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>sentinel-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 选用nacos时打开-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFFileProcess</artifactId>
+        </dependency>
+
+        <dependency>
+            <artifactId>NFNoSqlIface</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+
+        <!--存储依赖-->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFStorageIface</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- 形成带第三方jar包的可执行jar包，jar包目录结构如下 application.properties lib META-INF mybatis
+        org -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <finalName>${project.artifactId}</finalName>
+    </build>
+</project>

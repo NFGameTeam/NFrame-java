@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.yeegro.nframe</groupId>
+		<artifactId>NFSpringConfig</artifactId>
+		<version>1.0.0</version>
+	</parent>
+  <artifactId>swagger-spring-boot-starter</artifactId>
+  <description>API文档支撑</description>
+  <properties>
+  	<swagger.version>2.9.2</swagger.version>
+  	<swagger.m.version>1.0.6</swagger.m.version>
+  </properties>
+  	
+  <dependencies>
+  	
+		<!-- swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-bean-validators</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>swagger-bootstrap-ui</artifactId>
+			<version>1.9.1</version>
+		</dependency>
+  </dependencies>
+  
+</project>

@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.yeegro.nframe.plugin.oauthcenter.logic.config.SecurityHandlerConfig,\
+cn.yeegro.nframe.plugin.oauthcenter.logic.config.TokenStoreConfig

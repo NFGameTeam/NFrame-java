@@ -1,0 +1,237 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.yeegro.nframe</groupId>
+        <artifactId>Tutorial</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>auth-server</artifactId>
+
+    <properties>
+        <kaptcha.version>0.0.9</kaptcha.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- 日志统一配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>log-spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <!-- 关系型数据库配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFDataBaseIface</artifactId>
+        </dependency>
+
+
+        <!-- 公共实体类配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>common-spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <!-- web守护进程配置 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <!-- API文档配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <!-- 认证中心基础配置-->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>uaa-server-spring-boot-starter</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!-- 熔断限流组件 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>sentinel-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 选用nacos时打开-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
+
+        <!--验证逻辑插件-->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFOauthCenterLogic</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>NFNoSqlIface</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+        <dependency>
+            <artifactId>NFPluginLoader</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFFileProcess</artifactId>
+        </dependency>
+
+        <!-- kaptcha 验证码生成工具 -->
+        <dependency>
+            <groupId>com.github.axet</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>${kaptcha.version}</version>
+        </dependency>
+
+        <!-- 关系型数据库配置 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFDataBaseIface</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
+        <!-- 公共实体类模块 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>common-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 公共实体类模块 -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>log-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+
+        <!-- 加入spring security spring security oauth2的处理 -->
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-jwt -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>utils-spring-boot</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFOauthCenterLogic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFUserCenterLogic</artifactId>
+        </dependency>
+
+        <!-- 公共API -->
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>common-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-validator</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.9</version>
+        </dependency>
+
+    </dependencies>
+
+    <!-- 形成带第三方jar包的可执行jar包，jar包目录结构如下 application.properties lib META-INF mybatis
+        org -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+        <finalName>${project.artifactId}</finalName>
+    </build>
+
+</project>

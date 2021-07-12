@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>NFLogics</artifactId>
+        <groupId>cn.yeegro.nframe</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>NFOauthCenterLogic</artifactId>
+
+    <dependencies>
+        <!-- 加入spring security spring security oauth2的处理 -->
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>NFCore</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+
+        </dependency>
+        <dependency>
+            <artifactId>NFPluginModule</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+
+        </dependency>
+        <dependency>
+            <artifactId>NFPluginLoader</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+
+        </dependency>
+        <!-- kaptcha 验证码生成工具 -->
+        <dependency>
+            <groupId>com.github.axet</groupId>
+            <artifactId>kaptcha</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>utils-spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>NFDataBaseIface</artifactId>
+            <groupId>cn.yeegro.nframe</groupId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.yeegro.nframe</groupId>
+            <artifactId>NFFileProcess</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>
